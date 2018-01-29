@@ -1,0 +1,18 @@
+{
+    "retCode": 0,
+    "menus": [{
+            "moduleid": 300010,
+            "modulename": "我运营的商圈",
+            "parentmoduleid": 300000,
+            "rightvalue": 511,
+            "displayorder": 3
+        },
+        {
+            "moduleid": 300020,
+            "modulename": "我加入的商圈",
+            "parentmoduleid": 300000,
+            "rightvalue": 511,
+            "displayorder": 3
+        }
+    ]
+}

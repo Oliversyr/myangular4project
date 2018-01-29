@@ -1,0 +1,197 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-29 10:52:37
+ * @modify date 2017-12-29 10:52:37
+ * @desc  日历
+*/
+/*demo
+ <div class="sui-calendar">
+    <div class="page-scroll">
+        <div class="year-month">
+            <svg class="svgicon icon-angle-double-left"><use xlink:href="#icon-angle-double-left"></use></svg>
+            <svg class="svgicon icon-angle-left"><use xlink:href="#icon-angle-left"></use></svg>
+                 <span class="txt">2017 年 12 月</span>
+            <svg class="svgicon icon-angle-right"><use xlink:href="#icon-angle-right"></use></svg>
+            <svg class="svgicon icon-angle-double-right"><use xlink:href="#icon-angle-double-right"></use></svg>
+        </div>
+        <div class="weeks">
+            <div class="weeks-item">日</div>
+            <div class="weeks-item">一</div>
+            <div class="weeks-item">二</div>
+            <div class="weeks-item">三</div>
+            <div class="weeks-item">四</div>
+            <div class="weeks-item">五</div>
+            <div class="weeks-item">六</div>
+        </div>
+        <div class="days">
+                <div class="days-item days-item-disabled"><div class="days-num">1</div></div>
+                <div class="days-item">
+                <div class="days-num">2</div>
+                <!-- <div class="days-con">
+                    <p class="">13 单</p>
+                    <p class="c-red">￥2,590.00</p>
+                    <p class="">拜访 0</p>
+                </div> -->
+            </div>
+            <div class="days-item primary"><div class="days-num">3</div></div>
+            <div class="days-item success"><div class="days-num">4</div></div>
+            <div class="days-item danger"><div class="days-num">5</div></div>
+            <div class="days-item warning"><div class="days-num">6</div></div>
+            <div class="days-item gray"><div class="days-num">7</div></div>
+        </div><!--days end-->
+
+    </div>
+</div>
+
+        
+
+*/
+
+
+.sui-calendar {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border: 1px solid $gray-medium;
+    border-radius: 5px;
+
+    .year-month {
+        box-sizing: border-box;
+        width: 100%;
+        height: 40px;
+        border-bottom: 1px solid $gray-medium;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+             .txt {
+                margin-left: 40px;
+                margin-right: 40px;
+                font-size: 14px;
+                color: $gray-darker;
+            }
+            
+        .icon-angle-double-left ,
+        .icon-angle-double-right,
+        .icon-angle-left,
+        .icon-angle-right {
+            color: $gray-dark;
+            &:hover {
+                color: $primary;
+            }
+        }
+        .icon-angle-double-left ,
+        .icon-angle-double-right {
+            width: 9px;
+            height: 9px;
+            margin: 0 10px;
+        }  
+        .icon-angle-left,
+        .icon-angle-right {
+            width: 9px;
+            height: 9px;
+        }
+    }//year-month end
+
+    .weeks {//周几
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        .weeks-item {
+            display: flex;
+            // flex: 1;
+            justify-content: center;
+            align-items: center;
+            width: 14.285714285%;
+            color: $gray-dark;
+            border-bottom: 1px solid $gray-light;
+            border-right: 1px solid $gray-light;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+        
+    }//weeks end
+
+ .days {//日期
+        width: 100%;
+        height: 30px;
+        
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .days-item {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 14.285714285%;
+            height: 96px;
+            color: $gray-dark;
+            border-bottom: 1px solid $gray-light;
+            border-right: 1px solid $gray-light;
+            @include transition(.25s);
+        }
+        
+
+        .days-item.primary,
+        .days-item:hover {
+            background: $primary-light;
+        }
+        .days-item.success {
+            background: $success-light;
+        }
+        .days-item.warning {
+            background: $warning-light;
+        }
+        .days-item.danger {
+            background: $danger-light;
+        }
+        .days-item.gray {
+            background: $gray-light;
+        } 
+        .days-item .days-num {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 5px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: bold;
+            color: $gray-darker;
+            font-family: '微软雅黑';
+        }
+        
+        .days-item .days-con {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 5px;
+            text-align: left; 
+            line-height: 16px;
+        }
+        .days-item:nth-child(7n) {
+            border-right: none;
+        }
+
+        .days-item.days-item-disabled {
+            color: $gray !important;
+            background-color: $white !important;
+
+            &：hover {
+               background-color: $white !important; 
+            }
+
+            .days-num {
+                color: $gray !important;
+            }
+        }
+
+
+    }//日期days end
+
+}//.sui-calendar end
+ 

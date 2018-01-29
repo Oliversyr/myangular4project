@@ -1,0 +1,44 @@
+{
+    "retCode": 0,
+    "rows": [{
+            "goodsId": "1001",
+            "goodsName": "欧洲龙虾",
+            "stype": "2-5kg",
+            "uname": "只",
+            "price": "180",
+            "visitCount": "20"
+        },
+        {
+            "goodsId": "1002",
+            "goodsName": "鲍鱼",
+            "stype": "0.2-0.5kg",
+            "uname": "只",
+            "price": "50",
+            "visitCount": "60"
+        },
+        {
+            "goodsId": "1003",
+            "goodsName": "花甲",
+            "stype": "0.2-0.5kg",
+            "uname": "斤",
+            "price": "2.5",
+            "visitCount": "160"
+        },
+        {
+            "goodsId": "1005",
+            "goodsName": "九节虾",
+            "stype": "0.1-0.5kg",
+            "uname": "斤",
+            "price": "30",
+            "visitCount": "167"
+        },
+        {
+            "goodsId": "1006",
+            "goodsName": "濑尿虾",
+            "stype": "0.1-0.8kg",
+            "uname": "斤",
+            "price": "90",
+            "visitCount": "267"
+        }
+    ]
+}

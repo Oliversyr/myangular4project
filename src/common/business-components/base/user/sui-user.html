@@ -1,0 +1,11 @@
+<div class="sui-user">
+    <sui-cell leftClass="sui-label-width-md" [leftLabel]="userLabel">
+        <ng-template #cellContent>
+            <sui-combobox #myComboBox [attr.customTabindex]="customTabindex" [height]="28" [autoComplete]="true" [showArrow]="false" [searchMode]="'contains'" [showCloseButtons]="true"
+                [source]="dataSource" [selectedIndex]="0" [displayMember]="displayMember" [valueMember]="valueMember" (onChange)="selectItemChange($event)"></sui-combobox>
+            <span class="sui-input-suffix" (click)="handleArrowSelect($event)">
+                <i [class]="isOpen ? 'anticon anticon-up' : 'anticon anticon-down'"></i>
+            </span>
+        </ng-template>
+    </sui-cell>
+</div>

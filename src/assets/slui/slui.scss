@@ -1,0 +1,88 @@
+/*
+ * slui 1.0
+ * Copyright 2017.09.01 herj  
+ * Copyright 
+ * 
+ */
+
+//@import "functions";
+@import "variables"; //变量存放文件
+@import "base"; //基本样式
+@import "mixins"; //混合函数
+@import "frames"; //框架样式 
+
+@import "sui-grid"; //jqx表格重置样式
+@import "sui-auto-complete"; //jqx自动补全插件重置样式
+@import "sui-calendar"; //jqx日历组件重置样式
+@import "sui-checkbox"; //jqx复选框重置样式
+@import "sui-radiobutton"; //jqx单选框重置样式
+@import "sui-tree"; //jqx树重置样式
+@import "sui-date-range"; //jqx日期范围选择重置样式
+@import "sui-cell"; //输入框类型组件盒子重置样式
+// @import "modal"; //弹出框重置样式
+@import "sui-modal"; //弹出框重置样式
+@import "sui-jqx-listbox"; //重置下拉列表
+@import "sui-jqx-scrollbar"; //重置jqx默认div形式的滚动条
+@import "sui-jqxProgressBar"; //重置jqx进度条
+
+
+//注:前缀sui- 的文件都是组件重置样式表
+
+@import "icons"; //图标图片样式
+@import "boxs"; //盒子样式
+@import "text"; //文本字体样式
+@import "color"; //颜色样式
+@import "spin"; //加载Load
+@import "help"; //帮助下拉
+@import "message"; //提醒消息警告
+@import "imgLabel"; //标签/图片按钮
+@import "tabmenu"; //tab页签
+@import "calendar"; //日历
+@import "forms"; //表单
+@import "switch"; //自定义开关按钮
+@import "checkbox"; //自定义复选框
+@import "radio"; //自定义单选按钮
+@import "buttons"; //按钮
+@import "button-groups"; //按钮组
+@import "pagination";//分页
+@import "imgUpload";//图片上传
+@import "list-groups"; //列表相关组件
+@import "cards"; //卡片列表
+@import "upload"; //上传
+@import "table"; //静态列表/表格
+@import "badge"; //标记/标识
+@import "fast-filter"; //快速过滤条件
+@import "transfer"; //穿梭框
+
+
+@import "header"; //头部菜单
+@import "sidebar"; //左侧菜单
+//@import "wells";
+//@import "print";
+//@import "reboot";
+//@import "type";
+//@import "images";
+//@import "code";
+//@import "tables";
+//@import "transitions";
+//@import "dropdown";
+//@import "input-group";
+//@import "custom-forms";
+//@import "nav";
+//@import "navbar";
+//@import "card";
+//@import "breadcrumb";
+//@import "badge";
+//@import "jumbotron";
+//@import "alert";
+//@import "progress";
+//@import "media";
+//@import "close";
+//@import "modal";
+//@import "tooltip";
+//@import "popover";
+//@import "carousel";
+//@import "utilities";
+
+
+/*practice*/

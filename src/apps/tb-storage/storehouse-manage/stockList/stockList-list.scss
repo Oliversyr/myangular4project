@@ -1,0 +1,68 @@
+.sui-fast-filter {
+    width: 450px;
+    height: 28px;
+    border: 1px solid #c7c7c7;
+    line-height: 27px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: right;
+    text-align: left;
+
+    .sui-fast-filter-title {
+        font-weight: bold;
+        width: 80px;
+        text-align: center;
+        border-right: 1px solid #c7c7c7;
+        background-color: #eee;
+        position: relative;
+        height: 28px;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: -9px;
+            height: 10px;
+            width: 10px;
+            border-left: 10px solid #eee;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+    }
+
+    .sui-fast-filter-list {
+        // display: inline-block;
+        width: calc(100% - 100px);
+        // margin-right: 10px;
+        float: right;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .sui-fast-filter-item {
+            list-style: none;
+            display: inline-block;
+            height: 28px;
+            // flex: 1;
+
+            .sui-fast-filter-item-content {
+                display: inline-block;
+                margin: 0px auto;
+                height: 20px;
+                line-height: 20px;
+                padding: 0px 10px;
+                // background-color: red;
+                cursor: pointer;
+
+                &.active {
+                    background-color: #28e;
+                    color: #fff;
+                }
+            }
+
+            
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<!-- 单据浏览详情布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiMain>
+        <div class="">
+            <sui-panel title="基本信息" [expanded]="expanded" (toggle)="mainInfoToggle($event)">
+                <div sui-panel-headerRight></div>
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">申请单号：</div>
+                            <div class="con" style="width: 200px;">
+                                {{replenishInfo?.sheetid}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">有效期：</div>
+                            <div class="con">
+                                {{replenishInfo?.editdate}}~{{replenishInfo?.overduedate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">申请店铺：</div>
+                            <div class="con">
+                                {{replenishInfo?.fullname}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">申请状态：</div>
+                            <div class="con">
+                                {{replenishInfo?.statusName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">补货方式：</div>
+                            <div class="con">
+                                {{replenishInfo?.typeName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </div>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="page" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+    <ng-template #suiFooter>
+        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+            <div sui-panel-headerRight>
+                <span class="mr">制单人: {{replenishInfo?.editor}}</span>
+                <span class="mr">制单时间: {{replenishInfo?.editdate}}</span>
+                <span class="mr">提交人: {{replenishInfo?.checker}}</span>
+                <span class="mr">提交时间: {{replenishInfo?.checkdate}} </span>
+            </div>
+        </sui-panel>
+    </ng-template>
+</template-detail>

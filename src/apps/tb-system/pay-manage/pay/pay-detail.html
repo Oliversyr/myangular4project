@@ -1,0 +1,90 @@
+<!-- 单据浏览详情布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiTopToolbar>
+        <div class="sui-process" *ngIf="transferInfo.status >= 100">
+            <button class="sui-btn sui-btn-default mr-xsmall" [class.active]="transferInfo?.status === 100 && transferInfo?.flag === 0"
+                [disabled]="transferInfo?.status < 100 || transferInfo?.flag !== 0" (click)="doTransferDirection(1)">
+                <i class="sui-arabic1"></i> 调拨出库</button>
+            <svg class="svgicon icon-angle-double-right">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+            <button class="sui-btn sui-btn-default mr-xsmall" [class.active]="transferInfo?.status === 100 && transferInfo?.flag === 1"
+                [disabled]="transferInfo?.status < 100 || transferInfo?.flag !== 1" (click)="doTransferDirection(2)">
+                <i class="sui-arabic2"></i> 调拨入库</button>
+        </div>
+        <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" [previousNextOption]="preNextOption" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiMain>
+        <div class="mt-xsmall">
+            <sui-panel title="基本信息" [expanded]="expanded" (toggle)="mainInfoToggle($event)">
+                <div sui-panel-headerRight></div>
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">调拨单号：</div>
+                            <div class="con" style="width: 200px;">
+                                {{transferInfo?.sheetid}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">调出仓库：</div>
+                            <div class="con">
+                                {{transferInfo?.outstockname}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">调入仓库：</div>
+                            <div class="con">
+                                {{transferInfo?.instockname}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">单据状态：</div>
+                            <div class="con">
+                                {{transferInfo?.statusName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">调拨出库：</div>
+                            <div class="con">
+                                {{transferInfo?.outchecker + ' ' + transferInfo?.outcheckdate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">调拨入库：</div>
+                            <div class="con">
+                                {{transferInfo?.inchecker + ' ' + transferInfo?.incheckdate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="12">
+                            <div class="til">备注：</div>
+                            <div class="con">
+                                {{transferInfo?.notes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </div>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="page" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+    <ng-template #suiFooter>
+        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+            <div sui-panel-headerRight>
+                <span class="mr">制单人: {{transferInfo?.editor}}</span>
+                <span class="mr">制单时间: {{transferInfo?.editdate}}</span>
+                <span class="mr">审核人: {{transferInfo?.checker}}</span>
+                <span class="mr">审核时间: {{transferInfo?.checkdate}} </span>
+            </div>
+        </sui-panel>
+    </ng-template>
+</template-detail>
+<!-- 新建调拨单弹出框 -->
+<div class="add-transfer">
+    <transfer-add #el_winChooseTransfer (addTransfer)="doConfirmAdd($event)"></transfer-add>
+</div>

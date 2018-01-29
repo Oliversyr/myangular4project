@@ -1,0 +1,5 @@
+[
+    { "userName": "admin", "userPwsd": "admin" },
+    { "userName": "job", "userPwsd": "job" },
+    { "userName": "month", "userPwsd": "month" }
+]

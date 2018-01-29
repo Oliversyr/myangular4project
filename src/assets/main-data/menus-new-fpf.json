@@ -1,0 +1,33 @@
+[{
+        "moduleid": "300000",
+        "modulename": "加工管理",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+            "moduleid": "300030",
+            "modulename": "加工单",
+            "parentmoduleid": "300000",
+            "rightvalue": "511",
+            "displayorder": "3",
+            "url": "process/process-decompose"
+        }]
+    },
+    {
+        "moduleid": "700000",
+        "modulename": "售后管理",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "7",
+        "url": "",
+        "childrens": [{
+            "moduleid": "700070",
+            "modulename": "商品访问统计",
+            "parentmoduleid": "700000",
+            "rightvalue": "511",
+            "displayorder": "7",
+            "url": "after-sale/goods-visitors"
+        }]
+    }
+]

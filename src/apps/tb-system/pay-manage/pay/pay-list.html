@@ -1,0 +1,81 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="店铺">
+                    <ng-template #cellContent>
+                        <sui-organ #shopSelect [orgType]="'shop'" (selectOrgan)="selectedShop($event)" [customTabindex]="1"></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="支付渠道">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择支付渠道" customTabindex="2" [(ngModel)]="searchParams.paytype" [source]="paytypeData">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择状态" customTabindex="3" [(ngModel)]="searchParams.status" [source]="statusData">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="toolBarData" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-transfer [dataSource]="list" [titles]="['未分配机构', '已分配机构']" (selectChange)="transferSelect($event)" (change)="transferChange($event)"
+            (searchChange)="transferSearch($event)"></sui-transfer>
+        <ul class="sui-card">
+            <li class="sui-card-item active" *ngFor="let item of payList">
+                <div class="sui-card-top">
+                    <div class="sui-card-top-til clearfix ">
+                        <span class="sui-card-top-tilname">深圳微信深圳微信深圳微信深圳微信深圳微信深圳微信深圳微信深圳微信深圳微信</span>
+                        <span class="sui-badge">默认账号</span>
+                    </div>
+                    <div class="sui-card-top-con">
+                        <div class="con-row mt">支付方式：
+                            <label>支付宝扫码支付</label>
+                        </div>
+                        <div class="con-row2">
+                            账号描述：
+                            <span>深圳地区微信信息内容微信信息内容aaasdddffgwegwegwfxcsaaasdddffgwegwegwfxcsaaasdddffwegwfxcsaaasdddffgwegwegwfxcsaaasdddffgwegwegwfxcsaa</span>
+                        </div>
+                        <div class="con-row nt">
+                            有
+                            <label class="c-red fz14">8</label> 家店铺使用
+                            <span class="con-row-btn">管理店铺</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sui-card-btm mt10">
+                    <ul class="slic-btn-txt">
+                        <li>
+                            <a href="#">编辑</a>
+                        </li>
+                        <li>
+                            <a href="#">设置</a>
+                        </li>
+                        <li>
+                            <a href="#">禁用</a>
+                        </li>
+                        <li>
+                            <a href="#">设为默认</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </ng-template>
+</template-list>
+<!-- 新建账户弹出框 -->
+<div class="add-pay">
+    <pay-add #el_winAddPay (addTransfer)="doConfirmAdd($event)"></pay-add>
+</div>

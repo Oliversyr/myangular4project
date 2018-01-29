@@ -1,0 +1,79 @@
+<!-- 单据浏览详情布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClcik)="onToolBtnClick($event)">
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiMain>
+        <div class=" ">
+            <sui-panel title="基本信息" [expanded]="expanded" (toggle)="mainInfoToggle($event)">
+                <div sui-panel-headerRight></div>
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">单据编号：</div>
+                            <div class="con" style="width: 200px;">
+                                {{purchaseInputInfo?.sheetid}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">采购单号：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.resheetid}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">供应商：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.coename}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">状态：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.statusName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">发生日期：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.operdate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">仓管员：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.manager}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="12">
+                            <div class="til">备注：</div>
+                            <div class="con">
+                                {{purchaseInputInfo?.notes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </div>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="page" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+    <ng-template #suiFooter>
+        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+            <div sui-panel-headerRight>
+                <span class="mr">制单人: {{purchaseInputInfo?.editor}}</span>
+                <span class="mr">制单时间: {{purchaseInputInfo?.editdate}}</span>
+                <span class="mr">审核人: {{purchaseInputInfo?.checker}}</span>
+                <span class="mr">审核时间: {{purchaseInputInfo?.checkdate}} </span>
+            </div>
+        </sui-panel>
+    </ng-template>
+</template-detail>
+<!-- 审核采购入库单弹出框 -->
+<div class="check-purchase-input">
+    <purchase-input-check #el_winCheckPurchaseInput [sheetid]="myCheckedSheetid" (confirmCheck)="doMyConfirmCheck($event)" (cancelCheck)="doCancelCheck($event)"></purchase-input-check>
+</div>

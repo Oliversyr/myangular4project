@@ -1,0 +1,63 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <!-- <ng-template #suiHelpContent>
+        <div>筹备中aaaaaaaaaaa...</div>
+    </ng-template> -->
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="10" [nzMd]="8">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <!-- <sui-goods (selectOrgan)="selectedOrgan($event)" customTabindex="1" ></sui-goods> -->
+                        <sui-input [(ngModel)]="searchParams.keyvalue" customTabindex="11" placeHolder="请输入商品名称、内码、条码、助记码">
+
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="10" [nzMd]="8">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="所在仓库">
+                    <ng-template #cellContent>
+
+                        <sui-organ (selectOrgan)="selectedStorehouse($event)" [orgType]="'stock'" customTabindex="2" #storehouseSelect  [defSelectedItem]="defSelectItem"></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #suiTotal>
+        <div class="sui-fast-filter">
+            <div class="sui-fast-filter-title">快速筛选</div>
+            <ul class="sui-fast-filter-list">
+                <li class="sui-fast-filter-item" *ngFor="let filter of filters, i as index" (click)="fastFilter(filter, $event)" >
+                    <span class="sui-fast-filter-item-content" [ngClass]="{'active': filter.active}">{{filter.label}}</span>
+                </li>
+                <!-- <li class="sui-fast-filter-item">
+                    <span class="sui-fast-filter-item-content">有库存商品</span>
+                </li>
+                <li class="sui-fast-filter-item">
+                    <span class="sui-fast-filter-item-content">有库存未经营商品</span>
+                </li>
+                <li class="sui-fast-filter-item">
+                    <span class="sui-fast-filter-item-content">无库存商品</span>
+                </li> -->
+            </ul>
+        </div>
+    </ng-template>
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+
+    <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template>
+
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
+
+<sui-adjust-inventory #adjust [selectedGridData]="selectedGridData"></sui-adjust-inventory>

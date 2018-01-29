@@ -1,0 +1,112 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-08 04:32:06
+ * @modify date 2018-01-08 04:32:06
+ * @desc 快速过滤条件组件
+*/
+
+/*demo:
+<div class="sui-fast-filter" style="width:450px;">
+    <div class="sui-fast-filter-title">快速筛选</div>
+    <ul class="sui-fast-filter-list">
+        <li class="sui-fast-filter-item ">
+            <span class="sui-fast-filter-item-content active">全部</span>
+        </li>
+        <li class="sui-fast-filter-item ">
+            <span class="sui-fast-filter-item-content">有库商品</span>
+        </li>
+        <li class="sui-fast-filter-item ">
+            <span class="sui-fast-filter-item-content">胡库存未经营商品</span>
+        </li>
+        <li class="sui-fast-filter-item ">
+            <span class="sui-fast-filter-item-content">无库丰商品</span>
+        </li>
+    </ul>
+</div>
+*/
+
+.sui-fast-filter {//
+    width: 490px;
+    height: 28px;
+    border: 1px solid #c7c7c7;
+    line-height: 27px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: left;
+    overflow: hidden;
+
+    .sui-fast-filter-title {
+        font-weight: bold;
+        width: 80px;
+        text-align: center;
+        border-right: 1px solid #c7c7c7;
+        background-color: #eee;
+        position: relative;
+        height: 28px;
+        display: inline-block;
+
+        &::before {
+           content: "";
+           content: "";
+           position: absolute;
+           top: 8px  !important;
+           right: -11px !important;
+           height: 11px !important;
+           width: 11px !important;
+           border-left: 7px solid #c7c7c7  !important;
+           border-top: 5px solid transparent  !important;
+           border-bottom: 5px solid transparent  !important;
+
+
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 9px !important;
+            right: -6px !important;
+            height: 6px !important;
+            width: 6px !important;
+            border-left: 6px solid #eee !important;
+            border-top: 4px solid transparent !important;
+            border-bottom: 4px solid transparent !important;
+
+
+        }
+    }
+
+    .sui-fast-filter-list {
+        // display: inline-block;
+        width: calc(100% - 100px);
+        // margin-right: 10px;
+        float: right;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .sui-fast-filter-item {
+            list-style: none;
+            display: inline-block;
+            height: 28px;
+            // flex: 1;
+            @include transition(.25s);
+
+            .sui-fast-filter-item-content {
+                display: inline-block;
+                margin: 0px auto;
+                height: 20px;
+                line-height: 20px;
+                padding: 0px 10px;
+                // background-color: red;
+                cursor: pointer;
+
+                &.active,
+                &:hover {
+                    background-color: $primary;
+                    color: $white;
+                }
+            }
+
+            
+        }
+    }
+}// sui-fast-filter end

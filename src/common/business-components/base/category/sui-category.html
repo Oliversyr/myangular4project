@@ -1,0 +1,29 @@
+<div class="sui-category" [class.active]="treeOpen">
+    <span class="sui-input-group">
+        <span class="sui-input-group-addon">{{addOnName}}</span>
+        <div class="sui-input-group-content" (click)="treeNameInputClick($event)">
+            <div class="ant-input-affix-wrapper">
+                <input #treeNameInput [attr.customTabindex]="customTabindex" class="ant-input" readonly type="text" placeholder="请选择品类" [(ngModel)]="treeName">
+                <span class="ant-input-suffix">
+                    <i [class]="treeOpen ? 'anticon anticon-up' : 'anticon anticon-down'"></i>
+                </span>
+            </div>
+        </div>
+    </span>
+    <div class="sui-tree-content" [hidden]="!treeOpen">
+        <div class="sui-tree-filter ant-input-affix-wrapper">
+            <input #searchInput class="ant-input" type="search" placeholder="输入关键字进行过滤" [(ngModel)]="treeFilterInputValue" (ngModelChange)="onSearchChange($event)">
+            <span class="ant-input-suffix">
+                <i *ngIf="treeFilterInputValue" class="anticon anticon-cross-circle" (click)="clearFilterValue()"></i>
+                <i *ngIf="!treeFilterInputValue" class="anticon anticon-search ant-input-search-icon"></i>
+            </span>
+        </div>
+        <div class="sui-tree-no-data" [hidden]="myTreeSource.length >= 1 ">
+            <span>{{noTreeSourceText}}</span>
+        </div>
+        <div class="sui-tree-list" [hidden]="myTreeSource.length <= 0 ">
+            <sui-tree #treeReference [hasThreeStates]="selectionMode ==='multiple'" [checkboxes]="true" (onCheckChange)="myTreeOnSelect($event)"
+                [width]="'100%'" [height]="'100%'" [source]="myTreeSource"></sui-tree>
+        </div>
+    </div>
+</div>

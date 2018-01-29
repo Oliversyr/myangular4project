@@ -1,0 +1,233 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-28 11:32:58
+ * @modify date 2018-01-10 02:49:09
+ * @desc tab页签,多种类型：.sui-tab-panel , .sui-tab-bar
+*/
+
+/* 
+//demo
+<div class="sui-tab-panel mb-xsmall">
+	<div class="sui-tab-btn-group">
+		<button type="button" class="sui-tab-btn active">经销商报表</button> 
+		<button type="button" class="sui-tab-btn">品牌报表</button>
+		<button type="button" class="sui-tab-btn">品类报表</button>
+	</div>
+</div>
+*/
+
+.sui-tab-panel {
+	box-sizing: border-box;
+	width: 100%;
+	height: 35px;
+	border-bottom: 1px solid $primary ;
+
+	 .sui-tab-btn-group {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		 .sui-tab-btn {
+				float: left;
+				box-sizing: border-box;
+				min-width: 60px;
+				height: 34px;
+				padding: 0 20px;
+				border:1px solid $gray-medium;
+				border-left: none;
+				border-bottom: none;
+				cursor:pointer;
+				background-color: $white;
+
+		   &:hover {
+				border-color: $primary;
+				color: $primary;
+				box-shadow: -1px 0 0 0 $primary;
+			}
+		  
+			&:first-child {
+				border-top-left-radius:4px;
+				border-left:1px solid $gray-medium;
+
+				&:hover {
+					border-left:1px solid $primary;
+					color: $primary;
+					box-shadow: none;
+				}
+			}
+			 
+			&:last-child {
+				border-top-right-radius:4px;
+			}
+		}//.sui-tab-btn 
+
+		.sui-tab-btn.active {
+			border-color: $primary;
+			color: $primary;
+			box-shadow: -1px 0 0 0 $primary;
+
+			&:first-child {
+				border-left:1px solid $primary;
+				color: $primary;
+				box-shadow: none;
+			}
+		}
+		
+
+	}//.tab-btn-group
+}//.sui-tab-panel
+
+
+
+
+// .sui-tab-panel {
+// 	box-sizing: border-box;
+// 	width: 100%;
+// 	height: 35px;
+// 	border-bottom: 1px solid $primary ;
+
+// 	 .sui-tab-btn-group {
+// 		position: relative;
+// 		display: inline-block;
+// 		vertical-align: middle;
+
+// 		 .sui-tab-btn {
+// 				float: left;
+// 				box-sizing: border-box;
+// 				min-width: 60px;
+// 				height: 34px;
+// 				padding: 0 20px;
+// 				border:1px solid $gray-medium;
+// 				border-left: none;
+// 				border-bottom: none;
+// 				background-color: $white;
+
+// 		  .sui-tab-btn:hover {
+// 				border-color: $primary;
+// 				color: $primary;
+// 				box-shadow: -1px 0 0 0 $primary;
+// 			}
+// 		   .sui-tab-btn.active {
+// 				border-color: $primary;
+// 				color: $primary;
+// 				box-shadow: -1px 0 0 0 $primary;
+// 			}
+// 			.sui-tab-btn:first-child {
+// 				border-top-left-radius:4px;
+// 				border-left:1px solid $gray-medium;
+// 			}
+// 			.sui-tab-btn.active:first-child {
+// 				border-left:1px solid $primary;
+// 				color: $primary;
+// 				box-shadow: none;
+// 			}
+// 			.sui-tab-btn:first-child:hover {
+// 				border-left:1px solid $primary;
+// 				color: $primary;
+// 				box-shadow: none;
+// 			}
+// 			.sui-tab-btn:last-child {
+// 				border-top-right-radius:4px;
+// 			}
+// 		}//.sui-tab-btn 
+		
+// 	}//.tab-btn-group
+// }//.sui-tab-panel
+
+
+/*tab 页签2 demo:
+*<div class="sui-tabs-nav-panel mb-xsmall">
+	<div class="sui-tabs-nav">
+		<div class="sui-tabs-nav-item active"> 运营管理 </div> 
+		<div class="sui-tabs-nav-item"> 物流仓储管理 </div>
+		<div class="sui-tabs-nav-item"> 外勤管理 </div>
+	</div>
+</div>
+*/
+.sui-tab-bar {
+	box-sizing: border-box;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 1px solid $gray-medium;
+	@include clearfix;
+
+	.sui-tab-nav { //页签按钮组
+
+		.sui-tab-nav-item {//一个子项按钮
+			position: relative;
+			display: inline-block;
+			height: 35px;
+			line-height: 35px;
+			padding: 0 5px;
+			margin-right: 15px;
+			font-size: 14px;
+			cursor: pointer;
+			@include transition(.25s);
+
+			&:hover{//hover
+				color: $primary;
+				border-bottom: 2px solid $primary;
+			}
+
+			
+			.svgicon.icon-angle-double-down {//svg图标
+				width: 10px;
+				height: 9px;
+				color: $gray-dark;
+			}
+
+			&:hover .svgicon.icon-angle-double-down {
+				@include rotate(180deg);
+				color: $primary;
+			}
+
+			.sui-tab-nav-dropdown {//下拉菜单
+				display: none;
+			    z-index: 9;
+				position: absolute;
+				top: 35px;
+				left: 50%;
+				@include translate(-50%,0);
+				width: 150px;
+				min-height: 60px;
+				max-height: 180px;
+				overflow-y: auto;
+				border-radius: 4px;
+				background-color: $white;
+				color: $gray-dark;
+				@include box-shadow-message;
+
+				.sui-tab-nav-dropdown-item {
+					box-sizing: border-box;
+					width: 100%;
+					height: 30px;
+					line-height: 30px;
+					padding:0 10px;
+					text-align: left;
+					font-size: 12px;
+					@include text-overflow;
+
+					&:hover {
+						color: $primary-dark;
+						background-color: $primary-light;
+					}
+				}
+			}//.sui-tab-nav-dropdown 下拉菜单
+			&:hover .sui-tab-nav-dropdown {
+				display: block;
+			}
+
+		}//.sui-tab-nav-item
+
+		.sui-tab-nav-item.active{//当前
+			font-weight: bold;
+			color: $primary;
+			border-bottom: 2px solid $primary;
+		}//.sui-tab-nav-item.active
+
+	}//.sui-tabs-nav 
+
+	
+
+}//.sui-tabs-nav-panel

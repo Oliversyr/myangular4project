@@ -1,0 +1,87 @@
+.sui-pageEdit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    .sui-header {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+    }
+    .sui-header-left {
+        flex-grow: 0;
+    }
+    .sui-header-right {
+        flex-grow: 1;
+        text-align: right;
+    }
+    .sui-main {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .sui-total {
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+    }
+    //表格添加行数据录入区域
+    .sui-itemInput {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .sui-grid {
+        flex-grow: 1;
+        position: relative;
+    }
+    .sui-footer {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    span {
+        padding: 0 .2em;
+    }
+}
+
+//表格添加行数据录入区域 左边;一般是内容
+.sui-itemInput-left {
+    flex-grow: 1;
+}
+
+//表格添加行数据录入区域 右边;一般是按钮
+.sui-itemInput-right {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.sui-bread {
+    flex-grow: 0;
+    position: relative;
+    .help {
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        right: -20px;
+        // width: 50%;
+        .help-icon {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+        .help-content {
+            position: absolute;
+            width: 50em;
+            left: 0;
+            padding: .4em;
+            min-height: 20em;
+            z-index: 999;
+            background: #fff;
+            box-shadow: 1px 1px 10px #888888;
+        }
+    }
+}

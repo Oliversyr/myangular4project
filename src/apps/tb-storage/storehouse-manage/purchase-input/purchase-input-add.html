@@ -1,0 +1,49 @@
+<div class="purchase-input-add">
+    <sui-modal class="" [suikeyboard] #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="1175" [height]="485"
+        [maxHeight]="900" [minHeight]="200" [maxWidth]="1920" [minWidth]="680" [showCollapseButton]="false">
+        <div class="alert-box purchase-input-add-modal" #windowContent>
+            <div class="alert-content">
+                <!-- 列表搜索区域 -->
+                <div class="sui-search-content">
+                    <div class="sui-search-item">
+                        <sui-cell leftClass="sui-label-width-sm" leftLabel="仓库">
+                            <ng-template #cellContent>
+                                <sui-organ #storeOrgan (selectOrgan)="selectedStorehouse($event)" [orgType]="'stock'" [customTabindex]="1"></sui-organ>
+                            </ng-template>
+                        </sui-cell>
+                    </div>
+                    <div class="sui-search-item">
+                        <sui-cell leftClass="sui-label-width-sm" leftLabel="供应商">
+                            <ng-template #cellContent>
+                                <sui-supplier #supplierOrgan (selectSupplier)="selectedSupplier($event)" [customTabindex]="2"></sui-supplier>
+                            </ng-template>
+                        </sui-cell>
+                    </div>
+                    <div class="sui-search-item" style="width:320px;">
+                        <sui-date-range class="sui-date-range" [customTabindexs]="[3,4,5]" leftClass="sui-label-width-md" [leftLabel]="dateLabels"
+                            [(ngModel)]="dateValue"></sui-date-range>
+                    </div>
+                    <div class="sui-search-item">
+                        <sui-cell leftClass="sui-label-width-sm" leftLabel="采购单号">
+                            <ng-template #cellContent>
+                                <sui-input [(ngModel)]="searchParams.refsheetid" customTabindex="6" placeHolder="请输入采购单号">
+                                </sui-input>
+                            </ng-template>
+                        </sui-cell>
+                    </div>
+                    <div class="sui-search-item">
+                        <button type="button" class="slic-btn slic-btn-theme3 " (click)="doSearch()">查询</button>
+                    </div>
+                </div>
+                <!-- 表格区域 -->
+                <div class="sui-grid-content">
+                    <sui-grid #purchaseGrid [gridOption]="gridOption" [page]="gridPage">
+                    </sui-grid>
+                </div>
+            </div>
+            <div class="alert-foot">
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="cancel()">取消({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+    </sui-modal>
+</div>

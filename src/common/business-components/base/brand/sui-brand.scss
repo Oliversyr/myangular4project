@@ -1,0 +1,53 @@
+// .sui-brand {
+//     position: relative;
+//     display: inline-block;
+//     width: 280px;
+//     .sui-input-group .sui-input-suffix {
+//         right: 15px;
+//     }
+// }
+
+.sui-brand {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    .sui-input-group {
+        .sui-input-group-addon {// 左侧标题
+            width: 90px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+
+            &:first-child {
+                border-right: none;
+            }
+        }//.sui-input-group-addon
+        .sui-input-group-content {//右侧内容
+            display: flex;
+            flex: 1;
+            sui-combobox {
+                width: 100% !important;
+
+                .jqx-combobox {
+                     width: 100% !important;
+                     height: 26px;
+
+                    .jqx-combobox-content {
+                        width: 100% !important;
+                        height: 26px;
+                        border-radius: 4px;
+                        .jqx-combobox-input {
+                            height: 26px !important;
+                            padding: 0 20px 0 10px !important;
+                        }//.jqx-combobox-input end
+                    }//.jqx-combobox-content end
+                }//.jqx-combobox end
+            }//sui-combobox end
+
+            .sui-input-suffix {
+                right: 6px;
+            }//.sui-input-suffix end
+        }//.sui-input-group-content end
+    }//.sui-input-group end
+    
+}//.sui-brand end

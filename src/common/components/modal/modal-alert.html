@@ -1,0 +1,13 @@
+<jqxWindow #el_modal [autoOpen]="false" [width]="msgOption.width" [height]="msgOption.height" [showCloseButton]="'true'" [isModal]="msgOption.isModal" [cancelButton]="'#modal_alert_cancelButton'" [okButton]="'#modal_alert_okButton'" (onClose)="_onWinClose($event)">
+    <div>
+    </div>
+    <div>
+        <div class="alert-content">
+            {{msgOption.message}}
+        </div>
+        <div class="alert-foot">
+            <button id="modal_alert_okButton" class="sui-btn sui-btn-primary mr-xsmall"> {{msgOption.okLabel}}</button>
+            <button [hidden]="!msgOption.cancelLabel" id="modal_alert_cancelButton" class="sui-btn sui-btn-gray mr-xsmall">{{msgOption.cancelLabel}}</button>
+        </div>
+    </div>
+</jqxWindow>

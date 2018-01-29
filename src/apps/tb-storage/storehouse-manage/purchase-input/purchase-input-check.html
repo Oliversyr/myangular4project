@@ -1,0 +1,16 @@
+<div class="purchase-input-check">
+    <sui-modal class="" [suikeyboard] #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="490" [height]="185"
+        [maxHeight]="900" [minHeight]="100" [maxWidth]="1920" [minWidth]="400" [showCollapseButton]="false">
+        <div class="alert-box purchase-input-check-modal" #windowContent>
+            <div class="alert-content">
+                <p>您正在审核的是采购入库，审核后，入库商品将计入库存。</p>
+                <p style="margin-top: 20px;">本次入库采购单是【{{sheetid}}】，请确认采购单中的商品是否已经全部入库？</p>
+            </div>
+            <div class="alert-foot">
+                <button class="sui-btn sui-btn-gray mr-xsmall" (click)="doConfirmCheck(102)">采购商品已完全入库</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" (click)="doConfirmCheck(101)">采购商品部分入库</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="doCancelCheck()">取消本次操作({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+    </sui-modal>
+</div>

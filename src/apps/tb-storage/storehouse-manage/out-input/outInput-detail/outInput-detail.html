@@ -1,0 +1,77 @@
+<!-- 单据列表布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiMain>
+        <sui-panel title="基本信息">
+            <div sui-panel-content>
+                <div sui-row >
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        单据编号：{{outInputInfo?.sheetid}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        所在仓库：{{outInputInfo?.ename}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        出入库类型：{{outInputInfo?.oitypevalue}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        状态：{{outInputInfo?.status === 0 ? "编辑中" : outInputInfo?.status === 1 ? "编辑完成" : "已审核"}}
+                    </div>
+                </div>
+
+                <div sui-row >
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            出入库对象：{{outInputInfo?.coename}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            发生日期：{{outInputInfo?.operdate}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            相关单号：{{outInputInfo?.refsheetid}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            仓管员：{{outInputInfo?.manager}}
+                    </div>
+                </div>
+
+                <div sui-row >
+                    <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="24">
+                            备注：{{outInputInfo?.notes}}
+                    </div>
+                </div>
+            </div>
+        </sui-panel>
+        
+    </ng-template>
+
+    <!-- <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template> -->
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" [previousNextOption]="preNextOption" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="gridPage" (onToolBtnClick)="onToolBtnClick($event)" >
+        </sui-grid>
+    </ng-template>
+
+    
+    <ng-template #suiFooter>
+        <div class="sui-footer-panel">
+                <div sui-row >
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            制单人：{{outInputInfo?.editor}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            制单日期：{{outInputInfo?.editdate}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            审核人：{{outInputInfo?.checker}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            审核日期：{{outInputInfo?.checkdate}}
+                        </div>
+                </div>
+        </div>
+    </ng-template>
+</template-detail>

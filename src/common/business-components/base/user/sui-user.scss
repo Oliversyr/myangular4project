@@ -1,0 +1,19 @@
+.sui-user {
+    position: relative;
+    display: inline-block;
+    width: 280px;
+    .sui-cell {
+        .sui-cell-content {
+            display: flex;
+            .jqx-combobox {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            .sui-input-suffix {
+                margin-top: 7px;
+                margin-left: -20px;
+                z-index: 1;
+            }
+        }
+    }
+}

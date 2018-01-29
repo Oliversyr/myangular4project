@@ -1,0 +1,266 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-28 03:24:08
+ * @modify date 2017-12-28 03:24:08
+ * @desc  分页
+*/
+/*demo:
+    <div class="sui-pagination">
+        <span class="sui-pagination-total">共100行</span>
+        <span class="sui-pagination-group">
+            <button type="button" class="sui-pagination-group-btn" disabled="disabled"><div class="first-triangle"><div class="first-bar"></div></div></button>
+            <button type="button" class="sui-pagination-group-btn"><div class="first-triangle prev-triangle"></div></button>
+            <button type="button" class="sui-pagination-group-btn"><div class="last-triangle next-triangle"></div></button>
+            <button type="button" class="sui-pagination-group-btn"><div class="last-triangle"><div class="last-bar"></div></div></button>
+        </span>
+        <span class="sui-pagination-jump">
+            跳到第：<input type="text" class="sui-pagination-jump-input" /> 123 /54321
+        </span>
+        <span class="sui-pagination-sure">
+            <button type="button" class="sui-pagination-sure-btn">确定</button>
+        </span>
+
+        <span class="sui-pagination-pager">
+            <button type="button" class="sui-pagination-pager-btn">100行/页 
+                <svg class="svgicon icon-arrow" ><use xlink:href="#icon-arrow"></use> </svg>
+            </button>
+            <ul class="sui-pagination-select-menu">
+                <li class="item">100行/页 </li>
+                <li class="item">50行/页 </li>
+                <li class="item">25行/页 </li>
+                <li class="item">10行/页 </li>
+            </ul>    
+        </span>
+
+    </div>
+*/
+.sui-pagination {
+    @include clearfix;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+
+    .sui-pagination-total {//行数
+        float: left;
+        margin-right: 10px;
+
+    }//.sui-pagination-total
+    .sui-pagination-group {//跳转按钮组
+        float: left;
+        margin-right: 10px;
+       .sui-pagination-group-btn {
+            height: 26px;
+            width: 26px;
+            float: left;
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            white-space: nowrap;
+            padding: 6px 10px;
+            font-size: 14px;
+            line-height: 26px;
+            border-radius: 4px;
+            user-select: none;
+            color: #eeeeee;
+            background-color: #fff;
+            @include transition(.25s);
+
+            &:hover {
+                background-color:#f9f9f9 ;
+            }
+
+            &:first-child() {//第1个按钮
+                border-right: none;
+                border-radius: 4px 0 0 4px;
+            }
+            &:nth-child(2n) {//第2个按钮
+                border-left: none;
+                border-radius: 0;
+            }
+            &:nth-child(3n) {//第3个按钮
+                border-left: none;
+                border-right: none;
+                border-radius: 0;
+            }
+            &:last-child {//第4个按钮
+                border-left: none;
+                border-radius: 0 4px 4px 0;
+            }
+        }
+
+        .first-triangle {//第1个图标
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 8.7px 5px 0;
+            border-color: transparent #4d4d4d transparent transparent;
+            margin-left: 2px; 
+            
+            .first-bar {
+                width: 10px;
+                border-left: 2px solid #4d4d4d;
+                margin-top: -6px;
+                height: 12px;
+                margin-left: -3px;
+            }  
+        }
+        
+        .first-triangle.prev-triangle {//第2个图标
+            margin-left: -2px;
+        }
+        .last-triangle.next-triangle {//第3个图标
+            margin-left: 1px;
+        }
+        .last-triangle {//第4个图标
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 8.7px;
+            border-color: transparent transparent transparent #4d4d4d;
+            margin-left: -1px;
+
+            .last-bar {
+                width: 10px;
+                border-left: 2px solid #4d4d4d;
+                margin-top: -6px;
+                height: 12px;
+                margin-left: 1px;
+            }
+        }
+
+         button[disabled]{//按钮禁用状态
+            cursor: not-allowed;
+            opacity: 0.65;
+            box-shadow: none;
+        }
+
+
+
+    }//.sui-pagination-jump
+
+    .sui-pagination-jump {
+        float: left;
+        margin-right: 10px;
+
+        .sui-pagination-jump-input {
+            width: 45px;
+            height: 26px;
+            padding: 0 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+            &:hover,
+            &:focus {
+               border-color:$primary; 
+               @include box-shadow-input;
+            }
+        }
+    }//.sui-pagination-jump 
+
+    .sui-pagination-sure {//确定按钮
+        float: left;
+        margin-right: 10px;
+
+        .sui-pagination-sure-btn{
+            box-sizing: border-box;
+            width: 50px;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 5px;
+            margin-bottom: 0;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            line-height: 26px;
+            border-radius: 4px;
+            color: #555;
+            background-color: #fff;
+            @include transition(.25s);
+
+            &:hover {
+              border-color: #adadad;  
+            }
+        }
+    }//.sui-pagination-sure 
+
+    .sui-pagination-pager {
+        float: left;
+        margin-right: 10px;
+        position: relative;
+
+        .sui-pagination-pager-btn{
+            min-width: 50px;
+            height: 26px;
+            line-height: 26px;
+            padding: 0 5px;
+            margin-bottom: 0;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            line-height: 26px;
+            border-radius: 4px;
+            color: #555;
+            background-color: #fff;
+            @include transition(.25s);
+
+             &:hover {
+              border-color: #adadad;  
+            }
+
+            .icon-arrow {
+                width: 9px;
+                height: 5px;
+                color: #555;
+            }
+        }
+
+        .sui-pagination-select-menu {
+            position: absolute;
+            z-index: 999;
+            top: auto;
+            bottom: 100%;
+            width: 100px;
+            background-color: $white;
+            @include  box-shadow-message;
+            display: none;
+
+            .item {
+                box-sizing: border-box;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                padding:0 10px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $primary-light;
+                }
+
+            }
+
+        }
+
+        &:hover{//图标变换角度
+            .icon-arrow {
+                   @include rotate(180deg);
+             }
+        }
+
+        &:hover .sui-pagination-select-menu {//显示分页列表
+            display: block;
+        }
+        
+        
+              
+
+    }//.sui-pagination-pager 
+
+}//.sui-pagination

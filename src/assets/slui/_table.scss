@@ -1,0 +1,247 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-04 06:29:02
+ * @modify date 2018-01-04 06:29:02
+ * @desc  静态列表/表格 , 及相关业务列表
+*/
+/*demo:
+ <table class="sui-table mt-xsmall">
+                <thead class="sui-table-thead ">
+                    <tr>
+                        <th class=" per30">录入时间</th>
+                        <th class=" per20">录入人</th>
+                        <th class=" per20">录入数量</th>
+                        <th class=" per30">备注</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="sui-table-wrap" style="height: 180px;">
+                <div class="page-scroll">
+                    <table class="sui-table">
+                        <tbody class="sui-table-tbody">
+                           <tr>
+                                <td class="per30">2017-12-12 10:50</td>
+                                <td class="per20">张三</td>
+                                <td class="per20">20包</td>
+                                <td class="per30">销售金额 ￥20.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>   
+*/
+
+/*表格*/
+.sui-table
+  {
+	  width:100%;
+	  border-collapse:collapse;
+      border:1px solid $sui-table-border;
+  
+      .sui-table-thead { /*表头*/
+            color: $gray-darker;
+
+            th {
+                font-size:12px;
+                border-bottom:1px solid $sui-table-border;
+                border-right:1px solid $gray-medium;
+                height: 35px;
+                line-height: 35px;
+                background-color:$sui-table-th-bg;
+                box-sizing: border-box;
+                text-align: center;
+
+                td.scroll {
+                    width: 10px;
+                    padding: 0 2px;
+                }
+            }//th
+            th.serial-num {
+                width: 45px;
+                padding: 0 5px;
+            }
+            th.tr {
+                text-align: right;
+            }
+            th.tl {
+                text-align: left;
+            }
+        }//.sui-table-thead end =====
+
+        .sui-table-tbody {//表体部分
+             tr{
+                font-size:12px;
+                text-align:left;
+                font-size:12px;
+                border-bottom:1px solid $gray-medium;
+                height: 35px;
+                line-height: 35px;
+                background-color: $white;
+                color: $gray-dark;
+                transition: all .25s;
+
+                &:hover {
+                    background-color: $sui-table-th-hover;
+                    color: $gray-dark;
+                }
+
+                td {
+                    font-size:12px;
+                    border-bottom:1px solid $sui-table-border;
+                    height: 35px;
+                    line-height: 35px;
+                    box-sizing: border-box;
+                    // padding:0 10px;
+                    padding:0;
+                    text-align: center;
+                }//td
+                td.serial-num {
+                    width: 45px;
+                    padding: 0 5px;
+                }
+                 td.tr {
+                    text-align: right;
+                }
+                 td.tl {
+                    text-align: left;
+                }
+                td.scroll {
+                    width: 10px;
+                    padding: 0 2px;
+                }
+
+                .td-txt {
+                    padding: 0 10px;
+                    @include text-overflow;
+                }
+
+            }//tr
+
+             .operation {
+                 height: 30px;
+                .operation-item {
+                    color: $gray;
+                    cursor: pointer;
+                    padding-right: 8px;
+                    margin-right: 5px;
+                    border-right: 1px solid $gray-medium;
+                    &:hover {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                    &:last-child {
+                      border-right: none;  
+                    }
+                }
+
+             }//operation end
+         }//.sui-table-tbody  表体 end
+
+        .per5{ width: 5%; }   
+        .per10{ width: 10%; }
+        .per15{ width: 15%; }
+        .per20{ width: 20%; }
+        .per25{ width: 25%; }
+        .per30{ width: 30%; }
+        .per35{ width: 35%; }
+        .per40{ width: 40%; }
+        .per45{ width: 45%; }
+        .per50{ width: 50%; }
+        .per55{ width: 55%; }
+        .per60{ width: 60%; }
+        .per65{ width: 65%; }
+        .per70{ width: 70%; }
+        .per75{ width: 75%; }
+        .per80{ width: 80%; }
+        .per85{ width: 85%; }
+        .per90{ width: 90%; }
+        .per95{ width: 95%; }
+
+        
+  }//.sui-table 表格 end
+
+.sui-table-thead td.scroll,
+.sui-table-tbody td.scroll {
+	width: 10px;
+	padding: 0 2px;
+}
+
+.sui-table-wrap {//表格内容部分 包裹层 ===================
+    position: relative;
+    border:1px solid $sui-table-border;
+    border-top:none;
+    margin-bottom: 15px;
+
+    .sui-table {//表格内容部分 包裹层 里的sui-talbe
+         border-left: none;
+         border-right: none;
+    }//sui-talbe end
+
+}//.sui-table-wrap
+
+
+/*表格操作按钮*/
+.operation-item-menu {
+	display: inline-block;
+	width: 10px;
+	height: 35px;
+	cursor: pointer;
+	color: #999;
+}
+
+
+.operation-item-menu-alert {/*表格操作下拉弹出*/
+	z-index: 9;
+	position: absolute;
+	top: 20px;
+	left: -85px;
+	width: 100px;
+	min-height: 60px;
+	max-height: 180px;
+	overflow-y: auto;
+	border-radius: 4px;
+	background-color: $white;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    display: none;
+
+    li{
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        padding-left: 10px;
+        line-height: 30px;
+    }
+     li.active,
+     li:hover{
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        padding-left: 10px;
+        line-height: 30px;
+        color: $primary-dark;
+        background-color: $primary-light;
+
+    }
+}//.operation-item-menu-alert
+    
+.operation-item-menu:hover .operation-item-menu-alert {
+    display: block;
+}//操作按钮显示
+
+
+.role-management {//业务 权限管理列表 ==============================================
+
+    .role-management-row1 {width: 70px;}
+    .role-management-row2 {width: 150px;}
+    .role-management-row3 {width: calc(100% - 220px);}
+    .svgicon.icon-tree-close,
+    .svgicon.icon-tree-open {//svg树图标
+        width: 13px;
+        height: 13px;
+    }
+
+    .sui-table-tbody tr.gray-bg {//表体部分
+        background-color:  $gray-lighter;
+    }
+
+}//.role-management end

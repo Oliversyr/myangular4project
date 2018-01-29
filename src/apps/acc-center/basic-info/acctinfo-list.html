@@ -1,0 +1,6 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiGrid>
+        <sui-grid #grid [page]="gridPage" [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)"></sui-grid>
+    </ng-template>
+</template-list>

@@ -1,0 +1,19 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-21 11:02:45
+ * @modify date 2017-12-21 11:02:45
+ * @desc 单选按钮 jqx 样式重置
+*/
+
+.jqx-radiobutton-default {
+    border-color: $primary !important;
+    background: $white !important;
+    .jqx-radiobutton-check-checked {
+        width: 4.5px !important;
+        height: 4.5px !important;
+        margin-left: 4px !important;
+        margin-top: 4px !important;
+        border-color: $primary !important;
+        background: $primary !important;
+    }
+}

@@ -1,0 +1,106 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <!-- <ng-template #suiHelpContent>
+        <div>筹备中aaaaaaaaaaa...</div>
+    </ng-template> -->
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="店铺名称">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.shopname" customTabindex="1" placeHolder="请输入店铺名称">
+
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="店铺状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择店铺状态" customTabindex="2" class="suid-per100" style="display:inline-block;vertical-align: middle;" [(ngModel)]="searchParams.shopstatus" [source]="shopStateData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="所属店组">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择所属店组" customTabindex="3" class="suid-per100" style="display:inline-block;vertical-align: middle;" [(ngModel)]="searchParams.groupid" [source]="groupList" [displayMember]="'groupName'" [valueMember]="'groupid'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <span class="sui-cell-content">
+                <span style="display: inline-block;width: 80px;">
+                    <sui-checkbox [(ngModel)]="isRefresh" [width]="80" [height]="26" (onChange)="doRefresh($event)" [checked]="isRefresh" >
+                            定时刷新
+                    </sui-checkbox>
+                </span>
+                <span style="display: inline-block;width: calc(100% - 90px);min-width: 80px; max-width: 100px;">
+
+
+                    <sui-select placeHolder="选择自动刷新频率" customTabindex="4" class="suid-per100" style="display:inline-block;vertical-align: middle;" 
+                                (onChange)="doRefresh($event)" style="width: 100px;"
+                                [(ngModel)]="refreshTime" [source]="refreshTimeList" [displayMember]="'label'" [valueMember]="'value'">
+
+                    </sui-select>
+                </span>
+                </span>
+            </div>
+        </div>
+    </ng-template>
+    <!-- more -->
+    <ng-template #suiSearchMore>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="联机状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择联机状态" customTabindex="5" class="suid-per100" style="display:inline-block;vertical-align: middle;" [(ngModel)]="searchParams.linkstatus" [source]="linkStateData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="售卖机状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择售卖机状态" customTabindex="6" class="suid-per100" style="display:inline-block;vertical-align: middle;" [(ngModel)]="searchParams.status" [source]="VEMStateData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="12" [nzMd]="10">
+                <!-- <sui-cell leftClass="sui-label-width-md">
+                
+            </sui-cell> -->
+                <!-- <ng-template #cellContent> -->
+                <sui-checkbox [(ngModel)]="searchParams.version" [width]="150" [height]="26" [checked]="searchParams.version">
+                    VEM不是最新版本
+                </sui-checkbox>
+                <!-- </ng-template> -->
+            </div>
+
+        </div>
+    </ng-template>
+    <!-- <div sui-grid-sort>
+        <sui-grid-sort [grid]="grid" [sorts]="sorts"></sui-grid-sort>
+    </div> -->
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="grid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="gridBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>

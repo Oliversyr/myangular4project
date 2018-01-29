@@ -1,0 +1,78 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+        <!-- <ng-template #suiHelpContent>
+            <div>筹备中aaaaaaaaaaa...</div>
+        </ng-template> -->
+        <ng-template #suiShowContent>
+            <sui-panel title="基本信息" >
+                <div sui-panel-content >
+                    <div sui-row >
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            所在仓库：{{goodsInfo.stockname}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="8">
+                            商品名称：【{{goodsInfo.mygoodsid}}】{{goodsInfo.goodsname}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            商品条码：{{goodsInfo.barcode}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="4" [nzMd]="4">
+                            规格：{{goodsInfo.spec}}
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+            
+        </ng-template>
+    
+        
+        <ng-template #suiSearchNormal>
+            <div sui-row>
+                <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="8">
+                    <sui-date-range class="sui-date-range" [customTabindexs]="[1,2,3]" leftClass="sui-label-width-md" 
+                                    [leftLabel]="'发生日期'" [(ngModel)]="searchParams.dateValue"></sui-date-range>
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="4" [nzMd]="4">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="方向">
+                        <ng-template #cellContent>
+                            <sui-select placeHolder="选择方向" customTabindex="6" class="suid-per100" [(ngModel)]="searchParams.directflag" 
+                                        [source]="directionData" [displayMember]="'label'" [valueMember]="'value'">
+
+                                </sui-select>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="业务">
+                        <ng-template #cellContent>
+                            <sui-select placeHolder="选择业务" customTabindex="8" class="suid-per100" [(ngModel)]="searchParams.sheettype" 
+                                        [source]="businessData" [displayMember]="'label'" [valueMember]="'value'">
+
+                                </sui-select>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="单据编号">
+                        <ng-template #cellContent>
+                            <sui-input [(ngModel)]="searchParams.sheetid" customTabindex="11" placeHolder="请输入单据编号">
+
+                                </sui-input>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+            </div>
+        </ng-template>
+       
+        <!-- <div sui-grid-sort>
+            <sui-grid-sort [grid]="grid" [sorts]="sorts"></sui-grid-sort>
+        </div> -->
+    
+        <ng-template #suiTopToolbar>
+            <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+        </ng-template>
+        <ng-template #suiGrid>
+            <sui-grid #booklistgrid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)" [showaggregates]="true" [showstatusbar]="true" [statusbarheight]="27">
+            </sui-grid>
+        </ng-template>
+    </template-list>

@@ -1,0 +1,94 @@
+$font-size-base:            14px !default;
+$line-height-small:         24px !default;
+$primary:                   #28e !default;
+$gray:                      #999 !default; // #999
+
+.vertical-line::before {
+    // content: "1";
+    // color: #28e;
+    // background: #28e;
+    // margin-right: 4px;
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 3px;
+    height: $font-size-base;
+    background-color: #28e;
+}
+
+.sui-panel {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    line-height: $line-height-small;
+}
+
+.sui-header {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    .sui-panel-headerLeft {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .sui-panel-headerRight {
+        flex-grow: 1;
+        padding-left: 30px;
+    }
+}
+
+
+/* 收缩按钮 */
+
+// .sui-panel-toggle {
+//     position: absolute;
+//     right: 5px;
+//     top: 0;
+//     color:$gray ;
+//     cursor: pointer;
+
+//     &:hover {
+//         color: $primary;
+//     }
+// }
+.sui-panel-toggle {
+    position: absolute;
+    left: 75px;
+    top: 10px;
+    color:$gray ;
+    cursor: pointer;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.svgicon.icon-circle-right,
+.svgicon.icon-circle-down,
+.svgicon.icon-circle-up {
+    width: 16px;
+    height: 16px;
+}
+
+/* panel 内容区域 */
+
+.sui-panel-content {
+    flex-grow: 1;
+    // padding-left: 90px;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.sui-panel-title {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+    height: 14px;
+    line-height: 14px;
+    font-weight: bold;
+    font-size: $font-size-base;
+
+}

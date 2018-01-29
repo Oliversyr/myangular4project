@@ -1,0 +1,75 @@
+<div class="sui-transfer">
+    <div class="sui-transfer-list" style="width:280px;height:390px;">
+        <div class="sui-transfer-header">
+            <input type="checkbox" class="sui-checkboxs" name="leftHeaderCheckboxs" />
+            <span class="sui-transfer-header-selected">{{titles[0]}}</span>
+        </div>
+        <!--sui-transfer-header end-->
+        <div class="sui-transfer-body">
+            <div *ngIf="showSearch" class="sui-transfer-search-wrapper ">
+                <div class="sui-transfer-search">
+                    <span class="sui-transfer-search-action">
+                        <svg class="svgicon icon-search">
+                            <use xlink:href="#icon-search"></use>
+                        </svg>
+                    </span>
+                    <input type="text" class="sui-inputText sui-transfer-search-input" [placeholder]="searchPlaceholder">
+                </div>
+            </div>
+            <!--sui-transfer-search-wrapper 搜索盒子 end-->
+            <div class="sui-transfer-content ">
+                <sui-tree #myLeftTree [source]="leftDataSource" [hasThreeStates]="true" [checkboxes]="true">
+                </sui-tree>
+            </div>
+            <!--sui-transfer-content 列表 end-->
+
+        </div>
+        <!--sui-transfer-body end-->
+    </div>
+    <!--sui-transfer-list 左侧 end-->
+
+    <div class="sui-transfer-operation">
+        <button class="sui-btn sui-btn-primary sui-transfer-operation-btn">
+            添加
+            <svg class="svgicon icon-angle-double-right">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+        </button>
+        <button class="sui-btn sui-btn-default sui-transfer-operation-btn">
+            <svg class="svgicon icon-angle-double-left">
+                <use xlink:href="#icon-angle-double-left"></use>
+            </svg> 移除
+        </button>
+    </div>
+
+    <div class="sui-transfer-list" style="width:280px;height:390px;">
+        <div class="sui-transfer-header">
+            <input type="checkbox" class="sui-checkboxs" name="rightHeaderCheckboxs" />
+            <span class="sui-transfer-header-selected">{{titles[1]}}</span>
+        </div>
+        <!--sui-transfer-header end-->
+        <div class="sui-transfer-body">
+            <div *ngIf="showSearch" class="sui-transfer-search-wrapper ">
+                <div class="sui-transfer-search">
+                    <span class="sui-transfer-search-action">
+                        <svg class="svgicon icon-search">
+                            <use xlink:href="#icon-search"></use>
+                        </svg>
+                    </span>
+                    <input type="text" class="sui-inputText sui-transfer-search-input" [placeholder]="searchPlaceholder">
+                </div>
+            </div>
+            <!--sui-transfer-search-wrapper 搜索盒子 end-->
+            <div class="sui-transfer-content ">
+                <sui-tree #myRightTree [source]="rightDataSource" [hasThreeStates]="true" [checkboxes]="true">
+                </sui-tree>
+            </div>
+            <!--sui-transfer-content 列表 end-->
+
+        </div>
+        <!--sui-transfer-body end-->
+    </div>
+    <!--sui-transfer-list 右侧 end-->
+
+</div>
+<!--sui-transfer end-->

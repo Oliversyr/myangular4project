@@ -1,0 +1,19 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-09 10:51:03
+ * @modify date 2018-01-09 10:51:03
+ * @desc  重置jqx进度条
+*/
+
+.jqx-progressbar  {
+	height: 20px !important;
+	border-radius: 10px !important;
+	background: $white;
+	position: relative;
+
+	.jqx-progressbar-value-light {
+		// position: relative;
+		position: static !important;
+		background: $primary;
+	}
+}//.jqx-progressbar end

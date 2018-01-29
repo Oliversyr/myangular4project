@@ -1,0 +1,4 @@
+<jqxGrid #myGrid [source]="dataAdapter"  (onSort)="_onSort($event)" [sortable]="true" [altrows]="true" [enabletooltips]="true" [editable]="gridOption.isEdit" [localization]="localization" (onCellclick)="_cellclick($event)"
+    [columngroups]="columngroups" [selectionmode]="gridOption.selectionMode" [autoloadstate]="true" [columnsresize]="gridOption.isColumnsResize" [showpinnedcolumnbackground]="false" [columnsreorder]="gridOption.isColumnsReorder" [virtualmode]="page.isServerPage"
+    [rendergridrows]="_rendergridrows" [pagesize]="page.pageSize" [pagesizeoptions]='page.pageSizes' [pageable]="page.pageable" [pagermode]="page.pagerMode" (onPagechanged)="_pagechanged('pageNum',$event)" (onPagesizechanged)="_pagechanged('pageSize',$event)">
+</jqxGrid>

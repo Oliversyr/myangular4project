@@ -1,0 +1,90 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+        "name": "slic-main"
+    },
+    "apps": [{
+            "name": "app",
+            "root": "src",
+            "outDir": "dist/threebear",
+            "assets": [
+                "assets",
+                "z-config"
+            ],
+            "index": "index.html",
+            "main": "main.ts",
+            "polyfills": "polyfills.ts",
+            "test": "../config/test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "../config/tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css",
+                "assets/styles.scss"
+            ],
+            "scripts": [
+                "assets/iconfont/iconfont.js"
+            ],
+            "environmentSource": "../config/environments/environment.ts",
+            "environments": {
+                "dev": "../config/environments/environment.ts",
+                "prod": "../config/environments/environment.prod.ts"
+            }
+        },
+        {
+            "name": "union",
+            "root": "src",
+            "outDir": "dist/tb-union-env",
+            "assets": [
+                "assets",
+                "z-config"
+            ],
+            "index": "index.html",
+            "main": "main.ts",
+            "polyfills": "polyfills.ts",
+            "test": "../config/test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "../config/tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css",
+                "assets/styles.scss"
+            ],
+            "scripts": [
+                "assets/iconfont/iconfont.js"
+            ],
+            "environmentSource": "../config/environments/environment.ts",
+            "environments": {
+                "dev": "../config/environments/environment.ts",
+                "prod": "../config/environments/environment.prod.ts"
+            }
+        }
+    ],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [{
+            "project": "../config/src/tsconfig.app.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "../config/src/tsconfig.spec.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json",
+            "exclude": "**/node_modules/**"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "css",
+        "component": {}
+    }
+}

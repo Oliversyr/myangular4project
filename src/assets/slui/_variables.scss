@@ -1,0 +1,250 @@
+/**
+ * @author [herj]
+ * @create date 2017-09-01 10:52:05
+ * @modify date 2017-12-13 10:52:05
+ * @desc 
+*/
+//--------------------------------------------------------
+//Variables sass 框架存放所有变量文件
+//--------------------------------------------------------
+
+//==Colors======
+
+//gray 灰色深浅定义
+$gray-base:                      #000 !default; //黑色
+$gray-darker:                    lighten($gray-base, 20%) !default; // #333
+$gray-dark:                      lighten($gray-base, 33.5%) !default; // #555
+$gray:                           #999!default; // #999
+$gray-medium:                    lighten($gray-base, 80%) !default; // #ccc
+$gray-light:                     lighten($gray-base, 89.7%) !default; // #e5e5e5
+// $gray-lighter:                   #fafafa !default; // #fafafa
+$gray-lighter:                   #f9f9f9 !default; // #f9f9f9
+
+
+//5 themes colors 5种主题色
+$primary:                        #2288ee !default; //主色调
+$success:                        #e7f8ee !default; //成功色
+$info:                           #dcebfa !default; //信息、辅助色
+$warning:                        #ffbb00 !default; //等待、警告色
+$danger:                         #ff4949 !default; //危险、重要、错误提示色
+
+// 5种主题浅色
+$primary-light:                  #dcebfa !default; //信息浅色
+$success-light:                  #e7f8ee !default; //成功浅色
+$warning-light:                  #fff8e5 !default; //警告浅色
+$danger-light:                   #ffe4e4 !default; //错误浅色
+
+//=按钮组
+$primary-active:                 #3769c5 !default; //蓝色 :active
+$primary-hover:                  #389cff !default; //蓝色 :hover
+
+$primary-dark:                   #1177dd !default; //深蓝色 文本hover 1177dd
+
+$body-bg:                        #f3f3f3 !default; //整体背景色
+$text-color:                     $gray-dark !default; //文本基本色 #333
+$link-color:                     $primary !default; // 文本链接色 2288ee或28e
+$link-hover-color:               $primary !default; //文本hover色 2288ee或28e
+$c-txred:                        #ff6647 !default; //文本重要提示
+
+$white:                          white !default; //白色
+$black:                          black !default; //黑色
+$red:                            #ff4949 !default; //红色
+
+//=按钮组
+$slic-btn-theme3:                #3769c5 !default; //蓝色 按钮组 主题3 :active
+$slic-btn-theme3-hover:          #389cff !default; //蓝色 按钮组 主题3 :hover
+ 
+//== 模块/区域颜色 
+$ant-tabs-bg:                    $body-bg !default; //标签菜单背景色
+// $scrollbar-bg:                   #d3d7e0 !default; //滚动条背景色
+$scrollbar-bg:                   #cccccd !default; //滚动条背景色
+
+$header-bg:                      #13222c !default; //头部菜单背景色
+$logo-border-right-color:        $black !default; //头部菜单logo盒子右边框颜色
+$header-menu-item-bg:            #313f51 !default; //头部菜单子项目背景色
+$header-menu-item-bottom:        $primary !default; //头部菜单子项目底部边框颜色
+$win-bg-hover:                   #0152a3 !default;//头部菜单系统功能按钮hover背景色
+$header-more-bg:                 rgba(28,36,47,.9) !default;//头部更多下拉菜单透明背景色;
+
+
+$sidebar-bg:                     #283343  !default; //左侧菜单背景色
+$leftMenu-bg:                    #283343 !default; //左侧菜单背景色
+$leftMenu-child-bg:              #1c242f !default; //左侧菜单子菜单背景色
+$leftMenu-btn-bg:                #333f51 !default; //左侧菜单收缩按钮
+
+$sui-grid-more-hover:            #d4e9f6 !default; //表格操作按钮hover颜色
+
+$sui-tree-bg:                    #f8f8f8 !default; //树的基本背景色
+$sui-tree-border:                #ebebeb !default; //树的边框色
+
+$sui-spin-bg:                    #dcdcdc !default; //spin 背景色
+
+
+$input-border-color:             #ccc !default; //输入框边框色
+$input-left-bg:                  #f3f3f3 !default; //输入框左侧文字区域背景色
+
+//警告提示盒子
+$message-primary:                #e8f3fd !default; //primary 背景色
+$message-success:                $success !default; //success 背景色
+$message-warning:                #fff8e5 !default; //warning 背景色
+$message-error:                  #ffecec !default; //error 背景色
+
+//警告提示盒子文本颜色
+$message-text-primary:           $primary !default; //primary 
+$message-text-success:           #11bb55 !default; //success 
+$message-text-warning:           $warning !default; //warning 
+$message-text-error:             $danger !default; //error 
+
+$close-bg:                       #dcdcdc !default; //关闭按钮 背景色
+$close-bg-hover:                 #aaaaaa !default; //关闭按钮-hover 背景色
+
+$link-btn-border:                #e0e0e0 !default; //链接按钮提示-border色
+
+//card 卡片盒子
+$sui-card-hover:                 #dcebfa !default; //标题hover bg
+$sui-card-til-bg:                #eaeaea !default; //标题 bg
+
+//输入框组件相关颜色  20180103
+$sui-cell-left-bg:               #f3f3f3 !default; //输入框左侧标题色
+$sui-cell-border:                #ccc !default; //输入框左侧标题色
+
+//table color
+$sui-table-border:               #e8e8e8 !default; //table边框色
+$sui-table-th-bg:                #e5e5e5 !default; //table th 色
+$sui-table-th-hover:             #dcebfa !default; //table th hover 色
+
+//穿梭框颜色
+$sui-transfer-border:            #d9d9d9 !default; //边框色
+$sui-transfer-header:            #e9e9e9 !default; //header边框色  
+$sui-transfer-item-bg:           #f9f9f9 !default; //item背景色  
+
+
+
+
+//== Typography
+//## Font, line-height, and color for body text, headings, and more. 文字
+$font-family-sans-serif:         '宋体',"Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif:              Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:          Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:               $font-family-sans-serif !default;
+
+$font-size-small:                10px !default;
+$font-size-base:                 12px !default;
+$font-size-big:                  14px !default;
+$font-size-large:                18px !default; 
+
+$font-size-h1:                   36px !default;
+$font-size-h2:                   30px !default;
+$font-size-h3:                   24px !default;
+$font-size-h4:                   $font-size-large !default;
+$font-size-h5:                   $font-size-base !default;
+$font-size-h6:                   $font-size-small !default;
+
+$link-hover-decoration:          underline !default;
+
+
+//== Components 盒子
+// ## 边距,宽,高
+
+$padding-base-vertical:          6px !default;
+$padding-base-horizontal:        12px !default;
+
+$padding-large-vertical:         10px !default;
+$padding-large-horizontal:       16px !default;
+
+$padding-big-vertical:           8px !default;
+$padding-big-horizontal:         14px !default;
+
+$padding-small-vertical:         5px !default;
+$padding-small-horizontal:       10px !default;
+
+$padding-xs-vertical:            1px !default;
+$padding-xs-horizontal:          5px !default;
+
+$line-height-large:              36px !default;
+$line-height-big:                32px !default;
+$line-height-base:               28px !default;      
+$line-height-small:              24px !default;
+$line-height-xs:                 22px !default;
+
+$border-radius-base:             4px !default;
+$border-radius-large:            5px !default;
+$border-radius-small:            3px !default;
+
+$height-base:                    28px !default;
+$height-xs:                      22px !default;
+$height-sm:                      24px !default;
+$height-big:                     32px !default;
+$height-lg:                      36px !default;
+
+  
+$width-xs:                       50px !default;   
+$width-xsmall:                   100px !default; 
+$width-small:                    150px !default; 
+$width-base:                     200px !default;  
+$width-bix:                      250px !default;
+$width-xbix:                     300px !default;
+$width-lg:                       350px !default;                
+
+
+
+
+//==Buttons 按钮
+// ## 按钮文字大小,颜色,背景色
+$btn-font-weight:                normal !default;
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 $white !default;
+
+$btn-primary-color:              $white !default;
+$btn-primary-bg:                 $primary !default;
+$btn-primary-border:             $primary !default;
+
+$btn-success-color:              $white !default;
+$btn-success-bg:                 #11bb55 !default;
+$btn-success-border:             #11bb55 !default;
+
+
+$btn-font-weight:                normal !default;
+
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 $white !default;
+$btn-default-border:             #ccc !default;
+
+$btn-primary-color:              $white !default;
+$btn-primary-bg:                 $primary !default;
+$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+
+$btn-success-color:              $white !default;
+$btn-success-bg:                 $brand-success !default;
+$btn-success-border:             darken($btn-success-bg, 5%) !default;
+
+$btn-info-color:                 $white !default;
+$btn-info-bg:                    #d4e9f6 !default;
+$btn-info-border:                #d4e9f6 !default;
+
+$btn-warning-color:              $white !default;
+$btn-warning-bg:                 $warning !default;
+$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+
+$btn-danger-color:               $white !default;
+$btn-danger-bg:                  $danger !default;
+$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+
+$btn-gray-color:                 $gray-darker !default;
+$btn-gray-bg:                    $gray-light !default;
+$btn-gray-border:                $gray-light !default;
+
+$btn-link-disabled-color:        $gray-light !default;
+
+// Allows for customizing button radius independently from global border radius 圆角
+$btn-border-radius-base:         $border-radius-base !default;
+$btn-border-radius-large:        $border-radius-large !default;
+$btn-border-radius-small:        $border-radius-small !default;
+
+
+$cursor-disabled:                not-allowed !default;
+
+//media 媒体查询断点/阈值
+$screen-xs: 800px;
+$screen-sm: 1024px;
+$screen-md: 1280px;

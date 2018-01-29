@@ -1,0 +1,93 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-14 05:39:56
+ * @modify date 2017-12-14 05:39:56
+ * @desc  开关按钮
+*/
+
+/*
+ *  Usage:
+    <input type="checkbox" class="sui-switch " id="mycheckbox1">
+	<label class="sui-switch-label" for="mycheckbox1"></label>
+	
+	<input type="checkbox" class="sui-switch " id="mycheckbox2" checked="checked">
+	<label class="sui-switch-label" for="mycheckbox2"></label>
+ *
+ */
+
+.sui-switch {
+	display: none;
+}
+
+.sui-switch+.sui-switch-label {//没选中状态
+	width: 26px;
+	height: 14px;
+	display: inline-block;
+	position: relative;
+    top: 5px;
+	cursor: pointer;
+	outline: 0;
+	border-radius: 15px;
+	border: 1px solid $red;
+	-webkit-transition: all .4s ease;
+	transition: all .4s ease;
+    
+    &:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: relative;
+        margin: 1px 0 0 3px;
+        left: 0;
+        border-radius: 50%;
+        background-color: $red;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+}
+
+.sui-switch+.sui-switch-label.disable {//置灰状态
+    background-color: $white;
+	cursor: not-allowed;
+    border: 1px solid $gray-medium;
+
+     &:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        display: block;
+        position: relative;
+        background-color: $gray-medium;
+        border-radius: 50%;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        margin: 1px 0 0 3px;
+        left: 0;
+    }
+    
+    
+}
+
+.sui-switch:checked+.sui-switch-label {//选中状态
+	border-color: $primary;
+    background-color: $primary;
+    
+    &:after {
+        left: 50%;
+        margin: 1px 3px 0 0;
+        background-color: $white;
+    }
+}
+
+.sui-switch:checked+.sui-switch-label.disable {//选中-置灰状态
+	background-color: $white;
+	cursor: not-allowed;
+    border: 1px solid $gray-medium;
+    
+    &:after {
+        left: 50%;
+        margin: 1px 3px 0 0;
+        background-color: $gray-medium;   
+    }
+}

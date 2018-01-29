@@ -1,0 +1,64 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-13 03:39:09
+ * @modify date 2017-12-13 03:39:09
+ * @desc  左侧菜单重置样式
+*/
+
+
+
+/*左侧菜单*******************************/
+.sui-tab-leftMenu {
+    border-right: 1px solid $gray-base;
+    background: $leftMenu-bg;
+    text-align: center;
+}
+
+.ant-menu {
+    text-align: left;
+}
+
+.ant-menu-submenu {
+    background: $leftMenu-bg;
+}
+
+.ant-menu-inline,
+.ant-menu-vertical {//左侧菜单默认右边框
+    border-right: 0 !important;
+}
+
+// .ant-menu-submenu>.ant-menu-submenu-title {
+//     /*一级菜单边距*/
+//     // padding: 0 10px !important;
+// }
+
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {//*一级菜单小图标边距*
+    margin-right: 2px !important;
+}
+
+.ant-menu-inline .ant-menu-submenu-title {
+    padding-left: 10px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 40px !important;
+    height: 40px !important;
+    color: $white !important;
+    font-family: '宋体', Arial, Helvetica, sans-serif !important;
+}
+
+.ant-menu-submenu>.ant-menu {
+    font-size: 14px!important;
+    color: #aaa !important;
+    background-color: $leftMenu-child-bg !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {//*二级菜单选中状态*/
+    font-weight: 700 !important;
+    color: $white !important;
+    background-color: #108ee9 !important;
+}
+
+.ant-menu-inline .ant-menu-item {//*二级菜单左内边距*/
+    padding-left: 32px !important;
+}

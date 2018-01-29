@@ -1,0 +1,24 @@
+
+<sui-modal  #adjustModal [width]="1100" [height]="600" [autoOpen]="false"
+                [isModal]="true"
+                [maxHeight]="1000" [minHeight]="200" [maxWidth]="2920" [minWidth]="500"
+                [showCollapseButton]="false" >
+			    <div #windowHeader>
+					  <span>库存调整</span>
+			    </div>
+
+				<div #windowContent  class="alert-box ">
+                    <div class="alert-content" style="flex-direction: column;">
+                            <div style="height:28px;"><span class="sui-star c-red" >注意：库存调整是直接修改库存，调整前请保证商品所有的出入库单据均已审核！否则可能造成库存不准确！</span> </div>
+
+                            <div class="flex-col">
+                                <sui-grid #adjustgrid [gridOption]="gridOption">
+                                 </sui-grid>
+                            </div>
+                    </div>
+                    <div class="alert-foot">
+                        <button (click)="doModalConfirm()"  class="slic-btn slic-btn-theme3 mr-xsmall" >确认调整</button>
+                        <button (click)="doModalClose()" class="slic-btn slic-btn-theme4 mr-xsmall">取消</button>
+                    </div>
+				</div>
+</sui-modal> 

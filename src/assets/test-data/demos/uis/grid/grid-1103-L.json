@@ -1,0 +1,19 @@
+{
+    "retCode": 0,
+    "columnDefs": [
+        { "text": "单号33", "datafield": "sheetId", "columntype": "link|browse", "width": 100, "editable": false, "pinned": true },
+        { "text": "类型", "datafield": "pdType", "columntype": "pipe", "width": 100, "editable": false, "pinned": false },
+        { "text": "日期", "datafield": "pdDate", "align": "right", "width": 100 },
+        { "text": "商品", "datafield": "goodsName", "columngroup": "goodsInfo", "columntype": "template", "align": "right", "width": 100 },
+        { "text": "规格", "datafield": "stype", "columngroup": "goodsInfo", "columntype": "template", "align": "right", "width": 100 },
+        { "text": "数量", "datafield": "qty", "columngroup": "goodsInfo", "align": "center", "width": 100 },
+        { "text": "重量", "datafield": "weight", "columngroup": "goodsInfo", "align": "center", "width": 100 },
+        { "text": "价格", "datafield": "price", "columngroup": "goodsInfo", "cellsformat": "c2", "align": "center", "width": 100 },
+        { "text": "制单人", "datafield": "editor", "align": "center", "width": 100 },
+        { "text": "制单日期", "datafield": "editDate", "align": "center", "width": 100 },
+        { "text": "操作", "datafield": "tools", "columntype": "tools", "editable": false, "pinned": false, "width": 200 }
+    ],
+    "columnGroups": [
+        { "text": "商品信息", "name": "goodsInfo", "align": "center", "notes": " 目前暂时不支持动态分组, 有bug" }
+    ]
+}

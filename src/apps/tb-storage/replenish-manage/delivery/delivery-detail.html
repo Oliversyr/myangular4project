@@ -1,0 +1,106 @@
+<!-- 单据浏览详情布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClik)="onToolBtnClick($event)">
+    <ng-template #suiTopToolbar>
+        <div class="sui-process" *ngIf="deliveryInfo.status >= 100">
+            <button class="sui-btn sui-btn-default mr-xsmall" [class.active]="deliveryInfo?.delvstatus === 0" [disabled]="deliveryInfo?.delvstatus !== 0"
+                (click)="doDeliveryDirection(1)">
+                <i class="sui-arabic1"></i> 配送出库</button>
+            <svg class="svgicon icon-angle-double-right">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+            <button class="sui-btn sui-btn-default mr-xsmall" [class.active]="deliveryInfo?.delvstatus === 1" [disabled]="deliveryInfo?.delvstatus !== 1"
+                (click)="doDeliveryDirection(2)">
+                <i class="sui-arabic2"></i> 到店确认</button>
+            <svg class="svgicon icon-angle-double-right">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+            <button class="sui-btn sui-btn-default mr-xsmall" [class.active]="deliveryInfo?.delvstatus === 2" [disabled]="deliveryInfo?.delvstatus !== 2"
+                (click)="doDeliveryDirection(3)">
+                <i class="sui-arabic3"></i> 收货盘点</button>
+        </div>
+        <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiMain>
+        <div class="">
+            <sui-panel title="基本信息" [expanded]="expanded" (toggle)="mainInfoToggle($event)">
+                <div sui-panel-headerRight></div>
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">配送单号：</div>
+                            <div class="con" style="width: 200px;">
+                                {{deliveryInfo?.sheetid}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">目的店铺：</div>
+                            <div class="con">
+                                {{deliveryInfo?.fullname}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">配送仓库：</div>
+                            <div class="con">
+                                {{deliveryInfo?.stockname}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">单据状态：</div>
+                            <div class="con">
+                                {{deliveryInfo?.statusName }}
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">配送出库：</div>
+                            <div class="con">
+                                {{deliveryInfo?.outchecker + ' ' + deliveryInfo?.outcheckdate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">配送到店：</div>
+                            <div class="con">
+                                {{deliveryInfo?.delvchecker + ' ' + deliveryInfo?.delvcheckdate}}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="12">
+                            <div class="til">收货：</div>
+                            <div class="con">
+                                {{deliveryInfo?.receiver + ' ' + deliveryInfo?.recvcheckdate}}
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="12" [nzMd]="12">
+                            <div class="til">到店备注：</div>
+                            <div class="con">
+                                {{deliveryInfo?.tonotes }}
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="12" [nzMd]="12">
+                            <div class="til">收货备注：</div>
+                            <div class="con">
+                                {{deliveryInfo?.recvnotes }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </div>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="page" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+    <ng-template #suiFooter>
+        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+            <div sui-panel-headerRight>
+                <span class="mr">制单人: {{deliveryInfo?.editor}}</span>
+                <span class="mr">制单时间: {{deliveryInfo?.editdate}}</span>
+                <span class="mr">审核人: {{deliveryInfo?.checker}}</span>
+                <span class="mr">审核时间: {{deliveryInfo?.checkdate}} </span>
+            </div>
+        </sui-panel>
+    </ng-template>
+</template-detail>

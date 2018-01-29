@@ -1,0 +1,74 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-22 04:14:56
+ * @modify date 2017-12-29 04:01:48
+ * @desc 帮助下拉
+*/
+
+    .help {
+        // display: inline-block;
+        // position: absolute;
+        // top: 3px;
+        // right: -20px;
+        
+        .help-icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+            @include transition(.25s)
+        }
+        .help-content {
+            position: absolute;
+            left: -15px !important;
+            top: 24px !important;
+            width: 440px !important;
+            min-height: 130px !important;
+            padding: 10px 15px !important;
+            border-radius: 4px;
+
+            &::before{
+                position: absolute;
+                top: -10px;
+                left: 11px;
+                content: '';
+                width: 0;
+                height: 0;
+                border-left: 11px solid transparent;
+                border-right: 11px solid transparent;
+                border-bottom: 10px solid $gray-medium;
+            }
+            &::after {
+                position: absolute;
+                top: -10px;
+                left: 12px;
+                content: '';
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid $white;
+            }
+
+            .help-content-til {
+                border-bottom: 1px solid $gray-light;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                @include clearfix;
+                .help-name {
+                    float: left;
+                    font-size: 16px;
+                    color: $gray-darker;
+                    font-family: '微软雅黑';
+                }
+                .help-more {
+                    float: right;
+                    margin-top: 5px;
+                    color: $gray;
+                }
+            }
+
+        }//.help-content end
+    }//help end
+

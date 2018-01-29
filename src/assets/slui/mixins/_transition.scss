@@ -1,0 +1,11 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-26 11:13:19
+ * @modify date 2017-12-26 11:13:19
+ * @desc  动画过渡效果
+*/
+
+
+@mixin transition($time) {
+  transition: all $time;
+}

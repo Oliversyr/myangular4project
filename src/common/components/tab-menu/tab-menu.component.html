@@ -1,0 +1,65 @@
+<!--页签调用入口-->
+<span #el_tabInvoke style="display:none;"></span>
+<div class="layout-wrapper sui-tab">
+    <div class="sui-tab-leftMenu " [ngClass]="{'close': isCollapsed}">
+
+        <button (click)="toggleCollapsed()" class="sui-tab-leftMenu-btn">
+            <!-- <i class="anticon"
+                [class.anticon-menu-unfold]="isCollapsed"
+                [class.anticon-menu-fold]="!isCollapsed">
+            </i> -->
+            <i class=""
+                [class.asideOp]="isCollapsed"
+                [class.asideOp-active]="!isCollapsed">
+            </i>
+        </button>
+        <div class="leftMenu-scroll">
+            <ul class="sui-tab-leftMenu-ul" sui-menu [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+                <ng-template ngFor let-menu [ngForOf]="tabManager?.leftMenus">
+                    <li *ngIf="menu.isLeftMenuHiden !== true" [ngClass]="{'close': isCollapsed}" sui-submenu [nzOpen]="menu.isExpand" (nzOpenChange)="menuLv1OpenChange(menu,$event);">
+                        <span title>
+                        <i class="anticon anticon-setting"></i>
+                        <span>{{menu.modulename}}</span>
+                        </span>
+                        <ul>
+                            <ng-template ngFor let-subMenu [ngForOf]="menu.childrens">
+                                <li *ngIf="subMenu.isLeftMenuHiden !== true" sui-menu-item [nzSelected]="subMenu.moduleid==tabManager?.currentTab?.moduleid" (click)="openMenu(subMenu);">
+                                    {{subMenu.modulename}}
+                                </li>
+                            </ng-template>
+                        </ul>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+        <!--leftMenu-scroll 滚动区域 end-->
+    </div>
+    <!--sui-tab-leftMenu end-->
+    <div class="sui-tab-center">
+        <div class="sui-tab-center-header">
+            <sui-tabset [nzType]="'card'" [nzSelectedIndex]="tabManager?.activeIndex">
+                <sui-tab *ngFor="let tab of tabs; index as index; first as isFirst" (nzClick)="tabChange(index, tab)">
+                    <ng-template #nzTabHeading>
+                        <div>
+                            {{tab.modulename + tab.modulenameSuffix}}
+                            <i *ngIf="!isFirst" class="anticon anticon-cross" title="关闭" (click)="closeTab(index, tab)"></i>
+                        </div>
+                    </ng-template>
+                </sui-tab>
+            </sui-tabset>
+        </div>
+        <div [suiSpin]="!tabManager?.currentTab?.tabContentLoadState" [message]="tabManager?.currentTab?.loadMessage" class="sui-tab-center-content">
+            <router-outlet *ngIf='displayRouterOutletFlag'></router-outlet>
+            <!-- <ng-template [ngTemplateOutlet]="appContent">
+            </ng-template> -->
+        </div>
+        <div class="sui-tab-center-footer">
+            <!-- sui-tab-center-footer -->
+            {{currentApp?.apptitle}} v{{currentApp?.appVersion}}版 {{enterpriseInfo?.enterpriseName}}
+        </div>
+
+    </div>
+    <div class="sui-tab-right">
+        <!-- sui-tab-right -->
+    </div>
+</div>

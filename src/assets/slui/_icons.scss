@@ -1,0 +1,336 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-07 06:16:56
+ * @modify date 2017-12-26 03:07:27
+ * @desc  icon或图片样式
+*/
+
+.sui-icon,
+.suicon {
+    //雪碧图
+    background: url(imgs/sui-ui.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.suicon-print {//打印
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-position:0 -24px ;
+
+    &:hover {
+      background-position:-89px -24px ;  
+    }
+}
+.suicon-preview {//预览
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-position:-30px -24px;
+
+    &:hover {
+      background-position:-119px -24px ;  
+    }
+}
+.suicon-import {//导入
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-position: -60px  -24px;
+
+    &:hover {
+      background-position:-149px -24px ;  
+    }
+}
+
+/*左侧收缩图标*/
+.asideOp,
+.asideOp-active {
+    background: url(imgs/menus/asideOp.png) no-repeat;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    @include transition(.3s);
+    transform: rotate(90deg);
+}
+
+.asideOp-active {
+    transform: rotate(0deg);
+}
+
+/*头部菜单系统设置功能图标*/
+.headMailbox {//消息
+    background: url(imgs/headMailbox.png) no-repeat;
+}
+
+.headRefresh { //刷新
+    background: url(imgs/headRefresh.png) no-repeat;
+}
+
+.headSet { //设置
+    background: url(imgs/headSet.png) no-repeat;
+}
+
+.headSkin {//皮肤
+    background: url(imgs/headSkin.png) no-repeat;
+}
+
+.headHelp {//帮助
+    background: url(imgs/headHelp.png) no-repeat;
+}
+
+
+/*头部菜单系统操作功能图标*/
+// .win-min { //最小化
+//     background: url(imgs/icon-minus.png) no-repeat center center;
+// }
+
+// .win-max {//缩小窗口
+//     background: url(imgs/icon-maximization.png) no-repeat center center;
+// }
+
+// .win-max2,
+// .win-max.active { //缩小窗口
+//     background: url(imgs/icon-maximization2.png) no-repeat center center;
+// }
+
+// .win-close {//关闭窗口
+//     background: url(imgs/icon-close.png) no-repeat center center;
+// }
+
+
+/*头部菜单更多操作区域图标*/
+.sui-icon.close-more-icon {
+    background-position: -120px 0;
+    width: 20px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.sui-icon.close-more-icon:hover {
+    background-position: -145px 0;
+}
+
+.headerNav .more {
+    &:after {
+        background: url(imgs/arrow.png);
+    }
+}
+
+.help-icon {//help
+    background: url(imgs/help.png);
+    &:hover {
+         background: url(imgs/help-active.png); 
+    }
+}
+
+
+.warining-icon { //雪碧图警告5图标
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url(imgs/warning.png); 
+}
+
+        .warining-icon.default {
+            background-position: 0 0;
+        }
+        .warining-icon.primary {
+            background-position: 0 -20px;
+        }
+        .warining-icon.success {
+            background-position: 0 -40px;
+        }
+        .warining-icon.error {
+            background-position: 0 -60px;
+        }
+        .warining-icon.warning {
+            background-position: 0 -80px;
+        }
+
+.notice-icon {//雪碧图 //警告5图标
+    display: inline-block;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    background: url(imgs/notice.png); 
+}
+
+        .notice-icon.primary {
+            background-position: 0 0;
+        }
+        .notice-icon.sucess {
+            background-position: 0 -40px;
+        }
+        .notice-icon.error {
+            background-position: 0 -80px;
+        }
+        .notice-icon.warning {
+            background-position: 0 -120px;
+        }
+
+ .suiclose{//纯css关闭图标 20171226
+    position:relative;
+    z-index: 1013;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    cursor: pointer;
+    @include transition(.3s);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:2px;
+        height:14px;
+        background: $close-bg;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:2px;
+        height:14px;
+        background: $close-bg;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
+
+    }
+
+    &:hover:before,
+    &:hover:after {
+        background: $close-bg-hover;
+    }
+
+}//close end
+
+.icon-add-big {//雪碧图大加号
+    background-position: 0 -145px;
+    width: 67px;
+    height: 67px;
+}
+
+.sui-arabic1 {
+    width: 13px;
+    height: 13px;
+    font-size: 13px;
+    font-style: normal;
+    &:after {
+        content: '\2780';
+    }
+}
+.sui-arabic2 {
+    @extend .sui-arabic1 ;
+    &:after {
+        content: '\2781';
+    }
+}
+.sui-arabic3 {
+    @extend .sui-arabic1 ;
+    &:after {
+        content: '\2782';
+    }
+}
+.sui-arabic4 {
+    @extend .sui-arabic1 ;
+    &:after {
+        content: '\2780';
+    }
+}
+
+// IconFont   字体图标使用 20171227===================================================================
+.iconfont  {
+   color: $gray-medium;
+   vertical-align: middle;
+   font-size: 20px;
+}
+
+// IconFont  svg图标使用 20171227===================================================================
+.svgicon {
+   width: 20px; 
+   height: 20px;
+   vertical-align: middle;
+   fill: currentColor;
+   overflow: hidden;
+   color: $gray-medium;
+   cursor: pointer;
+   @include transition(.3s);
+
+   &:hover {
+       color: $primary;
+   }
+}
+.svgicon.active {
+   color: $primary;
+}
+
+
+
+ .sui-singleNext { //上一单下一单
+    .icon-angle-left,
+    .icon-angle-right{
+        width: 9px;
+        height: 9px;
+        color: $white;
+    }
+ }
+
+ .svgicon.icon-arrow {//下三角
+     width: 9px;
+     height: 9px;
+     color: $white;
+ }
+
+ .svgicon.icon-select-add {//加号
+     width: 11px;
+     height: 11px;
+ }
+
+.sui-search-btns,
+.slic-btn-group {//更多按钮 方向图标
+    .svgicon.icon-angle-double-down,
+    .svgicon.icon-angle-double-up {
+        width: 8px;
+        height: 8px;
+        color: $white;
+
+        &:hover {
+            color: $white;
+        }
+    }
+} 
+
+.sui-header {//信息栏目的方向图标
+    .svgicon.icon-circle-right,
+    .svgicon.icon-circle-down {
+        width: 16px;
+        height: 16px;
+        color: $primary;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.icon-angle-double-right {
+    width: 12px;
+    height: 10px;
+}
+

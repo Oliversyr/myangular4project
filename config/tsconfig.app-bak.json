@@ -1,0 +1,14 @@
+//该文件必须放在src目录下
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./src",
+        "module": "es2015",
+        "types": []
+    },
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
+}

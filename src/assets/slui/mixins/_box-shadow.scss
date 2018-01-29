@@ -1,0 +1,15 @@
+//
+// box_shadow mixins
+// ---------------------------------
+@mixin box-shadow {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3) !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3) !important;
+}
+@mixin box-shadow-input {
+    -webkit-box-shadow: 0 0 0 1px rgba(16,142,233,.2) !important;
+    box-shadow: 0 0 0 1px rgba(16,142,233,.2) !important;
+}
+@mixin box-shadow-message {
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+}

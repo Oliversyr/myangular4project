@@ -1,0 +1,235 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-05 04:19:01
+ * @modify date 2017-12-05 04:19:01
+ * @desc 下拉自动补全插件样式 
+*/
+
+.sui-ac-listbox {//下拉弹出框部分,没包含输入框部分
+         z-index: 1810;
+        //自定义listbox样式
+        .sui-combobox-listbox {
+            overflow: visible !important;
+            border-top: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+
+        // combobox底部footer 样式
+        // .sui-fiterterm,
+        .sui-combobox-listbox-footer,
+        .sui-combobox-listbox-header {
+            position: absolute;
+            left: 0;
+            background: #ececec;
+            border: 1px solid #49a9ee;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            z-index: 501;
+        }
+
+        .sui-combobox-listbox-footer {
+            border-top: none;
+            padding: 3px 0px 0px 5px;
+            background: #f7f7f7;
+        }
+
+        .sui-combobox-listbox-header {
+            border-bottom: none;
+        }
+
+        //标题
+        .sui-combobox-listbox-header .title {
+            color: $black;
+        }
+
+        .sui-combobox-listbox-header>span {
+            display: inline-block;
+        }
+
+        // //combobox-listbox 底部按钮间隔
+        // .sui-combobox-listbox-footer .slic-btn {
+        //     margin-top: 2px;
+        // }
+
+        //combobox-listbox 单元格内容
+        .jqx-listitem-element>.jqx-item>.content {
+            display: inline-block;
+        }
+
+        .sui-combobox-listbox-footer  {
+            .sui-footer-info {
+                display: inline-block;
+                line-height: 28px;
+                vertical-align: middle;
+            }
+
+            //combobox-listbox 底部按钮间隔
+            .slic-btn {
+                vertical-align: middle;
+            }
+        }
+        
+
+        
+
+    //条件设置盒子
+    .sui-fiterterm {
+        position: absolute;
+        left: 0;
+        background: #D8D8D8;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        z-index: 501;
+        width: 350px;
+        padding: 10px 15px;
+        height: auto;
+        background: $white;
+
+        .sui-fiterterm-prompt {
+            color: $red;
+        }
+
+        .sui-fiterterm-header {
+            width: 100%;
+            margin-bottom: 10px
+        }
+
+        .sui-fiterterm-content {
+            width: 100%;
+        }
+
+        .sui-fiterterm-content span {
+            width: 50%;
+            float: left;
+            margin-bottom: 10px
+        }
+
+        .sui-fiterterm-footer {
+            width: 100%;
+            clear: both;
+        }
+    }//.sui-fiterterm end
+
+        .sui-mult::before {/*复选框*/
+            content:" ";
+            width: 14px;
+            color: $primary;
+            display: inline-block;
+        }
+
+        .sui-selected::before {/*复选框*/
+            // content: "✓";
+            content: "\2714";
+            width: 14px;
+            color: $primary;
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .sui-checkbox-selected::before,
+        .sui-checkbox::before {/*复选框*/
+            width: 14px;
+            height: 14px;
+            line-height: 14px;
+            color: $primary;
+            display: inline-block;
+            border: 1px solid $primary;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .sui-checkbox::before {/*复选框*/
+            margin-right: 5px;
+            content: " ";
+        }
+
+        .sui-checkbox-selected::before {/*复选框*/
+            // content: "✓";
+            content: "\2714";
+            color: $white;
+            background-color: $primary;
+        }
+
+        
+
+        //单元格之间保留的间隔
+        .sui-combobox-listbox-header .title,
+        .jqx-listitem-element>.jqx-item>.content {
+            padding-left: 2px;
+        }
+
+
+        //重置内置列表子项目item hover颜色
+        .jqx-listbox .jqx-listitem-element .jqx-fill-state-hover{
+            background-color: $white;
+            cursor: pointer;
+            border-color: #fff;    
+        }
+
+        //把自动补全的内容盒子蓝色线条重置掉
+        .jqx-listbox.jqx-fill-state-focus {
+            border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        }
+
+        //重置选中的项目输入框按钮样式
+        
+        .jqx-listbox .jqx-listitem-element .jqx-item.jqx-listitem-state-hover {
+            /*选中状态重置Hover颜色，定位问题没解决，暂时去掉*/
+            background-color: #fff !important;
+        }
+    
+        .sui-list-box-empty-data {
+            box-sizing: border-box;
+            display: block;
+            padding-top: 50px;
+            text-align: center;
+
+            font-size: 14px;
+
+            z-index: 503;
+            position: absolute;
+            top: 30px;
+            left: 2px;
+            height: 60%;
+            width: 698px;
+            background: white;
+        }
+
+
+}//sui-ac-listbox 自动补全 end
+
+sui-auto-complete {/*自动 补全输入框*/
+    .jqx-combobox-multi-item {
+        background-color: $primary !important;
+        color: $white !important;
+        font-family: '宋体';
+    }
+
+    .jqx-combobox {/*20180124*/
+        width: 100% !important;
+        position: relative;/*20180129*/
+        .jqx-combobox-content {
+             border-right: none !important;
+            .jqx-combobox-input {
+            //    width: 100% !important;  //不能设置100%
+            }
+        }
+        .sui-autocomplete-more-icon {/*20180129*/
+            position: absolute;
+            right: 10px;
+            top: 6px;
+        }
+    }//.jqx-combobox end
+    .svgicon.icon-ellipsis  {
+        width: 12px;
+        height: 12px;
+    }
+    .sui-autocomplete-more-icon {
+        position: absolute;
+        right: 18px;
+        top: 6px;
+    }
+}//sui-auto-complete end

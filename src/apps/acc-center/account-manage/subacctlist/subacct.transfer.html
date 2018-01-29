@@ -1,0 +1,50 @@
+<div class="transfer-add">
+        <sui-modal class="" #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="300" [height]="320"
+            [maxHeight]="900" [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+            <div class="alert-box transfer-add-modal" [suikeyboard]="'sui-modal'"    [rules]="" #windowContent>
+                <div class="alert-content">
+                    <div class="transfer-title">
+                        <span *ngIf="modalStatus">{{payAccountMsg.acctid}}资金账号内转账</span>
+                    </div>
+                    <div class="transfer-content mt10">
+                        <span>转出账户：</span>
+                        <span *ngIf="modalStatus">{{payAccountMsg.subacctid+'-'+payAccountMsg.subacctname}}</span>
+                    </div>
+                    <div class="transfer-content mt10">
+                        <span>可用余额：</span>
+                        <span *ngIf="modalStatus">{{payAccountMsg.usablevalue | currency:'￥'}}</span>
+                    </div>
+                    <div class="transfer-content mt10">
+                        <span class="sui-star">转入账户：</span>
+                        <div class="inline-block input-width">
+                            <sui-select placeHolder="选择转入账户" customTabindex="9" class="suid-per100" 
+                                style="display:inline-block;vertical-align: middle;"
+                                [(ngModel)]="transferParam.recsubacctid" [source]="receiveAccData" [displayMember]="'label'"
+                                [valueMember]="'value'">
+                            </sui-select>
+                        </div>
+                    </div>
+                    <sui-validator [sui-validator] #el_transvalidator [rules]="rootValidators">
+                        <div class="transfer-content mt10">
+                                <span class="inline-block sui-star">转入金额：</span>
+                                <div class="inline-block input-width">
+                                    <sui-input [suiRules]="'required'" [(ngModel)]="transferParam.amount" customTabindex="17" placeHolder="请输入转账金额(不超过可用余额)"></sui-input>
+                                </div>
+                        </div>
+                    </sui-validator>
+                    
+                    <div class="transfer-content mt10" >
+                        <span class="inline-block notes">备注：</span>
+                        <div class="inline-block input-width">
+                            <sui-input [(ngModel)]="transferParam.notes" customTabindex="17" placeHolder="请输入备注"></sui-input> 
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="alert-foot">
+                    <button suiHotKey="ENTER" (click)="confirm()" class="sui-btn sui-btn-primary mr-xsmall">确定({{hotkeys.ENTER}})</button>
+                    <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="cancel()">取消({{hotkeys.CANCEL}})</button>
+                </div>
+            </div>
+        </sui-modal>
+    </div>

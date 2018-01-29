@@ -1,0 +1,89 @@
+
+// 显示文本组件 
+.sui-text {
+    display: flex;
+    flex-direction: row;
+}
+
+// 显示文本组件--标题 
+.sui-text-label {
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+// 显示文本组件--内容 
+.sui-text-content {
+    flex-grow: 1;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+// 显示文本组件--右边 
+.sui-text-right {
+    flex-grow: 0;
+    text-align: left;
+}
+
+//双单元格组件
+.sui-cell,
+.sui-cell2 {
+    display: flex;
+    flex-direction: row;
+}
+
+// 双单元格/单元格组件 标题
+.sui-cell-left,
+.sui-cell2-left {
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+// 双单元格/单元格组件 内容
+.sui-cell-content,
+.sui-cell2-content1,
+.sui-cell2-content2 {
+    flex-grow: 1;
+    text-align: left;
+}
+
+// 双单元格/单元格组件--右边 
+// .sui-cell-right, //暂时不需要
+.sui-cell-right,
+.sui-cell2-right1,
+.sui-cell2-right2 {
+    flex-grow: 0;
+    text-align: left;
+}
+
+//较小的宽度 
+.sui-label-width-xs {
+    width: 50px;
+}
+
+//小宽度
+.sui-label-width-sm {
+    width: 60px;
+}
+
+//中等宽度
+.sui-label-width-md {
+    width: 90px;
+}
+
+//大宽度
+.sui-label-width-lg {
+    width: 100px;
+}
+
+//较宽度
+.sui-label-width-xl {
+    width: 120px;
+}
+
+.demo-red {
+    background: #0000ff;
+}

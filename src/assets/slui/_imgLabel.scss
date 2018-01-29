@@ -1,0 +1,49 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-27 05:50:11
+ * @modify date 2017-12-27 05:50:11
+ * @desc  标签(图片)场景下的按钮
+*/
+
+/* 
+demo:
+<ul class="sui-imgLabel-list">
+    <li class="item"><img src="assets/imgs/alipay.png"></li>
+    <li class="item active"><img src="assets/imgs/weixin.png"></li>
+</ul>
+*/
+
+.sui-imgLabel-list {
+    @include clearfix;
+
+    .item {
+        position: relative;
+        box-sizing: border-box;
+        float: left;
+        width: 140px;
+        height: 42px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #e6e6e6;
+        cursor: pointer;
+        @include transition(.2s);
+
+        &:hover {
+            border: 2px solid $primary-dark;
+        }
+    }
+    
+    .item.active {
+        border: 2px solid $primary-dark;
+        &::before {
+            content: '';
+            background: url(imgs/label-active.png);
+            width: 18px;
+            height: 17px;
+            position: absolute;
+            z-index: 2;
+            right: -2px;
+            bottom:-1px;
+        }
+    }
+}

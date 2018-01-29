@@ -1,0 +1,97 @@
+{
+    "retCode": "SUCCESS",
+    "retMsg": "操作成功",
+    "result": [
+        {
+            "brandId": 70,
+            "picFile": "/home/filestorage/publicstorage1/zdb/d20171018/1/02f541cf5685133f2c342d8d5e567983.jpg",
+            "brandName": "萨克斯",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 48,
+            "picFile": "/home/filestorage/publicstorage1/zdb/d20171014/1/078602ee3076a22f2b920a54cda70aaf.jpg",
+            "brandName": "面包",
+            "status": 1,
+            "notes": "双面胶带"
+        },
+        {
+            "brandId": 47,
+            "picFile": "/home/filestorage/publicstorage1/zdb/d20170926/1/29e28d39bc111ba1d4d83aa6780af9a3.jpg",
+            "brandName": "老坛酸菜",
+            "status": 0,
+            "notes": ""
+        },
+        {
+            "brandId": 46,
+            "picFile": "/home/filestorage/publicstorage1/zdb/d20171016/1/67cfd9870cc91d1646b6843ff061d8c6.png",
+            "brandName": "爱戴",
+            "status": 1,
+            "notes": "123"
+        },
+        {
+            "brandId": 45,
+            "picFile": "",
+            "brandName": "可比克",
+            "status": 0,
+            "notes": "123"
+        },
+        {
+            "brandId": 44,
+            "picFile": "",
+            "brandName": "泰奇",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 43,
+            "picFile": "",
+            "brandName": "王老吉",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 42,
+            "picFile": "",
+            "brandName": "旺旺",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 41,
+            "picFile": "",
+            "brandName": "双汇",
+            "status": 0,
+            "notes": ""
+        },
+        {
+            "brandId": 40,
+            "picFile": "",
+            "brandName": "卫龙",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 39,
+            "picFile": "",
+            "brandName": "娃哈哈",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 38,
+            "picFile": "",
+            "brandName": "胖哥",
+            "status": 1,
+            "notes": ""
+        },
+        {
+            "brandId": 37,
+            "picFile": "",
+            "brandName": "贤哥",
+            "status": 1,
+            "notes": ""
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+<div [class]="'sui-framework ' + baseFrameworkConfig?.headerBgClass">
+    <sui-framework-header [appsList]=apps></sui-framework-header>
+    <div class="sui-framework-body">
+        <ng-template [ngIf]="currentApp">
+            <sui-tab-menu #tabMenuEL [tabMenus]="tabMenus" [displayRouterOutletFlag]="displayRouterOutletFlag">
+                <!-- <ng-template [ngTemplateOutlet]="appContent">
+            </ng-template> -->
+            </sui-tab-menu>
+        </ng-template>
+    </div>
+</div>

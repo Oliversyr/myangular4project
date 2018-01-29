@@ -1,0 +1,52 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <!-- <div sui-help-content></div> -->
+    <!-- <ng-template #suiHelpContent>
+        <div>筹备中aaaaaaaaaaa...</div>
+    </ng-template> -->
+    <ng-template #suiSearchNormal>
+        <div [sui-row]>
+            <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+                <sui-date-range class="sui-date-range" leftClass="sui-label-width-md" [leftLabel]="dateLabel" [(ngModel)]="dateValue"></sui-date-range>
+            </div>
+            <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="4">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择状态" [customTabindex]="1" class="suid-per100" style="display:inline-block;vertical-align: middle;"
+                            [source]="statusData" [(ngModel)]="searchParam.checkstatus" [displayMember]="'label'" [valueMember]="'value'">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="客户">
+                    <ng-template #cellContent>
+                        <!-- <sui-organ [customTabindex]="2" (selectOrgan)="selectStock($event)" [orgType]="'stock'" #OrganSelect></sui-organ> -->
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="缴费凭证号">
+                    <ng-template #cellContent>
+                            <sui-input [(ngModel)]="searchParam.querykey" customTabindex="3" placeHolder="请输入商品名称、内码、条码、助记码">
+                            </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+                
+        </div>
+    </ng-template>
+    <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template>
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="grid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
+<div>
+    <sui-stock-add #suiStockpdykAdd (callback)='modalCallBack($event)'></sui-stock-add>
+</div>

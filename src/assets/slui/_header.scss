@@ -1,0 +1,237 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-12 04:58:32
+ * @modify date 2017-12-13 10:52:31
+ * @desc 
+*/
+//
+// header sass
+// ---------------------------------
+
+/*header头部内容*/
+.sui-framework-header {
+  background-color: $header-bg;
+  /*header logo*/
+  .sui-framework-logo,
+  .enterprise-logo {
+    float: left;
+    width: 149px;
+    border-right: 1px solid $logo-border-right-color;
+    height: inherit;
+  }
+  .sui-framework-menu {/*头部菜单*/
+    position: relative;
+    @include clearfix;
+    float: left;
+    height: 50px;
+
+    .menu-item {
+      float: left;
+      margin: 0;
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all .1s;
+      color: $white;
+    }
+    .menu-item:hover,
+    .menu-item.active,
+    .menu-item.active:hover {
+      box-sizing: border-box;
+      font-weight: 700;
+      position: relative;
+      background-color: $header-menu-item-bg;
+      border-bottom: 3px solid $primary;
+    }
+  }//.sui-framework-menu  end
+
+  .header-more { //更多菜单
+      position: absolute;
+      z-index: 9999;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      height: 103px;
+      background-color: $header-more-bg;
+      // display: none;
+
+      .header-more-menu {
+          width: 720px;
+          margin: auto;
+
+          li {
+              float: left;
+              width: 100px;
+              height: 30px;
+              line-height: 30px;
+              margin-top: 10px;
+              font-size: 14px;
+              color: $white;
+              cursor: pointer;
+              transition: all .25s;
+
+              &:hover,
+              &.active{
+                  width: 100px;
+                  height: 30px;
+                  line-height: 30px;
+                  margin-top: 10px;
+                  font-size:14px;
+                  font-weight: bold;
+                  color: $primary;
+              }
+          }
+      }
+
+      .header-more-icon {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 10px;
+          width: 20px;
+          height: 10px;
+      }
+  }//header-more
+
+//更多按钮
+.headerNav {
+  display: inline-block;
+  width: 80px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 ;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: all .1s;
+
+  a {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    position: relative;
+    box-sizing: border-box;
+    width: 80px;
+    font-weight: 700;
+    background-color: $header-menu-item-bg;
+    border-bottom: 3px solid $primary;
+    border-radius: 0;
+  }
+
+  .more {//更多下拉图标
+    display: block;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    font-size: 16px;
+    float: left;
+    text-align: center;
+    
+    &:after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 10px;
+      height: 12px;
+    }
+}
+
+}//更多按钮 end
+.system-operation-wrap {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 0;
+}
+
+.systemSet {//系统功能区域
+	width:140px ;
+	height: 50px;
+	float: left;
+  border-left:1px solid $black ;
+  
+    .headMailbox{//消息
+      float: left;
+      width: 20px;
+      height: 30px;
+      margin: 16px 15px 0 12px;
+      position: relative;
+      cursor: pointer;
+      transition:all .25s;
+     
+      // &:hover {
+      //   transform: translateY(-1px);
+      // }
+    }
+    .headMailbox p{
+      position: absolute;
+      top: -7px;
+      right: -10px;
+      min-width: 16px;
+      padding: 0 2px;
+      height: 14px;
+      line-height: 14px;
+      border-radius: 2px;
+      background: $white;
+      color: $primary-dark;
+      text-align: center;
+    }
+
+    .headRefresh, //刷新
+    .headSet, //设置
+    .headSkin, //皮肤
+    .headHelp //帮助
+    {
+      float: left;
+      width: 30px;
+      height: 50px;
+      margin-top: 16px ;
+      position: relative;
+      cursor: pointer;
+      transition:all .25s;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+}
+
+
+.systemBtns {//系统操作区域
+	box-sizing: border-box;
+	float: left;
+	width: 91px;
+	height: 50px;
+  border-left:1px solid $black ;
+
+    .win-min,
+    .win-max,
+    .win-max2,
+    .win-max.active,
+    .win-close{
+      float: left;
+      width: 30px;
+      height: 50px;
+      transition:all .25s;
+    }
+    .win-min:hover,
+    .win-max:hover{
+      background-color: $win-bg-hover;
+      transform: translateY(-1px);
+    }
+    .win-close:hover{
+      background-color: $danger;
+      transform: translateY(-1px);
+    }
+
+}
+
+} //.sui-framework-header end

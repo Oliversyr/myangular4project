@@ -1,0 +1,113 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods (selectGoods)="selectedGoods($event)" [customTabindex]="1" #goodsSelect></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="仓库">
+                    <ng-template #cellContent>
+                        <sui-organ (selectOrgan)="selectedStorehouse($event)" [orgType]="'stock'" [customTabindex]="2" #storehouseSelect></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-date-range class="sui-date-range" [customTabindexs]="[5,6,7]" leftClass="sui-label-width-md" 
+                                    [leftLabel]="'发生日期'" [(ngModel)]="searchParams.dateValue"></sui-date-range>
+                
+            </div>
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="相关单号">
+                    <ng-template #cellContent>
+
+                        <sui-input [(ngModel)]="searchParams.refsheetid" customTabindex="9" placeHolder="请输入相关单号">
+
+                                </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            
+        </div>
+    </ng-template>
+    <!-- more -->
+    <ng-template #suiSearchMore>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="出入库类型">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择出入库类型" customTabindex="10" class="suid-per100" [(ngModel)]="searchParams.oitype" [source]="oitypeData" [displayMember]="'name'" [valueMember]="'oitype'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择状态" customTabindex="13" class="suid-per100" [(ngModel)]="searchParams.status" [source]="statusData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+        </div>
+    </ng-template>
+    
+    <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template>
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)" [showaggregates]="true" [showstatusbar]="true" [statusbarheight]="27">
+        </sui-grid>
+    </ng-template>
+</template-list>
+
+<sui-modal #addOutInput [isModal]="false" [autoOpen]="false" [width]="380" [height]="225"
+        [maxHeight]="900" [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+
+        <div #windowHeader>
+            <span>新建出入库单</span>
+        </div>
+        <div class="alert-box" [suikeyboard]="'sui-modal'" #windowContent >
+            <div style="padding: 15px;height: 150px;line-height: 27px;" >
+                <div sui-row >
+                    <div sui-col [nzXs]="10" [nzSm]="10" [nzMd]="10">
+                        <label>请选择所在仓库：</label>
+                    </div>
+                    <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                        <sui-organ (selectOrgan)="selectedNewStorehouse($event)" [orgType]="'stock'" [customTabindex]="1" #newStorehouseSelect></sui-organ>
+                    </div>
+                </div>
+                <div sui-row>
+                    <div sui-col [nzXs]="10" [nzSm]="10" [nzMd]="10">
+                        <label>请选择出入库类型：</label>
+                        
+                    </div>
+                    <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                        <sui-select placeHolder="选择出入库类型" customTabindex="5" class="suid-per100" [(ngModel)]="newOutInput.oitype" [source]="newOitypeData" [displayMember]="'name'" [valueMember]="'oitype'">
+    
+                            </sui-select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-foot">
+                <button suiHotKey="ENTER" (click)="doModalConfirm()" class="sui-btn sui-btn-primary mr-xsmall">新建({{hotkeys.ENTER}})</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="doModalCancel()">取消({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+</sui-modal>

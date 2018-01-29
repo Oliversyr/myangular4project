@@ -1,0 +1,157 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-09 11:23:52
+ * @modify date 2018-01-09 11:23:52
+ * @desc 穿梭框
+ #f9f9f9,#dcebfa
+*/
+
+.sui-transfer {
+	box-sizing: border-box;
+	width: 100%;
+	position: relative;
+	line-height: 1.5;
+	@include clearfix;
+
+	.sui-transfer-list { //穿梭列表
+		width: 200px;
+		height: 100%;
+		border: 1px solid $sui-transfer-border;
+		display: inline-block;
+		border-radius: 4px;
+		vertical-align: middle;
+		
+		.sui-transfer-header {//标题
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+			padding:0 10px;
+			@include border-top-radius(4px);
+			background: $white;
+			color: rgba(0,0,0,.65);
+			border-bottom: 1px solid $sui-transfer-header;
+			overflow: hidden;
+
+			.sui-transfer-header-selected {
+				padding: 0 5px;
+				color: $gray-darker;
+				font-weight: bold;
+			}
+			
+		}//.sui-transfer-list-header end
+		.sui-transfer-body {//主体
+			width: 100%;
+			height: calc(100% - 35px);
+
+			.sui-transfer-search-wrapper {//搜索包裹盒子
+				box-sizing: border-box;
+				width: 100%;
+				height: 40px;
+				padding: 5px;
+				.sui-transfer-search {//搜索框
+					position: relative;
+
+					.sui-transfer-search-input {//输入框
+						box-sizing: border-box;
+						width: 100%;
+						padding-left: 35px;
+					}
+					.sui-transfer-search-action {//图标
+						position: absolute;
+						z-index: 10;
+						left: 10px;
+						top: 5px;
+					}
+				}
+			}//.ant-transfer-search-wrapper 搜索包裹盒子 end
+
+			.sui-transfer-content {//主体内容
+				width: 100%;
+				height: calc(100% - 40px);
+				overflow-y: auto;
+				box-sizing: border-box;
+				.sui-transfer-content-item {
+					box-sizing: border-box;
+					width: 100%;
+					min-height: 35px;
+					height: auto;
+					background-color: $sui-transfer-item-bg;
+
+					.sui-transfer-content-item-til {
+						box-sizing: border-box;
+						width: 100%;
+						line-height: 35px;
+				     	padding: 0 10px;
+						@include text-overflow;
+					}
+
+					.sui-transfer-content-child {//二级菜单列表
+						box-sizing: border-box;
+						width: 100%;
+
+						.sui-transfer-content-item-child  { ////二级菜单列表子项目
+							box-sizing: border-box;
+							width: 100%;
+							height: 35px;
+							line-height: 35px;
+							padding: 0 10px 0 40px;
+							@include transition(.25s);
+							@include text-overflow;
+							background-color: $white;
+
+							&:hover {
+								background-color: $primary-light;
+							}
+						}
+					}
+				}
+			}//.sui-transfer-list-content 主体内容 end
+
+		}//.sui-transfer-list-body end
+
+	}//.sui-transfer-list  end
+
+	.sui-transfer-operation {//操作按钮
+	    display: inline-block;
+		overflow: hidden;
+		margin: 0 8px;
+		vertical-align: middle;
+
+		.sui-transfer-operation-btn {
+			display: block;
+			margin: 10px 15px;
+		}
+	}//sui-transfer-operation 操作按钮 end
+
+
+	 .svgicon.icon-search {//穿梭框 搜索图标
+        width: 18px;
+        height: 18px;
+    }
+    .svgicon.icon-tree-open,
+    .svgicon.icon-tree-close{
+        width: 13px;
+        height: 13px;
+    }
+    .sui-transfer-operation-btn {
+        .svgicon.icon-angle-double-right {
+            width: 10px;
+            height: 8px;
+            color: $white;
+            &:hover {
+            color: $white;  
+            }
+        }
+        .svgicon.icon-angle-double-left {
+            width: 10px;
+            height: 8px;
+            color: $gray;
+
+        }
+
+        &:hover .icon-angle-double-left {
+            color: $primary;  
+        }
+    }
+
+}//.sui-transfer end

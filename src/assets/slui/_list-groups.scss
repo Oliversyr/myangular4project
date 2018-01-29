@@ -1,0 +1,240 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-02 11:48:08
+ * @modify date 2018-01-02 11:48:08
+ * @desc 列表相关组件
+*/
+
+/*商品列表 demo:
+ <ul class="sui-good-list">
+        <li class="sui-good-list-item">
+            <a href="#" class="good-list-img-box ">
+                <img src="assets/imgs/temp/img1.png" class="good-list-img">
+            </a>
+            <div class="good-list-item-tils">
+                <p class="name">深圳依稀贸易有限公司深圳依稀贸易有限公司深圳依稀贸易有限公司</p>
+                <p class="goodsname">旺仔牛奶原味礼盒装幢</p>
+                <p class="spec">包装125ml*20      <span class="ml-big">剩余：999件</span></p>
+                <p class="price">价件：<span class="pricenum">￥99999.00</span></p>
+                <p class="price">散价：<span class="pricenum">￥88.00</span></p>
+            </div>
+                <div class="good-list-item-btns">
+                    <button type="button" class="btn-shopcar mr_1">加入购物车</button>
+                    <button type="button" class="btn-shopcar" >立即购买</button>
+            </div>    
+
+        </li>
+            <li class="sui-good-list-item">
+            <a href="#" class="good-list-img-box ">
+                <img src="assets/imgs/temp/img1.png" class="good-list-img">
+            </a>
+            <div class="good-list-item-tils">
+                <p class="name">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                <p class="goodsname">旺仔牛奶原味礼盒装幢旺仔牛奶原味礼盒装幢</p>
+                <p class="spec">包装125ml*20      <span class="ml-big">剩余：999件</span></p>
+                <p class="price">价件：<span class="pricenum">￥66666.00</span></p>
+                <p class="price">散价：<span class="pricenum">￥333.00</span></p>
+            </div>
+                <div class="good-list-item-btns">
+                    <button type="button" class="btn-shopcar mr_1" disabled="disabled">加入购物车</button>
+                    <button type="button" class="btn-shopcar" >到货提醒</button>
+            </div>    
+
+        </li>
+</ul>
+*/
+.sui-good-list {//商品图片列表
+    width: 100%;
+    min-height: 1px;
+    height: auto;
+    @include clearfix;
+
+    .sui-good-list-item {
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        width: 230px;
+        height: 372px;
+        border: 1px solid $white;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        @include transition(.25s);
+
+        &:hover {
+            background-color: #f5f5f5;
+            border: 1px solid #e5e5e5;
+        }
+
+        .good-list-img-box {//图片盒子
+            position: relative;
+            width: 210px;
+            height: 210px;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+
+            .good-list-img {
+              width: 210px;
+              height: 210px;
+            }
+        }//.good-list-img-box 图片盒子 end
+        .good-list-item-tils {
+            padding: 0 15px;
+
+            .name {
+                font-weight: bold;
+                color: $gray-darker;
+                @include text-overflow;
+
+            }
+            .goodsname {
+                @include text-overflow;
+            }
+            .spec {
+                 color: $gray;
+                 @include text-overflow;
+            }
+            .price {
+                 @include text-overflow;
+                 line-height: 18px;
+
+                 .pricenum {
+                    font-size: 18px;
+                    font-weight: bold;
+                    font-family: '微软雅黑';
+                    color: $red;
+                }
+
+            }
+        }//.good-list-item-tils 标题内容部分 end
+
+        .good-list-item-btns { 
+            padding: 5px 15px;
+            @include clearfix;
+
+            .btn-shopcar {
+                box-sizing: border-box;
+                float: left;
+                width: 99px;
+                height: 25px;
+                background-color: $white;
+                border: 1px solid $gray-medium;
+                cursor: pointer;
+                @include transition(.25s);
+                
+                &:hover {
+                    position: relative;
+                    z-index: 999;
+                    color: $red;
+                    border: 1px solid $red;
+                    outline: none;
+                }
+
+                
+            }
+
+            .btn-shopcar.mr_1 {
+              margin-right: -1px;
+            }
+
+            .btn-shopcar[disabled='disabled'] {//disabled
+                border: $gray-medium ; 
+                background-color: $gray-medium; 
+                color: $gray;
+                cursor: not-allowed;
+             }
+        }//.good-list-item-btns 按钮部分 end
+
+    }//.sui-good-list-item end
+    
+}//.sui-good-list 商品图片列表 end
+
+//=================================================================================================
+
+/* 栏式布局列表 demo:
+<ul class="sui-info-list">
+    <li class="sui-info-list-item">
+        <div class="info-list-check">
+            <input type="checkbox" class="sui-checkboxs" name="name1"/>
+        </div>
+        <a href="#" class="info-list-img">
+            <img src="assets/imgs/temp/img1.png" class="info-list-img">
+        </a>
+        <div class="info-list-con">
+            <div class="info-list-con-til">商品名称商品名称商品名称商品名称</div>
+            <div class="info-list-con-txt">内容内容内容内容123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</div>
+        </div>
+    </li>
+
+    <li class="sui-info-list-item">
+        <div class="info-list-check">
+            <input type="checkbox" class="sui-checkboxs" name="name1"/>
+        </div>
+        <a href="#" class="info-list-img">
+            <img src="assets/imgs/temp/img1.png" class="info-list-img">
+        </a>
+        <div class="info-list-con">
+            <div class="info-list-con-til">商品名称商品名称商品名称商品名称</div>
+            <div class="info-list-con-txt">内容内容内容内容</div>
+        </div>
+    </li>
+</ul>
+*/
+.sui-info-list {
+
+    .sui-info-list-item {
+        box-sizing: border-box;
+        width: 260px;
+        height: 75px;
+        padding:10px 10px 10px 5px;
+        margin-bottom: 10px;
+        border: 1px solid $gray-medium;
+        @include clearfix;
+        @include transition(.25s);
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: flex-start;
+        // align-items: center;
+
+        .info-list-check {
+            float: left;
+            width: 16px;
+            height: 16px;
+            margin-top: 16px;
+        }
+
+        .info-list-img {
+            display: block;
+            float: left;
+            width: 52px;
+            height: 52px;
+            margin-left: 5px;
+            cursor: pointer;
+            .info-list-img {
+                width: 52px;
+                height: 52px;
+            }
+        }//图片 end
+        .info-list-con {
+            width: 150px;
+            height: 52px;
+            float: left;
+            margin-left: 20px;
+            .info-list-con-til {
+                font-weight: bold;
+                color: $gray-darker;
+                @include text-overflow;
+            }
+            .info-list-con-txt {
+                word-break: break-all;
+                @include text-overflow2;
+            }
+        }//内容 end
+    }//sui-inf-list-item end
+}//.sui-inf-list 栏式布局 end

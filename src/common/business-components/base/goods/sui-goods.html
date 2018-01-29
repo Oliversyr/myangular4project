@@ -1,0 +1,37 @@
+<div class="sui-supplier">
+   <sui-auto-complete #myGoods [option]="option" [minLength]="1" [width]="200" [height]="25" 
+                    [displayMember]="'goodsname'" [dropDownWidth]="700" [dropDownHeight]="200"
+                    [customTabindex]="customTabindex" 
+                    (onChange)="autoChange($event)" [placeHolder]="'请输入商品名称、内码、助记码、条码'"> 
+            </sui-auto-complete>
+
+   <sui-modal-alert #msgalert></sui-modal-alert>   
+
+   <!--更多按钮-商品选择-->
+   <sui-modal  #moreGoods [width]="820" [height]="600" [autoOpen]="false"
+                [isModal]="true"
+                [maxHeight]="1000" [minHeight]="200" [maxWidth]="2920" [minWidth]="500"
+                [showCollapseButton]="false" class="myPrintWindow">
+			    <div #windowHeader>
+					  <span>选择商品</span>
+			    </div>
+
+				<div #windowContent style="padding: 30px;">
+                    <div >
+                        商品：
+                        <input [(ngModel)]="searchKey" type="text" placeholder="请输入商品名称、内码、助记码、条码"/>
+                        <button class="slic-btn slic-btn-theme3" (click)="doSearch()">查询</button>
+                    </div>
+
+                    <div style="height: 435px;margin: 10px 0;display: flex;">
+                        <sui-grid #mygrid [gridOption]="gridOption" [page]="gridPage" >
+                        </sui-grid>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button (click)="doConfirm()"   class="slic-btn slic-btn-theme3 ml5" >确定</button>
+                        <button (click)="doClose()" class="slic-btn slic-btn-theme4 ml5">取消</button>
+                    </div>
+				</div>
+	</sui-modal>     
+</div>

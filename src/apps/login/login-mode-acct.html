@@ -1,0 +1,43 @@
+<div [suikeyboard]>
+    <sui-validator #el_validator [rules]="rootValidators">
+        <div class="login-box-con" id="login-company-con">
+            <div class="login-box-tip  pst-rl">
+                使用帐号密码登录时，需要输入企业编号。
+                <i class="icon-question fr" (mouseenter)="showHelpQuestion=true" (mouseleave)="showHelpQuestion=false"></i>
+                <div class="sl-alert-checkout-question" [hidden]="!showHelpQuestion">
+                    <span>如果不了解您的帐号密码，请与我司{{enterpriseInfo.productName}}系统管理员联系，或直接拨打{{enterpriseInfo.hotline}}咨询客服。</span>
+                </div>
+            </div>
+            <div class="form-group form-login mt15">
+                <label class="label-login">
+                    <i class="sl-icon icon-enterpriseNum"></i>
+                </label>
+                <input #userEidAccount customTabindex="1" type="text" id="userEidAccount" placeholder="请输入企业编号" class="input input-login fz14 "
+                    [(ngModel)]="userInfo.eid" autofocus [activeClass]="'parent'" />
+            </div>
+            <div class="form-group form-login mt20">
+                <label class="label-login">
+                    <i class="sl-icon icon-username"></i>
+                </label>
+                <input customTabindex="2" id="userAccount" class="input input-login fz14" type="text" placeholder="请输入帐号" [(ngModel)]="userInfo.loginName"
+                    [activeClass]="'parent'" />
+            </div>
+            <div class="form-group form-login mt20 prt-rl">
+                <label class="label-login">
+                    <i class="sl-icon icon-password"></i>
+                </label>
+                <input customTabindex="3" id="userPswd" class="input input-login fz14" type="password" placeholder="请输入密码" [(ngModel)]="userInfo.pswd"
+                    [activeClass]="'parent'" />
+            </div>
+            <div class="form-forget mt20 clearfix fz16 tx-666">
+                <sui-tooltip [name]="'autoLoginTooltip'" [position]="'left'" [content]="autoLoginTooltipContent">
+                    <label sui-checkbox [(ngModel)]="userInfo.isAutoLogin">
+                        <span>自动登录</span>
+                    </label>
+                </sui-tooltip>
+                <a class="forget-password tx-666 fr" (click)="doForgetAcctPsd()">忘记企业编码？</a>
+            </div>
+            <button customTabindex="4" suiHotKey="SUBMIT" type="button" class="btn sl-btn-login mt20 " (click)="doAcctLogin()">登录</button>
+        </div>
+    </sui-validator>
+</div>

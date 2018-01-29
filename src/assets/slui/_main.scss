@@ -1,0 +1,27 @@
+//
+// main sass
+// ---------------------------------
+
+/*slui-main begin ************************************* */
+.slui-main {
+    width: auto;
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    padding-bottom: 40px;
+    overflow: hidden;
+    background:$body-bg;
+    overflow-y:auto;
+    overflow-x:hidden; 
+  
+}
+
+.slui-panel {
+    width: 100%;
+    min-height: 30px;
+    background: #fff;
+    border-radius: 4px;
+}

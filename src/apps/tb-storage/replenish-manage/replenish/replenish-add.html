@@ -1,0 +1,17 @@
+<div class="replenish-add">
+    <sui-modal class="" #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="380" [height]="225" [maxHeight]="900"
+        [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+        <div class="alert-box replenish-add-modal" [suikeyboard]="'sui-modal'" #windowContent>
+            <div class="alert-content">
+                <div>
+                    <label>申请店铺：</label>
+                    <sui-organ #shopSelect [orgType]="'shop'" (selectOrgan)="selectedShop($event)" [customTabindex]="1"></sui-organ>
+                </div>
+            </div>
+            <div class="alert-foot">
+                <button suiHotKey="ENTER" (click)="confirm()" class="sui-btn sui-btn-primary mr-xsmall">新建({{hotkeys.ENTER}})</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="cancel()">取消({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+    </sui-modal>
+</div>

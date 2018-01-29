@@ -1,0 +1,10 @@
+{
+    "cors": true,
+    "port": 3692,
+    "open": false,
+    "codeSync": false,
+    "server": ["dist"],
+    "ui": {
+	    "port": 3002
+	  }
+}

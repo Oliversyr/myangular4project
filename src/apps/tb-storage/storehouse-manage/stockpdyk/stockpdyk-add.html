@@ -1,0 +1,61 @@
+<sui-modal #addPdykModal [width]="820" [height]="400" [autoOpen]="false" [isModal]="true" [maxHeight]="1000" [minHeight]="200"
+    [maxWidth]="2920" [minWidth]="500" [showCollapseButton]="false">
+    <div #windowHeader>
+        <span>新建盘点</span>
+    </div>
+    <div #windowContent class="alert-box">
+        <div class="alert-content" style="flex-direction: column;">
+            <!-- <p>如果盘点所在地有待审核的出入库单据，请审核完毕后再进行盘点，否则盘点结果可能会不正确</p> -->
+            <div class="sui-message-static warning mb-xsmall" style="background-color:white;width: 100%; padding: 10px 0;">
+                <i class="warining-icon warning "></i>
+                <div class="info-box">
+                    <div class="con sui-badge danger c-red">如果盘点所在地有待审核的出入库单据，请审核完毕后再进行盘点，否则盘点结果可能会不正确</div>
+                </div>
+            </div>
+            <div [sui-row]>
+                <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="盘点机构">
+                        <ng-template #cellContent>
+                            <sui-organ [customTabindex]="1" (selectOrgan)="selectStock($event)" [orgType]="'stock'" #organSelect></sui-organ>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+                <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="盘点类型">
+                        <ng-template #cellContent>
+                            <sui-select placeHolder="选择盘点类型" [customTabindex]="4" class="suid-per100" [source]="pdTypeData" [displayMember]="'label'"
+                                [valueMember]="'value'" [(ngModel)]='selectedPdtype.pdtype' (onChange)='selectPdType($event)'>
+                            </sui-select>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+            </div>
+            <div [sui-row] *ngIf='addParams?.pdtype == 4'>
+                <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="24">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="">
+                        <ng-template #cellContent>
+                            <sui-brand [brandPrependName]=" '选择品牌' " [customTabindex]="5" [(ngModel)]="selectedBrand.brandid"
+                                (onChange)='selectBrand($event)'></sui-brand>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+            </div>
+            <div [sui-row] *ngIf='addParams?.pdtype == 5'>
+                <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="24">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="">
+                        <ng-template #cellContent>
+                            <sui-category [addOnName]=" '选择品类' " [customTabindex]="6" [(ngModel)]="selectedCate.catid"></sui-category>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+            </div>
+        </div>
+        <!--alert-content end-->
+        <div class="alert-foot">
+            <button (click)="doSure()" class="slic-btn slic-btn-theme3 mr-xsmall">新建</button>
+            <button (click)="doClose()" class="slic-btn slic-btn-theme4 ml5 mr-xsmall">取消</button>
+        </div>
+        <!--alert-foot end-->
+    </div>
+    <!--alert-box end-->
+</sui-modal>

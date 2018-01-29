@@ -1,0 +1,63 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods #goods [customTabindex]="1" (selectGoods)="selectedGoods($event)"></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="仓库">
+                    <ng-template #cellContent>
+                        <sui-organ #storeOrgan (selectOrgan)="selectedStorehouse($event)" [orgType]="'stock'" [customTabindex]="2"></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-date-range class="sui-date-range" [customTabindexs]="[3,4,5]" leftClass="sui-label-width-md" [leftLabel]="dateLabels"
+                    [(ngModel)]="dateValue"></sui-date-range>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="采购单号">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.refsheetid" customTabindex="6" placeHolder="请输入采购单号">
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiSearchMore>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择单据状态" customTabindex="7" [(ngModel)]="searchParams.status" [source]="statusData">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption"  [showstatusbar]="true" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
+<!-- 新建采购入库单弹出框 -->
+<div class="add-purchase-input">
+    <purchase-input-add #el_winChoosePurchase></purchase-input-add>
+</div>
+<!-- 审核采购入库单弹出框 -->
+<div class="check-purchase-input">
+    <purchase-input-check #el_winCheckPurchaseInput [sheetid]="myCheckedSheetid" (confirmCheck)="doMyConfirmCheck($event)" (cancelCheck)="doCancelCheck($event)"></purchase-input-check>
+</div>

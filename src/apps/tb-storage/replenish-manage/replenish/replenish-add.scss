@@ -1,0 +1,19 @@
+.replenish-add-modal {
+    overflow: hidden;
+    .alert-content {
+        flex-direction: column;
+        label {
+            display: inline-block;
+            vertical-align: middle;
+            height: 27px;
+            margin-top: -10px;
+        }
+        sui-organ {
+            display: inline-block;
+        }
+    }
+}
+
+.sui-ac-listbox {
+    z-index: 99999!important;
+}

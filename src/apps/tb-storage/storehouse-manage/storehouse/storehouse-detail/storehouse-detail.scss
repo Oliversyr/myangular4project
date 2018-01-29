@@ -1,0 +1,15 @@
+.sui-form-row {
+    margin-bottom: 10px;
+
+    .sui-form-title {
+        max-width: 90px;
+        display: inline-block;
+    }
+    
+    .sui-form-item {
+        min-width: calc(100% - 100px);
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+

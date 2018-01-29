@@ -1,0 +1,55 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-09 03:37:49
+ * @modify date 2018-01-09 03:37:49
+ * @desc  自定义单选按钮
+*/
+
+/*
+ *  单选按钮按钮
+ *  Usage:
+    <input type="radio" class="sui-radios" name="name1"/>
+	<input type="radio" class="sui-radios" checked="checked" name="name2"/>
+ *
+ */	
+
+input[type="radio"].sui-radios:focus,
+input[type="radio"].sui-radios {
+    -webkit-appearance: none;
+    background-color: $white;
+    border: 1px solid $gray-medium;
+    // box-shadow: 0 1px 2px rgba(0,0,0,0), inset 0px -15px 10px -12px rgba(0,0,0,0);
+    padding: 6px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+input[type="radio"].sui-radios:checked {
+     border: 1px solid $primary-dark;
+}
+input[type="radio"].sui-radios:checked:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    position: absolute;
+    background: $primary-dark;
+    // box-shadow: inset 0px 0px 10px rgba(0,0,0,0);
+    left: 2px;
+    top: 2px;
+}
+
+//禁用状态
+input[disabled="disabled"].sui-radios,
+input[disabled="disabled"].sui-radios:checked {
+    border: 1px solid $gray-medium !important;
+    background-color: $gray-lighter !important;
+    cursor: not-allowed !important;
+}
+input[disabled="disabled"].sui-radios:checked:after {
+    background: none !important;
+    box-shadow: none !important;
+}

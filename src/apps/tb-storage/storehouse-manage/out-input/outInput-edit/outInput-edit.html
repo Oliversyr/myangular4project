@@ -1,0 +1,149 @@
+<!-- 单据列表布局 -->
+<template-edit [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiMain>
+        <sui-panel title="基本信息" [expanded]="true">
+            <div sui-panel-content>
+                <div sui-row >
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        单据编号：{{outInputInfo?.sheetid}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        所在仓库：{{outInputInfo?.ename}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        出入库类型：{{outInputInfo?.oitypevalue}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        状态：{{outInputInfo?.status === 0 ? "编辑中" : storehouseInfo?.status === 1 ? "编辑完成" : "已审核"}}
+                    </div>
+                </div>
+                <div sui-row>
+
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">出入库对象: </div>
+                        <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                                <sui-input [(ngModel)]="outInputInfo.coename" customTabindex="1" placeHolder="请输入对象编码">
+    
+                                    </sui-input>
+                        </div>
+                                
+                    </div>
+                    <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="6">
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">发生日期: </div>
+                        <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                                <sui-date [(ngModel)]="outInputInfo.operdate" customTabindex="5"></sui-date>
+                        </div>
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">相关单号: </div>
+                        <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                                <sui-input [(ngModel)]="outInputInfo.refsheetid" customTabindex="11" placeHolder="请输入相关单号">
+        
+                                    </sui-input>
+                        </div>
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 55px;">仓管员: </div>
+                        <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                                <sui-input [(ngModel)]="outInputInfo.manager" customTabindex="13" placeHolder="请输入仓管员">
+        
+                                    </sui-input>
+                        </div>
+                    </div>
+                </div>
+
+                <div sui-row>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+
+                            <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">备注: </div>
+                        <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
+                                <sui-input [(ngModel)]="outInputInfo.notes" customTabindex="15" placeHolder="请输入备注">
+            
+                                    </sui-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sui-panel>
+        
+    </ng-template>
+
+    <ng-template #suiItemInputContent>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods (selectGoods)="selectedGoods($event)" name="goodsName" [customTabindex]="16" #goodsSelect [isMult]="true"></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="数量">
+                    <ng-template #cellContent>
+
+                        <sui-input [(ngModel)]="addGoods.num" customTabindex="18" placeHolder="请输入商品数量" >
+
+                                </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="单价">
+                    <ng-template #cellContent>
+
+                        <sui-input [(ngModel)]="addGoods.price" customTabindex="19" placeHolder="请输入商品价格">
+                                <ng-template #addOnAfter>元</ng-template>
+                                </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="备注">
+                    <ng-template #cellContent>
+
+                        <sui-input nextfocus="goodsName" [(ngModel)]="addGoods.notes" customTabindex="20" placeHolder="请输入备注">
+
+                                </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            
+        </div>
+    </ng-template>
+    <!-- <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template> -->
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [gridEditOption]="gridEditOption" [page]="gridPage" (onToolBtnClick)="onToolBtnClick($event)" >
+        </sui-grid>
+    </ng-template>
+
+    
+    <ng-template #suiFooter>
+            <sui-panel title="" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+                    <div sui-panel-headerRight>
+                            <div sui-row >
+                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                                        制单人：{{outInputInfo?.editor}}
+                                    </div>
+                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                                        制单日期：{{outInputInfo?.editdate}}
+                                    </div>
+                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                                        审核人：{{outInputInfo?.checker}}
+                                    </div>
+                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                                        审核日期：{{outInputInfo?.checkdate}}
+                                    </div>
+                                </div>
+                    </div>
+                </sui-panel>
+        </ng-template>
+</template-edit>

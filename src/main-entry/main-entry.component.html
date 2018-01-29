@@ -1,0 +1,13 @@
+<sui-spin style="display:none;"></sui-spin>
+<sui-framework *ngIf="isUserSuiFramework">
+    <!-- <div style="margin-left: 0px;" *ngIf="isParentApp">
+        <menu-router></menu-router>
+    </div> -->
+    <!-- <ng-template #frameworkAppContent>
+        <div>dddddddddddddd</div>
+        <router-outlet></router-outlet>
+    </ng-template> -->
+</sui-framework>
+<ng-template [ngIf]="!isUserSuiFramework">
+    <router-outlet></router-outlet>
+</ng-template>

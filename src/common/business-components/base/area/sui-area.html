@@ -1,0 +1,30 @@
+<div class="sui-area" [class.active]="areaOpen">
+    <div class="ant-input-group">
+        <span class="ant-input-group-addon">
+            {{areaPrependName}}
+        </span>
+        <div class="ant-input-affix-wrapper" (click)="areaNameInputClick($event)">
+            <input #areaNameInput [attr.customTabindex]="customTabindex" class="ant-input" readonly type="text" [attr.title]="areaName" [(ngModel)]="areaName">
+            <span class="ant-input-suffix">
+                <i [class]="areaOpen ? 'anticon anticon-up' : 'anticon anticon-down'"></i>
+            </span>
+        </div>
+    </div>
+    <div class="area-container" [hidden]="!areaOpen">
+        <sui-tabset [nzType]="'card'" [nzSelectedIndex]="_tabs.selectedIndex">
+            <sui-tab *ngFor="let tab of _tabs.list; let i=index;" [nzDisabled]="tab.disabled" (nzClick)="selectTab(tab.index)">
+                <ng-template #nzTabHeading>
+                    {{tab.name}}
+                </ng-template>
+                <ul class="area-content">
+                    <li *ngFor="let item of tab.contentList">
+                        <span [style.color]="item.value === _tabs.list[i].value ? 'red': ''" (click)="tab.selectClick($event, item)">{{item.label}}</span>
+                    </li>
+                </ul>
+            </sui-tab>
+            <ng-template #nzTabBarExtraContent>
+                <i class="ant-tabs-close-tab anticon anticon-cross" (click)="closeTab()"></i>
+            </ng-template>
+        </sui-tabset>
+    </div>
+</div>

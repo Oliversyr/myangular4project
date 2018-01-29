@@ -1,0 +1,85 @@
+<!-- 单据列表布局 -->
+<template-edit [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiMain>
+        <sui-panel title="基本信息" >
+            <div sui-panel-content>
+                <div sui-row >
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        拣货批次号：{{pickInfo?.sheetid}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        拣货仓库：{{pickInfo?.stockname}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        汇总方式：{{pickInfo?.picktype === 0 ? "按商品汇总" : "按店铺商品汇总"}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        单据状态：{{pickInfo?.status === 0 ? "拣货中" : "拣货完成"}}
+                    </div>
+                </div>
+                <div sui-row>
+                    <div sui-col [nzXs]="2" [nzSm]="2" [nzMd]="2" style="width: 50px;">备注: </div>
+
+                    <div sui-col [nzXs]="20" [nzSm]="20" [nzMd]="20">
+                        <sui-input [(ngModel)]="pickInfo.notes" customTabindex="11" placeHolder="请输入备注">
+
+                            </sui-input>
+                               
+                    </div>
+                </div>
+            </div>
+        </sui-panel>
+
+        
+    </ng-template>
+
+    <ng-template #suiTotal>
+        <!-- 总金额: 123123123 ;总数量: 123123123;优化金额:123123;总件数:12311 -->
+        <div class="sui-amount-panel">
+            <span class="sui-amount-panel-item  animated zoomIn mr10">
+                配送单: <label class="fz18 c-red">{{pickInfo.sheetnum}}张</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn mr10">
+                配送店铺: <label class="fz18 c-red">{{pickInfo.shopnum}}家</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn mr10">
+                配送商品: <label class="fz18 c-red">{{pickInfo.goodsnum}}种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn mr10">
+                拣货商品: <label class="fz18 c-red">{{pickInfo.pckgoodsnum}}种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn">
+                完全满足: <label class="fz18 c-red">{{pickInfo.oknum}}种</label>
+            </span>
+        </div>
+    </ng-template>
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)" [page]="gridPage" [hidden]="currentGrid === 2" >
+        </sui-grid>
+    </ng-template>
+
+    
+    <ng-template #suiFooter>
+         <div class="sui-footer-panel">
+                <div sui-row >
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        汇总人：{{pickInfo?.editor}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        汇总日期：{{pickInfo?.editdate}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        拣货人：{{pickInfo?.checker}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        拣货日期：{{pickInfo?.checkdate}}
+                    </div>
+                </div>
+            </div>    
+    </ng-template>
+</template-edit>
+

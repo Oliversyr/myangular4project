@@ -1,0 +1,107 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-05 09:27:18
+ * @modify date 2017-12-07 03:22:09
+ * @desc 
+*/
+
+/**
+// 头部高度
+$headerHeight: 100px;
+//导航高度
+$navHeight: 34px; 40px
+//底部高度
+$footerHeight: 60px;
+//内容最小高度
+$contentMinHeight: 300px;
+//左边宽度
+$leftWidth: 150px;
+//右边宽度
+$rightWidth: 150px;
+//内容最小宽度
+$contentMinWidth: 500px;
+**/
+
+@mixin initTabLayout($headerHeight: 40px, $navHeight: 40px, $footerHeight: 26px, $contentMinHeight: 390px, $leftWidth: 150px, $rightWidth: 0px, $contentMinWidth: 590px) {
+    .sui-tab {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        // background: #8888FF !important;
+        .sui-tab-leftMenu {
+            height: 100%;
+            flex-grow: 0;
+            flex-shrink: 0;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+            // overflow-y: auto;
+            /*add 9.25 内容过多滚动条*/
+            // overflow-x: hidden;
+            /*add 10.25 横向不滚动*/
+            width: $leftWidth;
+            /*add 9.25 左侧宽度*/
+        }
+        .sui-tab-leftMenu.close {
+            /*收缩*/
+            width: 30px;
+        }
+        .sui-tab-center {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            // background: #7777FF;
+            margin-left: .1em;
+            .sui-tab-center-header {
+                width: 100%;
+                height: $headerHeight;
+                // flex-basis: $headerHeight;
+                // flex-grow: 0;
+                // flex-shrink: 0;
+                // background: #FFFF55;
+            }
+            .sui-tab-center-content {
+                position: relative;
+                display: flex;
+                flex-grow: 1;
+                padding: 10px 15px;
+
+               
+                // iframe {
+                //     // position: absolute;
+                //     width: 100%;
+                //     // height: calc(100% - #{ $navHeight });
+                //     // height: 600px;
+                //     height: 100%;
+                //     /*1-11*/
+                //     height: calc(100% - 60px);
+                //     /*10-25*/
+                //     padding: .4em 0 0 .4em;
+                //     border: 0px;
+                // }
+            }
+            .sui-tab-center-footer {
+                position: relative;
+                width: calc(100% - 30px);
+                height: $footerHeight;
+                margin: auto;
+                text-align: center;
+                line-height: $footerHeight;
+                border-top: 1px solid #ccc;
+                // flex-basis: $footerHeight;
+                // flex-grow: 0;
+                // flex-shrink: 0;
+                // bottom: 0;
+                // background: #FFB38E;
+
+            }
+        }
+        .sui-tab-right {
+            width: 100%;
+            flex-basis: $rightWidth;
+            flex-grow: 0;
+            flex-shrink: 0;
+            // bottom: 0;
+            background: #FFE1D2;
+        }
+    }
+}

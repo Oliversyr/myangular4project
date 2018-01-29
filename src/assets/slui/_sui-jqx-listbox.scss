@@ -1,0 +1,64 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-04 10:52:33
+ * @modify date 2018-01-04 10:52:33
+ * @desc  jqx 下拉列表重置样式表
+*/
+
+.jqx-listbox {//下拉框
+    .jqx-listitem-element {//每一行的项目
+        box-sizing: border-box;
+        height: 30px !important;
+        
+        .jqx-item.jqx-listitem-state-normal {//span子项目 正常状态
+            box-sizing: border-box;
+            width: 100% !important;
+            height: 30px !important;
+            line-height: 30px !important;
+            padding: 0 15px!important;
+            margin: 0 !important;
+            border: none !important;
+            cursor: pointer;
+            border-radius: 0;
+            color: $gray-dark;
+        }//.jqx-item 正常
+        
+        .jqx-item.jqx-listitem-state-hover {//span子项目 hover
+            box-sizing: border-box;
+            width: 100% !important;
+            height: 30px !important;
+            line-height: 30px !important;
+            padding: 0 15px!important;
+            margin: 0 !important;
+            border: none !important;
+            cursor: pointer;
+            border-radius: 0;
+            color: $gray-dark;
+            border-color: #f8f8f8;
+            background-color: #f8f8f8;
+        }//.jqx-item 选中状态
+
+        .jqx-item.jqx-listitem-state-selected {//span子项目 选中状态
+            box-sizing: border-box;
+            width: 100% !important;
+            height: 30px !important;
+            line-height: 30px !important;
+            padding: 0 15px !important;
+            margin: 0 !important;
+            border: none !important;
+            color: $primary !important;
+            cursor: pointer;
+            border-radius: 0;
+            border-color: $primary-light;
+            background-color: $primary-light;
+        }//.jqx-item 选中状态
+        
+    }//.jqx-listitem-element end
+}//jqx-listbox end
+ 
+
+
+.jqx-listbox.jqx-fill-state-focus {//下拉框选中状态
+    border-color: #e0e0e0 !important;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2) !important;
+}

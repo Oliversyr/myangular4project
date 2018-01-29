@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+
+<body>
+
+    <div class="slui-header">
+
+    </div>
+    <!--头部菜单 slui-header end **************************** -->
+
+    <div class="slui-wraper">
+        <div class="slui-sidebar">
+            <i class="fa fa-bars"></i>
+
+            <ul class="left-menu">
+                <li class="left-menu-item active">
+                    <a href="javascript:void(o)">
+                        <i class="fa fa-behance-square"></i> 基本
+                    </a>
+                    <ul class="left-menu-sub">
+                        <li class="left-menu-sub-item">面板</li>
+                        <li class="left-menu-sub-item">按钮</li>
+                        <li class="left-menu-sub-item">表单</li>
+                        <li class="left-menu-sub-item">下拉菜单</li>
+                        <li class="left-menu-sub-item">面包屑</li>
+                    </ul>
+                </li>
+                <li class="left-menu-item">
+                    <a href="javascript:void(o)">
+                        <i class="fa fa-behance-square"></i> 组件
+                    </a>
+                </li>
+                <li class="left-menu-item">
+                    <a href="javascript:void(o)">
+                        <i class="fa fa-behance-square"></i> 布局
+                    </a>
+                </li>
+                <li class="left-menu-item">
+                    <a href="javascript:void(o)">
+                        <i class="fa fa-behance-square"></i> 类
+                    </a>
+                </li>
+                <li class="left-menu-item">
+                    <a href="javascript:void(o)">
+                        <i class="fa fa-behance-square"></i> 插件
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+        <!--左侧菜单 slui-sidebar end **************************** -->
+
+        <div class="slui-main">
+            <div class="slui-panel" style="height: 1300px;">
+            </div>
+
+
+            <div class="sl-footer">Copyright 2017 by Jinmy</div>
+        </div>
+        <!--右侧主体内容 slui-main  end ************************* -->
+
+    </div>
+    <!--下部分 slui-wraper end-->
+
+
+</body>
+
+</html>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        font-size: 12px;
+        color: #555555;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    a {
+        color: #555555;
+        text-decoration: none;
+    }
+    
+    ul,
+    li {
+        list-style-type: none;
+    }
+    /*scrollbar set */
+    
+    ::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:vertical {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 3px transparent;
+        background-color: rgba(40, 51, 67, 0.8);
+        /* background-color: $primary; */
+    }
+    
+    ::-webkit-scrollbar-thumb:horizontal {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 3px transparent;
+        background-color: #d3d7e0;
+    }
+    /* slui-header begin ************************************* */
+    
+    .slui-header {
+        background-color: #131e2c;
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+    }
+    
+    .slui-wraper {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 50px);
+    }
+    
+    .slui-sidebar {
+        position: fixed;
+        top: 50px;
+        bottom: 0px;
+        z-index: 102;
+        overflow-x: hidden;
+        width: 150px;
+        /* height: 100%; */
+        height: calc(100% - 50px);
+        background-color: #283343;
+        color: white;
+        line-height: 30px;
+    }
+    
+    .slui-sidebar a {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .slui-sidebar.close {
+        width: 35px;
+    }
+    /*left-menu begin ********** */
+    
+    .left-menu .left-menu-item {
+        min-height: 35px;
+        line-height: 35px;
+        transition: all .4s ease;
+        padding: 0 10px;
+    }
+    
+    .left-menu .left-menu-item a {
+        box-sizing: border-box;
+        display: inline-block;
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+    }
+    
+    .left-menu .left-menu-item.active,
+    .left-menu .left-menu-item:hover {
+        background: #242f35;
+        cursor: pointer;
+    }
+    
+    .left-menu .left-menu-sub .left-menu-sub-item:hover {
+        background-color: #283343;
+    }
+    /*sl-footer begin ************************************* */
+    
+    .sl-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+    /*slui-main begin ************************************* */
+    
+    .slui-main {
+        width: auto;
+        position: absolute;
+        top: 0px;
+        left: 150px;
+        bottom: 0px;
+        right: 0px;
+        padding: 10px;
+        padding-bottom: 40px;
+        overflow: hidden;
+        background: #eaedf1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .slui-panel {
+        width: 100%;
+        height: 1200px;
+        background: #fff;
+        border-radius: 4px;
+    }
+</style>

@@ -1,0 +1,18 @@
+.sui-role {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100%;
+
+    .role-left {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .role-right {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,84 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-06 10:37:04
+ * @modify date 2017-12-06 10:37:04
+ * @desc 文本字体
+*/
+.fz12{
+	font-size: 12px;
+}
+.fz13{
+	font-size: 13px;
+}
+.fz14{
+	font-size: 14px;
+}
+.fz16{
+	font-size: 16px;
+}
+.fz18{
+	font-size: 18px;
+}
+.fz20{
+	font-size: 20px;
+}
+.fz22{
+	font-size: 22px;
+}
+.fz24{
+	font-size: 24px;
+}
+.fz32{
+	font-size: 32px;
+}
+.fz40{
+	font-size: 40px;
+}
+.tx-bold{
+	font-weight: 700;
+}
+.tx-underline{
+	text-decoration: underline;
+	color: $primary-dark;
+	cursor: pointer;
+}
+.fontCn{
+	font-family: "宋体";
+}
+.fontYahei{
+	font-family: '微软雅黑';
+}
+
+
+/*文本超出隐藏*/
+.tx-overflow {
+    @include text-overflow;
+}
+
+.tx-overflow2 {
+    // text-overflow: ellipsis;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 2;
+    // -webkit-box-orient: vertical;
+	// overflow: hidden;
+	 @include text-overflow2;
+}
+
+.tx-overflow3 {
+    // text-overflow: ellipsis;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 3;
+    // -webkit-box-orient: vertical;
+	// overflow: hidden;
+	 @include text-overflow3;
+}
+
+.tl{
+	text-align: left;
+}
+.tc{
+	text-align: center;
+}
+.tr{
+	text-align: right;
+}

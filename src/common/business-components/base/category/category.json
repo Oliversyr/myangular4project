@@ -1,0 +1,275 @@
+{
+    "retCode" : "SUCCESS",
+    "retMsg" : "操作成功",
+    "result" : [ {
+      "catId" : 30,
+      "catName" : "酒饮冲调",
+      "parentId" : -1,
+      "levelId" : 1,
+      "displayOrder" : 1,
+      "notes" : "一级分类",
+      "goodsNum" : 28,
+      "lowerCatList" : [ {
+        "catId" : 3001,
+        "catName" : "饮料",
+        "parentId" : 30,
+        "levelId" : 2,
+        "displayOrder" : 1,
+        "notes" : "二级分类",
+        "goodsNum" : 28,
+        "lowerCatList" : [ {
+          "catId" : 300101,
+          "catName" : "碳酸饮料",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 4,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300102,
+          "catName" : "茶饮料",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 4,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300103,
+          "catName" : "功能饮料",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300104,
+          "catName" : "果汁饮料",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300105,
+          "catName" : "其他饮料",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 3,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300106,
+          "catName" : "纯净水",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300107,
+          "catName" : "矿物质水",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300201,
+          "catName" : "常温酸牛奶",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 3,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300202,
+          "catName" : "常温鲜牛奶",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300203,
+          "catName" : "奶茶咖啡",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 3,
+          "lowerCatList" : null
+        }, {
+          "catId" : 300204,
+          "catName" : "茶包茶粉",
+          "parentId" : 3001,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        } ]
+      }, {
+        "catId" : 3002,
+        "catName" : "乳品",
+        "parentId" : 30,
+        "levelId" : 2,
+        "displayOrder" : 1,
+        "notes" : "二级分类",
+        "goodsNum" : 0,
+        "lowerCatList" : null
+      } ]
+    }, {
+      "catId" : 31,
+      "catName" : "休闲食品",
+      "parentId" : -1,
+      "levelId" : 1,
+      "displayOrder" : 1,
+      "notes" : "一级分类",
+      "goodsNum" : 23,
+      "lowerCatList" : [ {
+        "catId" : 3101,
+        "catName" : "食品",
+        "parentId" : 31,
+        "levelId" : 2,
+        "displayOrder" : 1,
+        "notes" : "二级分类",
+        "goodsNum" : 17,
+        "lowerCatList" : [ {
+          "catId" : 310101,
+          "catName" : "蛋糕、派",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310102,
+          "catName" : "面包",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310103,
+          "catName" : "肉松饼",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310104,
+          "catName" : "饼干",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 4,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310105,
+          "catName" : "巧克力",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310106,
+          "catName" : "八宝粥",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310107,
+          "catName" : "花生",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310108,
+          "catName" : "瓜子",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310109,
+          "catName" : "薯条薯片",
+          "parentId" : 3101,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        } ]
+      }, {
+        "catId" : 3102,
+        "catName" : "其他",
+        "parentId" : 31,
+        "levelId" : 2,
+        "displayOrder" : 1,
+        "notes" : "二级分类",
+        "goodsNum" : 6,
+        "lowerCatList" : [ {
+          "catId" : 310201,
+          "catName" : "口香糖",
+          "parentId" : 3102,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310202,
+          "catName" : "话梅",
+          "parentId" : 3102,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 2,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310203,
+          "catName" : "数据线",
+          "parentId" : 3102,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        }, {
+          "catId" : 310204,
+          "catName" : "充电器",
+          "parentId" : 3102,
+          "levelId" : 3,
+          "displayOrder" : 1,
+          "notes" : "三级分类",
+          "goodsNum" : 1,
+          "lowerCatList" : null
+        } ]
+      } ]
+    } ]
+  }

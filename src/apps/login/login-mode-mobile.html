@@ -1,0 +1,36 @@
+<div [suikeyboard]>
+    <sui-validator #el_validator [rules]="rootValidators">
+        <div class="login-box-con" id="login-person-con">
+            <div class="login-box-tip  pst-rl">
+                使用手机登录前，请确定帐号已经绑定手机号码。
+                <i class="icon-question fr" (mouseenter)="showHelpQuestion=true" (mouseleave)="showHelpQuestion=false"></i>
+                <div class="sl-alert-checkout-question " [hidden]="!showHelpQuestion">
+                    <span>如果不了解您的帐号密码，请与我司{{enterpriseInfo.productName}}系统管理员联系，或直接拨打{{enterpriseInfo.hotline}}咨询客服。</span>
+                </div>
+            </div>
+            <div class="form-group form-login mt15">
+                <label class="label-login">
+                    <i class="sl-icon icon-username"></i>
+                </label>
+                <input #userMobile customTabindex="1" class="input input-login fz14" id="userMobile" type="text" placeholder="请输入手机号、账号"
+                    autofocus [(ngModel)]="userInfo.loginName" [activeClass]="'parent'" autocomplete/>
+            </div>
+            <div class="form-group form-login mt20 prt-rl">
+                <label class="label-login">
+                    <i class="sl-icon icon-password"></i>
+                </label>
+                <input customTabindex="2" id="userPswd" class="input input-login fz14" type="password" placeholder="请输入密码" [(ngModel)]="userInfo.pswd"
+                    [activeClass]="'parent'" />
+            </div>
+            <div class="form-forget mt20 clearfix fz16 tx-666">
+                <sui-tooltip [name]="'autoLoginTooltip'" [position]="'left'" [content]="autoLoginTooltipContent">
+                    <label sui-checkbox [(ngModel)]="userInfo.isAutoLogin">
+                        <span>自动登录</span>
+                    </label>
+                </sui-tooltip>
+                <a class="forget-password tx-666 fr" (click)="doForgetMobilePsd()">忘记密码？</a>
+            </div>
+            <button customTabindex="3" suiHotKey="SUBMIT" type="button" class="btn sl-btn-login mt20 " (click)="doMobileLogin()">登录</button>
+        </div>
+    </sui-validator>
+</div>

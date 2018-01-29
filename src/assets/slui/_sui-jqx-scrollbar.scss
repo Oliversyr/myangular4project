@@ -1,0 +1,53 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-04 11:36:37
+ * @modify date 2018-01-26 05:21:02
+ * @desc jqx滚动条重置样式表
+*/
+
+.jqx-scrollbar {//公用的滚动条
+    .jqx-scrollbar-state-normal {
+            .jqx-scrollbar-thumb-state-normal {
+                border-color: $scrollbar-bg !important;
+                background: $scrollbar-bg !important;
+                border-radius: 10px !important;
+                /*20180126 add*/
+                width: 10px !important;
+                left: 2px !important;
+            } 
+        }
+}//.jqx-scrollbar end
+
+
+.jqx-listbox {//下拉列表的滚动条
+    .jqx-scrollbar {//
+        .jqx-scrollbar-state-normal {
+            background:$white !important;
+            .jqx-scrollbar-thumb-state-normal {
+                border-color: $scrollbar-bg !important;
+                background: $scrollbar-bg !important;
+            }
+            .jqx-scrollbar-button-state-normal {//点击按钮去掉
+                display: none !important;
+            }    
+        }
+    }//.jqx-scrollbar end
+}//jqx-listbox  下拉列表的滚动条 end
+
+
+.sui-category {// 品类树的滚动条
+    .sui-tree-list {
+        .jqx-scrollbar {
+            .jqx-scrollbar-state-normal {
+                .jqx-scrollbar-thumb-state-normal-horizontal {//横向滚动条
+                     border-color: $scrollbar-bg !important;
+                     background: $scrollbar-bg !important;
+                     border-radius: 10px !important;
+               }//.jqx-scrollbar-thumb-state-normal-horizontal 横向
+                // .jqx-scrollbar-button-state-normal {//点击按钮去掉
+                //     display: none !important;
+                // } //点击按钮去掉
+            }//.jqx-scrollbar-state-normal
+        }//.jqx-scrollbar 
+    }//.sui-tree-list
+}//.sui-category  品类树的滚动条

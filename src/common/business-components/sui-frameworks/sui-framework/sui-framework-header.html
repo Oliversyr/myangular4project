@@ -1,0 +1,56 @@
+<div class="sui-framework-header">
+    <label class="enterprise-logo">
+        <img [src]="enterpriseInfo?.logo" class="logo" />
+    </label>
+    <div class="apps-list sui-framework-menu">
+       <!--  <a *ngFor="let app of appsList" class="menu-item" [ngClass]="{'active': app.active, '':app.active}" href="{{app.appurl}}" title="{{app.description}}" target="{{app.target}}">
+            {{app.apptitle}}
+        </a> -->
+
+        <a *ngFor="let app of appsList" class="menu-item" [ngClass]="{'active': app.active, '':app.active}" (click)="goToApp(app,$event)" title="{{app.description}}" href="javascript:void(0);">
+            {{app.apptitle}}
+        </a>
+
+        <span class="headerNav" (mouseover)="moreShow = true;" *ngIf="moreShow">
+            <a class="more">更多</a>
+        </span>
+    </div>
+    <!-- <div class="system-operation-wrap"> -->
+        <div class="system-operation">
+            <span class="user-name">{{ '您好！'+ userInfo?.realName }}</span>
+            <div class="systemSet">
+                <div class="headMailbox">
+                    <p>99+</p>
+                </div>
+                <div class="headHelp"></div>
+                <!-- <div class="headRefresh"></div> -->
+                <div class="headSet pst-rl">
+                    <!-- <ul class="setIcon-alert animated fadeIn ">
+                        <li>1920 * 900</li>
+                    </ul> -->
+                </div>
+                <div class="headSkin pst-rl">
+                    <!-- <ul class="skinIcon-alert animated fadeIn ">
+                        <li><span class="skinIcon-alert-color"></span> <span class="skinIcon-alert-txt">默认</span></li>
+                    </ul> -->
+                </div>
+            </div>
+            <!-- <div class="systemBtns">
+                <a class="win-min"></a>
+                <a class="win-max active"></a>
+                <a class="win-close"></a>
+            </div> -->
+
+            <ul class="sui-menu">
+                <li class="sui-menu-item logout" (click)="logOut()">退出</li>
+            </ul>
+        </div>
+    <!-- </div>     -->
+
+    <div class="header-more animated bounce fadeInDown" [hidden]="!moreShow">
+        <ul class="header-more-menu clearfix">
+            <li>店务管理</li><li>POS收银</li><li>报表中心</li><li>批发管理</li><li>彩票中心</li><li>彩票中心</li>
+        </ul>
+        <span (click)="moreShow = !moreShow;" class="header-more-icon"><i class="sui-icon close-more-icon"></i></span>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<ng-template ngFor let-item let-index="index" [ngForOf]="sorts">
+
+    <span title="按{{item.label}}排序" class="gird-sort-item" [ngClass]="{'active': currentSortIndex==index, '':currentSortIndex!=index}" (click)="_topSort(item,index,$event); ">{{item.label}} <i  *ngIf="currentSortIndex==index && index!=0" [ngClass]="{'anticon-arrow-up': item.direction==1, 'anticon-arrow-down':item.direction==-1}"  class="anticon"></i></span>
+
+</ng-template>

@@ -1,0 +1,51 @@
+[{
+        "moduleid": "1000",
+        "modulename": "工具(utils)",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+                "moduleid": "1001",
+                "modulename": "工具",
+                "parentmoduleid": "1000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "url": "utils"
+            },
+            {
+                "moduleid": "1002",
+                "modulename": "日志测试",
+                "parentmoduleid": "1000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "url": "utils/logs"
+            }
+        ]
+    },
+    {
+        "moduleid": "1100",
+        "modulename": "框架组件",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "7",
+        "url": "",
+        "childrens": [{
+                "moduleid": "1101",
+                "modulename": "框架组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "url": "iframe"
+            },
+            {
+                "moduleid": "1102",
+                "modulename": "页签管理",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "url": "uis/tab-manager"
+            }
+        ]
+    }
+]

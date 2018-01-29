@@ -1,0 +1,246 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-04 04:54:11
+ * @modify date 2018-01-15 02:48:46
+ * @desc  主体框架样式,包括头部、左侧菜单
+   <sui-framework>
+   .sui-framework.theme-dark
+   .sui-framework-body
+   <sui-tab-menu>
+   .layout-wrapper.sui-tab
+   .sui-tab-leftMenu  .sui-tab-center
+
+*/
+
+sui-framework {
+  //20171207
+  display: flex;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  .sui-framework {
+    //20171207
+    position: absolute;
+    overflow: hidden;
+  }
+}
+
+
+
+/*主体内容,包含左侧菜单和中间内容*/
+.sui-framework-body {
+  background: $body-bg;
+}
+
+/*指令元素*/
+sui-tab-menu,
+ng-component,
+template-list,
+template-edit,
+template-detail{//启用弹性盒子,列布局
+  @include flex-col;
+}
+
+
+
+/*标签菜单部分重置，该功能是引用zero框架tab标签*/
+.sui-tab-center-header {
+  //标签菜单********************************
+  .ant-tabs-bar {
+    margin-bottom: 10px !important;
+    border: none !important;
+  }
+  .ant-tabs.ant-tabs-card>.ant-tabs-bar .ant-tabs-nav-container {
+    height: 40px !important;
+  }
+  .ant-tabs-nav-wrap {
+    background: $white !important;
+  }
+  .ant-tabs.ant-tabs-card>.ant-tabs-bar .ant-tabs-tab {
+    padding: 9.5px 16px 9.5px !important;
+    margin-right: 0 !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    border-right: 1px solid #ccc !important;
+    background: $white !important;
+  }
+  .ant-tabs.ant-tabs-card>.ant-tabs-bar .ant-tabs-tab-active {
+    background: $ant-tabs-bg !important;
+    color: $gray-darker !important;
+  }
+} //.sui-tab-center-header end
+
+.sui-tab-leftMenu {
+    //左侧菜单 20171207
+    .leftMenu-scroll {
+        // position: absolute;
+        // overflow-y: auto;
+        // overflow-x: hidden;
+        @include page-scroll;
+        width: 1000%;
+        height: calc(100% - 80px);
+    }
+    .sui-tab-leftMenu-ul,
+    .ant-menu-vertical.ant-menu-inline-collapsed,
+    .ant-menu-inline-collapsed {
+        width: 149px;
+    }
+    .ant-menu {
+        background-color: transparent !important;
+    }
+    .ant-menu-submenu.close {
+        width: 30px;
+    }
+    .sui-tab-leftMenu-btn {
+        width: 100%;
+        height: 35px;
+        background: $leftMenu-btn-bg;
+        border: none;
+    }
+} // ui-tab-leftMenu end
+
+
+//---------------------------------------------媒体查询分割线-----------------------------------
+//媒体查询处理1024px下的布局方式 方案一 ----------------------------------------------------
+//弹性盒子改成行内块块状布局
+
+// @media  screen  and (max-width:$screen-sm) {
+//     .sui-tab-center{
+//         position: relative;
+//         overflow-x: auto;
+//         overflow-y: auto;
+//         width: 800px;   
+//     }
+//     .sui-tab .sui-tab-center .sui-tab-center-header, 
+//     .sui-tab-center-content,
+//     .sui-tab-center-footer,
+//     sui-tab-menu,
+//     ng-component,
+//     template-list,
+//     .sui-pageList {
+//         display: inline-block !important;
+//         width: 1140px !important;
+//         padding-right: 10px;
+//         box-sizing: border-box;
+//     }
+
+//     //块状下，需要高度100%
+//     .sui-tab-center-content,
+//     ng-component,
+//     template-list,
+//     template-edit,
+//     template-detail,
+//     .sui-table-panel-response {
+//       height: 100% !important;
+//     }
+
+// }
+//  @media  screen  and (max-width:$screen-sm) {
+//     .sui-tab-center{
+//         position: relative;
+//         overflow-x: auto;
+//         overflow-y: auto;
+//         width: 650px;   
+//     }
+//     .sui-tab .sui-tab-center .sui-tab-center-header, 
+//     .sui-tab-center-content,
+//     .sui-tab-center-footer,
+//     sui-tab-menu,
+//     ng-component,
+//     template-list,
+//     .sui-pageList {
+//         display: inline-block !important;
+//         width: 1140px !important;
+//         padding-right: 10px;
+//         box-sizing: border-box;
+//     }
+
+//     //块状下，需要高度100%
+//     .sui-tab-center-content,
+//     ng-component,
+//     template-list,
+//     template-edit,
+//     template-detail,
+//     .sui-table-panel-response {
+//       height: 100% !important;
+//     }
+    
+// }
+//媒体查询处理1024px下的布局方式 方案一 end --------------------------------------------------
+//媒体查询处理1024px下的布局方式 方案二 end --------------------------------------------------
+@media  screen  and (max-width:$screen-sm) {
+    body {
+        overflow:auto;
+    }
+    sui-framework {//弹性盒子重置为块状盒子
+        display: inline-block;
+        width: 1360px;
+        height: 800px;
+    }
+
+}
+
+//列表页表格区域金额统计布局变化方案 12-12
+// .sui-grid-top{
+//       .sui-grid-topRight {
+//           .sui-amount-panel {
+//                 box-sizing: border-box;
+//                 width: 100%;
+//                 min-height: 30px;
+//                 line-height: 30px;
+//                 background-color: #fff;
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 /*border-bottom: 1px solid #ccc; */
+//                 .sui-amount-panel-item {
+//                     display: inline-block;
+//                     min-width: 40px;
+//                     margin-right: 25px;
+//                     font-size: 14px;
+//                     font-family: 'å¾®è½¯é›…é»‘';
+//                     color: #555;
+//                 }
+//             }//.sui-amount-panel
+//       }
+//   }//.sui-grid-top   
+
+          .sui-amount-panel {/*20180124*/
+                box-sizing: border-box;
+                width: 100%;
+                min-height: 30px;
+                line-height: 30px;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .sui-amount-panel-item {
+                    display: inline-block;
+                    min-width: 40px;
+                    margin-right: 25px;
+                    font-size: 14px;
+                    font-family: 'å¾®è½¯é›…é»‘';
+                    color: #555;
+                }
+            }//.sui-amount-panel
+
+//   @media only screen and (max-width:1024px) {//金额统计小屏幕
+//         .sui-grid-top{
+//             .sui-grid-topRight {
+//                 .sui-amount-panel {
+//                     justify-content: center;
+//                 }
+//             }
+//         }        
+//     }
+
+
+.sui-footer-panel {
+  /*底部信息栏目*/
+    background-color: #fff;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}

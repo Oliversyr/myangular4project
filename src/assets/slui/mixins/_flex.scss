@@ -1,0 +1,32 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-07 03:59:56
+ * @modify date 2017-12-07 03:59:56
+ * @desc flex 弹性盒子 mixins
+*/
+@mixin flex-page {//最外层
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+@mixin flex-row {//行
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+@mixin flex-col {//列
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+@mixin page-scroll {//需滚动条
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

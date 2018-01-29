@@ -1,0 +1,15 @@
+<div class="sui-brand">
+    <div class="sui-input-group">
+        <span class="sui-input-group-addon">
+            {{brandPrependName}}
+        </span>
+        <div class="sui-input-group-content">
+            <sui-combobox #myComboBox [attr.customTabindex]="customTabindex" [autoComplete]="true" [showArrow]="false" [searchMode]="'contains'"
+                [showCloseButtons]="true" [source]="dataSource" [selectedIndex]="0" [displayMember]="'brandName'" [valueMember]="'brandId'"
+                (onChange)="selectItemChange($event, 'single')" (onCheckChange)="selectItemChange($event, 'multiple')" [checkboxes]="selectionMode ==='multiple'"></sui-combobox>
+            <span class="sui-input-suffix" (click)="handleArrowSelect($event)">
+                <i [class]="isOpen ? 'anticon anticon-up' : 'anticon anticon-down'"></i>
+            </span>
+        </div>
+    </div>
+</div>

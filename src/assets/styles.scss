@@ -1,0 +1,458 @@
+/*
+* 优先级别：越后(下)越高。建议第三方插件放在前(上)面，自定义文件放在后(下)面
+* animate.min.css 动画样式，font-awesome.min.css 字体样式，sui自定义组件样式(后续开发中...)
+*/
+
+// @import "primeng/index.css";
+// @import "primeng/primeng-extend.scss";
+// @import "animate/animate.min.css";
+// @import "font-awesome/css/font-awesome.min.css";
+@import "animate.css";
+@import "iconfont/iconfont.css";
+@import "slui/slui.scss";
+@import "form/form.scss";
+@import "demos.scss";
+
+body {
+    overflow-x: auto;
+    background-color: $body-bg !important;
+}
+
+.sui-show {
+    display: block;
+}
+
+.sui-hidden {
+    display: none;
+}
+
+input,
+textarea,
+button {
+    outline: none;
+}
+
+
+/**
+模拟A标签样式
+**/
+.sui-a {
+    color: $gray;
+    cursor: pointer;
+    &:hover {
+        color: $primary;
+    }
+}
+
+.ant-row>div {
+    /*行布局每一子项目的间距 10-13*/
+    /* padding: 0 15px;*/
+    padding-right: 15px;
+    margin-bottom: 10px; //20171227
+    @include text-overflow;/*20180123*/
+}
+
+.jqx-fill-state-normal {
+    font-family: '宋体' !important;
+    font-size: 12px !important;
+    color: $gray-dark;
+}
+.jqx-widget-content {
+    font-family: '宋体' !important;
+    font-size: 12px !important;
+    color: $gray-dark;
+}
+
+/*框架定义 每一层高度都要得到100% 10-11*******************************/
+
+// sui-tabset {
+//     display: block;
+//     position: absolute !important;
+//     /*relative 改为 absolute*/
+//     overflow: hidden;
+//     height: 100%;
+//     width: 100%;
+//     .ant-tabs-content {
+//         height: 100%;
+//         .ant-tabs-tabpane {
+//             height: 100%;
+//             .sui-content {
+//                 height: 100%;
+//             }
+//         }
+//     }
+// }
+/*sui-tabset end */
+
+// .sui-cell {
+//     /*10-13 处理输入框组件边框线，圆角组合问题*/
+//     .sui-input-group-addon {
+//         /*左侧span*/
+//         box-sizing: border-box;
+//         display: inline-block;
+//         width: 100%;
+//         height: 100%;
+//         font-size: 12px;
+//         font-weight: 400;
+//         line-height: 26px;
+//         color: rgba(0, 0, 0, .65);
+//         text-align: center;
+//         background-color: #eee;
+//         border: 1px solid #d9d9d9;
+//         border-right: none;
+//         border-radius: 4px;
+//         position: relative;
+//         transition: all .3s;
+//         border-bottom-right-radius: 0;
+//         border-top-right-radius: 0;
+//     }
+//     .ant-select-selection,
+//     .ant-input {
+//         /*输入框*/
+//         box-sizing: border-box;
+//         border-bottom-left-radius: 0 !important;
+//         border-top-left-radius: 0 !important;
+//     }
+//     // .ant-select-selection:not(:last-child),
+//     // .ant-input:not(:last-child){
+//     //     border-bottom-right-radius: 0 ;
+//     //     border-top-right-radius: 0 ;
+//     // }
+//     .sui-cell-right {
+//         .ant-select-selection {
+//             border-left: 0;
+//             border-bottom-right-radius: 4px;
+//             border-top-right-radius: 4px;
+//         }
+//     }
+//     // .ant-input-wrapper {
+//     //     .ant-input {
+//     //         border-bottom-right-radius: 0;
+//     //         border-top-right-radius: 0;
+//     //     }
+//     // }
+
+//     sui-input {
+//         .ant-input {
+//             &:focus {
+//                 @include box-shadow-input;
+//             }
+//         }
+//     }
+// } //sui-cell end
+.sui-input-group { /*输入框组件*/
+    .ant-input { /*输入框*/
+        box-sizing: border-box;
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+    }
+}
+
+.sui-lefeLabel {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 90px;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 26px;
+    color: rgba(0, 0, 0, .65);
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #d9d9d9;
+    border-right: none;
+    border-radius: 4px;
+    position: relative;
+    transition: all .3s;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.ant-calendar-picker {
+    margin-left: -6px;
+    .ant-calendar-picker-input {
+        border-radius: 0;
+    }
+    &:last-child {
+        .ant-calendar-picker-input {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+} //ant-calendar-picker
+
+// @font-face {
+//     font-family: 'anticon';
+//     src: url('./fonts/iconfont.eot');
+//     /* IE9*/
+//     src: /* IE6-IE8 */
+//     url('./fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* chrome、firefox */
+//     url('./fonts/iconfont.woff') format('woff'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+//     url('./fonts/iconfont.ttf') format('truetype'), /* iOS 4.1- */
+//     url('./fonts/iconfont.svg#iconfont') format('svg');
+// }
+//{extraFontName: "anticon", extraFontUrl: "./assets/fonts/iconfont"}
+input[type=text].jqx-input,
+input[type=password].jqx-input {
+    /*输入框默认左右内边距*/
+    box-sizing: border-box;/*20180122 add*/
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+}
+
+.ant-input-affix-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .ant-input-prefix,
+    .ant-input-suffix {
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        display: block;
+        width: 12px;
+        height: 12px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        z-index: 2;
+        line-height: 0;
+        color: rgba(0, 0, 0, .65);
+        cursor: pointer;
+    }
+    .ant-input-prefix-before {
+        left: 4px;
+    }
+    .ant-input:not(:last-child) {
+        /*输入框右侧有图标显示右内边距*/
+        padding-right: 20px !important;
+    }
+    .ant-input:nth-child(2) {
+        /*输入框左侧有图标显示的左内边距*/
+        padding-left: 20px !important;
+    }
+}
+
+
+/*下拉框组件 ****************************************/
+
+// .sui-cell .jqx-fill-state-normal {
+//     box-sizing: border-box !important;
+//     height: 28px !important;
+//     background: #eee !important;
+//     border-color: #d9d9d9 !important;
+// }
+
+// .sui-cell-left .jqx-dropdownlist-state-normal {
+//     /*下拉左侧显示的表现方式*/
+//     border-right: 0;
+//     border-top-right-radius: 0;
+//     border-bottom-right-radius: 0;
+//     background: #eee !important;
+// }
+
+// .sui-cell-content .jqx-dropdownlist-state-normal {
+//     /*下拉中间内容显示的表现方式*/
+//     z-index: 2;
+//     position: relative;
+//     border-top-left-radius: 0;
+//     border-bottom-left-radius: 0;
+//     background: $white !important;
+// }
+
+// .sui-input-group .jqx-dropdownlist-state-normal {
+//     z-index: 2;
+//     position: relative;
+//     border-top-left-radius: 0;
+//     border-bottom-left-radius: 0;
+//     background: $white !important;
+// }
+
+
+/*20171101*/
+
+/*下拉列表的选中hover样式*/
+// .jqx-listbox {
+//     .jqx-fill-state-focus {
+//         border-color: #cdcdcd;
+//     }
+//     .jqx-listitem-element {
+//         .jqx-fill-state-hover {
+//             border-radius: 0;
+//             border-color: #f8f8f8;
+//             background-color: #f8f8f8;
+//         }
+//         .jqx-fill-state-pressed {
+//             border-radius: 0;
+//             color: $gray-dark;
+//             border-color: $primary-light;
+//             background-color: $primary-light;
+//         }
+//     }
+// }
+
+
+/*组合下拉框 ****************************************/
+.sui-input-group .jqx-combobox {
+    z-index: 2;
+    position: relative;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: $white !important;
+}
+
+.jqx-fill-state-focus {
+    /*输入框选中状态*/
+    border-color: #49a9ee !important;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(16, 142, 233, .2);
+}
+
+// .sui-list-box-empty-data {
+//     display: block;
+//     height: 95%;
+//     width: 100%;
+//     background: red;
+//     margin-top: 30px;
+//     z-index: 503;
+//     position: absolute;
+// }
+
+// .jqx-dropdownlist-state-normal.jqx-fill-state-focus {
+//     /*输入框选中状态*/
+//     border-color: #49a9ee !important;
+//     outline: 0;
+//     box-shadow: 0 0 0 1px rgba(16, 142, 233, .2);
+// }
+
+
+// /*日期组件 ************************/
+// .sui-date-range {
+//     font-size: 0;
+//     .jqx-fill-state-normal {
+//         box-sizing: border-box !important;
+//         height: 28px !important;
+//         background: #eee !important;
+//         border-color: #d9d9d9 !important;
+//     }
+//     .jqx-rc-all:first-child {
+//         border-top-right-radius: 0;
+//         border-bottom-right-radius: 0;
+//     }
+//     .jqx-widget-content {
+//         box-sizing: border-box !important;
+//         height: 28px !important;
+//         border-left: 0 !important;
+//     }
+//     .sui-dates-begin {
+//         .jqx-rc-all {
+//             border-radius: 0 !important;
+//         }
+//     }
+//     .sui-dates-end {
+//         .jqx-rc-all {
+//             border-top-left-radius: 0 !important;
+//             border-bottom-left-radius: 0 !important;
+//         }
+//     }
+// }
+
+// /*单选按钮***************************/
+// .jqx-radiobutton-default {
+//     border-color: $primary !important;
+//     background: $white !important;
+//     .jqx-radiobutton-check-checked {
+//         width: 4.5px !important;
+//         height: 4.5px !important;
+//         margin-left: 3px !important;
+//         margin-top: 3px !important;
+//         border-color: $primary !important;
+//         background: $primary !important;
+//     }
+// }
+
+// /*复选框****************************/
+// .jqx-checkbox-default {
+//     border-color: $primary !important;
+//     background: $white !important;
+//     border-radius: 4px !important;
+//     position: relative;
+//     .jqx-checkbox-check-checked {
+//         /*选中状态*/
+//         background: none !important;
+//         &:after {
+//             content: '\2714';
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 13px;
+//             height: 13px;
+//             font-size: 12px;
+//             text-align: center;
+//             color: $white;
+//             background-color: $primary;
+//         }
+//     }
+//     .jqx-checkbox-check-indeterminate {
+//         /*没完全选中状态*/
+//         background: none !important;
+//         &:after {
+//             content: '\25a0';
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 13px;
+//             height: 13px;
+//             line-height: 13px;
+//             font-size: 8px;
+//             text-align: center;
+//             color: $white;
+//             background-color: $primary;
+//         }
+//     }
+// }
+
+// .jqx-checkbox-default.jqx-fill-state-hover {
+//     border-radius: 4px !important;
+//     background-color: $white !important;
+// }
+
+// sui-select .jqx-dropdownlist-content {//输入框左边下拉
+//     margin-top: 0 !important;
+//     margin-bottom: 0!important;
+//     line-height: 26px;
+// }
+// .sui-cell-left .jqx-dropdownlist-content {//输入框左边下拉
+//     text-align: center;
+// }
+
+/*tree*********************************** 20171107  */
+// .jqx-tree {
+//     border-radius: 4px;
+//     border: 1px solid #ebebeb;
+//     .jqx-tree-dropdown-root {
+//         padding: 10px;
+//     }
+//     .jqx-fill-state-pressed {
+//         border-color: #f8f8f8;
+//         background-color: #f8f8f8;
+//     }
+//     .jqx-fill-state-hover {
+//         border-color: #f8f8f8;
+//         background-color: #f8f8f8;
+//     }
+//     .jqx-tree-item {
+//         width: 100%;
+//     }
+// }
+
+// .sui-spin {
+//     position: absolute !important;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 2000;
+// }
+
+// .ant-breadcrumb-separator {//面包屑间距
+//     margin: 0 2px !important;
+// }

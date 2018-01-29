@@ -1,0 +1,58 @@
+[{
+        "moduleid": "1000",
+        "modulename": "首页",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "1",
+        "url": "",
+        "childrens": [{
+            "moduleid": "1001",
+            "modulename": "首页",
+            "parentmoduleid": "1000",
+            "rightvalue": "511",
+            "displayorder": "1",
+            "url": "home"
+        }]
+    },
+    {
+        "moduleid": "300000",
+        "modulename": "营销管理",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+                "moduleid": "300030",
+                "modulename": "零售价格维护",
+                "parentmoduleid": "300000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "url": "market/price-manger"
+            },
+            {
+                "moduleid": "300090",
+                "modulename": "价签打印",
+                "parentmoduleid": "300000",
+                "rightvalue": "511",
+                "displayorder": "9",
+                "url": "market/price-label"
+            }
+        ]
+    },
+    {
+        "moduleid": "700000",
+        "modulename": "系统管理",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "7",
+        "url": "",
+        "childrens": [{
+            "moduleid": "700070",
+            "modulename": "打印设置",
+            "parentmoduleid": "700000",
+            "rightvalue": "511",
+            "displayorder": "7",
+            "url": "system/print-set"
+        }]
+    }
+]

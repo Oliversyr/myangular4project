@@ -1,0 +1,8 @@
+{
+    "cors": true,
+    "port": 3690,
+    "open": false,
+    "server": {
+        "baseDir": "dist\\temp"
+    }
+}

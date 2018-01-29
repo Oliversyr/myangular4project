@@ -1,0 +1,40 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-20 04:46:02
+ * @modify date 2017-12-20 04:46:02
+ * @desc 重置jqx 日历组件样式
+*/
+.jqx-calendar {
+    
+    top: 2px !important;
+    left: 1px !important;
+
+    .jqx-widget-header {//头部样式重置
+        border-color:$white;
+        background: $white;
+
+    }//.jqx-widget-header 
+    
+    .jqx-calendar-cell-hover {//hover的日期
+        background-color: $primary-light;
+        border: $primary-light;
+        transition:all .25s;
+    }
+
+    .jqx-fill-state-pressed {//选中的日期
+        background-color: $primary;
+        border: $primary;
+        color: $white;
+    }
+
+    .jqx-calendar-footer {
+        color: $primary;
+    }
+     
+
+}//.jqx-calendar  
+
+.jqx-calendar.jqx-fill-state-focus {//日历边框阴影
+    border: 1px solid #fff!important;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2) !important;
+}  

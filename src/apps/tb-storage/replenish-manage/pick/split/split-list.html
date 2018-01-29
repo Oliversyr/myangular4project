@@ -1,0 +1,67 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+
+    <ng-template #suiShowContent>
+        <sui-panel title="仓库信息" >
+            <div sui-panel-content>
+                <div sui-row >
+                    <div sui-col [nzXs]="14" [nzSm]="10" [nzMd]="8">
+                        商品名称： 【{{goodsInfo?.mygoodsid}}】{{goodsInfo?.goodsname}}
+                    </div>
+                    <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="4">
+                        商品条码：{{goodsInfo?.barcode}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        规格：{{goodsInfo?.spec}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        汇总数量：{{goodsInfo?.qty}}
+                    </div>
+                </div>
+                <div sui-row>
+                    <div sui-col [nzXs]="14" [nzSm]="10" [nzMd]="8">
+                        拣货数量：{{goodsInfo?.pckqty}}
+                    </div>
+                </div>
+            </div>
+                
+        </sui-panel>
+        
+    </ng-template>
+
+
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="目的店铺">
+                    <ng-template #cellContent>
+                        <sui-organ (selectOrgan)="selectedShop($event)" [orgType]="'shop'" customTabindex="2" #shopSelect></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="4">
+                        <sui-date-range class="sui-date-range" [customTabindexs]="[1,2,3]" leftClass="sui-label-width-md" 
+                                [leftLabel]="'制单日期'" [(ngModel)]="searchParams.dateValue"></sui-date-range>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="制单人">
+                    <ng-template #cellContent>
+                            <sui-input [(ngModel)]="searchParams.editor" customTabindex="11" placeHolder="请输入商品数量">
+
+                                </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            
+        </div>
+    </ng-template>
+    
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)" [page]="gridPage" [showaggregates]="true" [showstatusbar]="true" [statusbarheight]="27">
+        </sui-grid>
+    </ng-template>
+</template-list>

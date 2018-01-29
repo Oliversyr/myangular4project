@@ -1,0 +1,179 @@
+.sui-pageList {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    // padding: 0 10px;
+    box-sizing: border-box;
+
+    &:focus{
+        outline: none;
+    }
+
+    .sui-header {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+    }
+    .sui-header-left {
+        flex-grow: 0;
+    }
+    .sui-header-right {
+        flex-grow: 1;
+        text-align: right;
+    }
+    .sui-search {
+        position: relative;
+        width: 100%;
+        // flex-basis: 10px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .sui-grid-top {
+        display: flex;
+        // flex-direction: row;
+        flex-direction:  row-reverse  ;
+        justify-content: space-between;
+        flex-grow: 0;
+        flex-shrink: 0;
+        .sui-grid-topLeft {
+            flex-grow: 0;
+            flex-shrink: 0;
+            margin-bottom: 5px;
+        }
+        .sui-grid-topRight {
+            flex-grow: 1;
+            text-align: right;
+        }
+    }
+    
+    // @media only screen and (max-width:1024px) {//小屏幕排序数据区域的显示方案
+    //     .sui-grid-top{
+    //         display: block;
+    //         .sui-grid-topRight {
+    //             width: 100%;
+    //             height: 32px;
+    //             border-bottom: 1px solid #ccc;
+    //         }
+    //         .sui-grid-topLeft {
+    //             width: 100%;
+    //         }
+    //     }        
+    // }
+
+
+    .sui-grid {
+        flex-grow: 1;
+        position: relative;
+    }
+    span {
+        padding: 0 .2em;
+    }
+}
+
+.sui-bread {
+    flex-grow: 0;
+    position: relative;
+    
+    .help {
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        right: -20px;
+        
+        // width: 50%;
+        .help-icon {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+        .help-content {
+            position: absolute;
+            width: 40em;
+            min-height: 20em;
+            left: 0;
+            padding: .4em;
+            z-index: 999;
+            background: #fff;
+            box-shadow: 1px 1px 10px #888888;
+        }
+    }
+
+   
+}
+
+.sui-search-normal {
+    display: flex;
+    flex-direction: row;
+    .sui-search-condition {
+        flex-grow: 1;
+    }
+    .sui-search-btns {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}
+
+.sui-search-more {
+    position: absolute;
+    // z-index: 998;
+    z-index:490;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    padding-right: 158px;/*为了对齐*/
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 4px 6px rgba(0,0,0,.3);	
+}
+
+.pst-rl {
+    position: relative;
+}
+.sui-dropdown-btn {
+    position: relative;
+}
+.sui-dropdown{/*更多下拉弹出框*/
+	z-index: 999;
+	position: absolute;
+	top: 28px;
+	left: -40px;
+	width: 100px;
+	min-height: 60px;
+	max-height: 180px;
+	overflow-y: auto;
+	border-radius: 4px;
+	background-color: #fff;
+	color: #555;
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    display: none;
+    
+    & li{
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        padding-left: 10px;
+        text-align: left;
+        line-height: 30px;
+
+        &.active,
+        &:hover{
+            box-sizing: border-box;
+            width: 100%;
+            height: 30px;
+            padding-left: 10px;
+            line-height: 30px;
+            color: #1177dd;
+            background-color: #d4e9f6;
+
+        }
+    }
+    
+}
+
+.sui-dropdown-btn:hover .sui-dropdown {
+	display: block;
+}

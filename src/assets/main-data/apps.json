@@ -1,0 +1,50 @@
+[{
+        "moduleid": "1",
+        "modulename": "我的应用",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "1",
+        "url": "apps-center"
+    },
+    {
+        "moduleid": "2",
+        "modulename": "生鲜",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "2",
+        "url": "fpf"
+    },
+    {
+        "moduleid": "3",
+        "modulename": "新版生鲜",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "fpf-new"
+    },
+    {
+        "moduleid": "4",
+        "modulename": "报表中心",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "4",
+        "url": ""
+    },
+    {
+        "moduleid": "100",
+        "modulename": "demos",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "100",
+        "url": "demos"
+    },
+    {
+        "moduleid": "120",
+        "modulename": "demos-iframe",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "100",
+        "url": "demos/iframe"
+    }
+
+]

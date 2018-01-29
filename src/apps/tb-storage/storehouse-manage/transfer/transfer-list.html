@@ -1,0 +1,74 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="调出仓">
+                    <ng-template #cellContent>
+                        <sui-organ #storeOutOrgan (selectOrgan)="selectedStorehouse($event, 1)" [orgType]="'stock'" [customTabindex]="1"></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="调入仓">
+                    <ng-template #cellContent>
+                        <sui-organ #storeInOrgan (selectOrgan)="selectedStorehouse($event, 2)" [orgType]="'stock'" [customTabindex]="2"></sui-organ>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="单据状态">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择单据状态" customTabindex="3" [(ngModel)]="searchParams.status" [source]="statusData">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="调拨状态">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择调拨状态" customTabindex="4" [(ngModel)]="searchParams.flag" [source]="flagStatusData">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiSearchMore>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-date-range class="sui-date-range" [customTabindexs]="[5,6,7]" leftClass="sui-label-width-md" [leftLabel]="dateLabels"
+                    [(ngModel)]="dateValue"></sui-date-range>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" [leftLabel]="opflagLabels" [leftPlaceHolder]="'选择操作人'" [(ngModel)]="opflagValue" [customTabindexs]="8">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.operator" customTabindex="9">
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods #goods [customTabindex]="10" (selectGoods)="selectedGoods($event)"></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGridSort>
+        <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]="gridPage" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
+<!-- 新建调拨单弹出框 -->
+<div class="add-transfer">
+    <transfer-add #el_winChooseTransfer (addTransfer)="doConfirmAdd($event)"></transfer-add>
+</div>

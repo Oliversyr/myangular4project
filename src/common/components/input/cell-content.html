@@ -1,0 +1,21 @@
+<div class="sui-cell">
+    <div class="sui-cell-left" [ngClass]="leftClass" *ngIf="_leftLabel">
+        <sui-select #el_leftSelect [ngClass]="leftClass" *ngIf="isSelectLeft" [(ngModel)]="leftValue" [displayMember]="'label'" [valueMember]="'value'" [source]="_leftLabel" (onChange)="onLeftChange($event)">
+        </sui-select>
+        <!-- <nz-select *ngIf="isSelectLeft" [(ngModel)]="leftValue">
+            <nz-option *ngFor="let item of _leftLabel" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
+        </nz-select> -->
+        <span *ngIf="_leftLabel && !isSelectLeft" class="sui-input-group-addon">{{_leftLabel}}</span>
+    </div>
+    <ng-content select=".sui-cell-left"></ng-content>
+    <ng-content select=".sui-cell-content"></ng-content>
+    <ng-content select=".sui-cell-right"></ng-content>
+    <div class="sui-cell-right" [ngClass]="rightClass" *ngIf="_rightLabel">
+        <sui-select #el_rightSelect *ngIf="isSelectRight" [(ngModel)]="rightValue" [displayMember]="'label'" [valueMember]="'value'" [source]="_rightLabel" (onChange)="onRightChange($event)">
+        </sui-select>
+        <!-- <nz-select *ngIf="isSelectRight" [(ngModel)]="rightValue">
+            <nz-option *ngFor="let item of _rightLabel" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
+        </nz-select> -->
+        <span *ngIf="!isSelectRight">{{_rightLabel}}</span>
+    </div>
+</div>

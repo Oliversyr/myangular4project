@@ -1,0 +1,76 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-16 05:54:13
+ * @modify date 2018-01-16 05:54:13
+ * @desc 悬浮按钮，环境切换
+*/
+
+
+/*右悬浮按钮*/
+.sui-fixed-btn-wrap {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    min-width: 30px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    border:1px solid 28e;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+    transition: all .5s;
+
+}
+
+.c-red {
+    color: #ff0000;
+}
+
+.sui-fixed-btn-wrap-left {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 40px;
+    padding: 2px;
+    cursor: pointer;
+    background-color: #28e;
+    color: #fff;
+    transition: all .5s;
+
+}
+
+.sui-fixed-btn-wrap-right {
+    box-sizing: border-box;
+    display: none;
+    width: 700px;
+    min-height: 110px;
+    padding:10px;
+    float: left;
+   transition: all .5s;
+   
+   
+}  
+
+.sui-fixed-btn-wrap-right-mt {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.span-til {
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+}
+
+.sui-inputText {
+    width: auto;
+}
+
+/**.sui-fixed-btn-wrap end
+**/
+.sui-fixed-btn-wrap:hover .sui-fixed-btn-wrap-right {
+    display: block;
+    transition: all .5s;
+}
+

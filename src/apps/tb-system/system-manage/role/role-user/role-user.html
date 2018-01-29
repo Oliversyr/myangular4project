@@ -1,0 +1,82 @@
+<div class="sui-role-user">
+    <!-- 列表搜索区域 -->
+    <div class="sui-search  mt-xsmall">
+        <!-- 列表搜索区域 常用搜素 -->
+        <div class="sui-search-normal sui-panel pb-none">
+
+            <div class="sui-search-condition" style="width: 200px;float: left;margin-right: 20px;">
+                <!-- <div sui-row> -->
+                <!-- <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6"> -->
+                <sui-cell leftClass="sui-label-width-md" leftLabel="角色">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="keyValue" customTabindex="11" placeHolder="请输入角色名称">
+
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+
+            <div class="slic-btn-group sui-search-btns" >
+                <button suiHotKey="QUERY" type="button" class="slic-btn slic-btn-theme3 " (click)="doSearch($event)">查询</button>
+                <button suiHotKey="RESET" type="button" class="slic-btn slic-btn-theme3 " (click)="doReset($event)">重置</button>
+            </div>
+
+            <div class="slic-btn-group sui-search-btns" style="float: right;">
+                <button suiHotKey="NEW" type="button" class="slic-btn slic-btn-theme3 " (click)="doAddUsers($event)">添加用户</button>
+                <button suiHotKey="DELETE" type="button" class="slic-btn slic-btn-theme3 " (click)="doRemoveUsers($event)">移除用户</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="sui-panel sui-table-panel-response flex-col mt-xsmall">
+        <!-- 表格 top -->
+        <!-- <div class="sui-grid-top">
+            <div class="sui-grid-topRight">
+            </div>
+            <div class="sui-grid-topLeft">
+                <span style="font-size: 18px;font-weight: bold;">武汉区域中心</span>
+            </div>
+
+        </div> -->
+
+        <!-- 列表 表格 -->
+        <div class="sui-grid">
+            <sui-grid #grid [gridOption]="gridOption" [page]="gridPage" (onToolBtnClick)="onToolBtnClick($event)">
+            </sui-grid>
+        </div>
+    </div>
+
+</div>
+
+<sui-modal #moreUser [width]="820" [height]="600" [autoOpen]="false" [isModal]="true" [maxHeight]="1000" [minHeight]="200"
+            [maxWidth]="2920" [minWidth]="500" [showCollapseButton]="false">
+    <div #windowHeader>
+        <span>选择用户</span>
+    </div>
+
+    <div #windowContent class="alert-box ">
+        <div class="alert-content" style="flex-direction: column;">
+            <div class="mb-xsmall">
+                用户名称：
+                <sui-input [(ngModel)]="searchKey" customTabindex="1" placeHolder="请输入用户名称" style="width: 235px;">
+                </sui-input>
+    
+                <button class="slic-btn slic-btn-theme3" (click)="doModalSearch()">查询</button>
+            </div>
+    
+            <div class="flex-col">
+                <sui-grid #modalgrid [gridOption]="gridModalOption" [page]="gridModalPage">
+                </sui-grid>
+            </div>
+        </div>
+    
+        <div class="alert-foot">
+            <button (click)="doModalConfirm()" class="slic-btn slic-btn-theme3  mr-xsmall">确定</button>
+            <button (click)="doModalClose()" class="slic-btn slic-btn-theme4  mr-xsmall">取消</button>
+        </div>
+    </div>
+</sui-modal>

@@ -1,0 +1,38 @@
+<ul class="sui-table-tbody" *ngFor="let row of treePowerList, let i = index ">
+    <li class="gray-bg" *ngIf="row.children.length > 0">
+        <div class="role-management-row1 tl di">
+            <sui-checkbox class="sui-checkboxs ml-xsmall mt-xsmall fl" name="author-td11" [(ngModel)]="row.allThisPower" [checked]="row.allThisPower" [hasThreeStates]='false' 
+                        (onChange)="firstSelect($event, row)"></sui-checkbox>
+            <span class="fr mr-xsmall" >
+                <svg class="svgicon icon-tree-close " (click)="row.isExpend = !row.isExpend" *ngIf="row.isExpend">
+                    <use xlink:href="#icon-tree-close"></use>
+                </svg>
+                <svg class="svgicon icon-tree-open " (click)="row.isExpend = !row.isExpend" *ngIf="!row.isExpend">
+                    <use xlink:href="#icon-tree-open"></use>
+                </svg>
+            </span>
+        </div><div class="role-management-row2 tl di row2">
+            <p class=" ml-xsmall">{{row.modulename}}{{row.moduleid}}</p>
+        </div><div class="role-management-row3 tl di row3">
+        </div>
+
+        <role-power-tree #childTree class="animated fadeIn" [treePowerList]="row.children" [parentModuleId]="row.moduleid" [hidden]="!(row.children.length > 0 && row.isExpend)" 
+            (childSelectStatus)="childrenSelectStatus($event)" ></role-power-tree>
+    </li>
+    <!--一级-->
+
+    <li *ngIf="row.myPowerList && row.children.length === 0">
+        <div class="role-management-row1 tr di row1">
+            <sui-checkbox class="sui-checkboxs mr-xsmall" [(ngModel)]="row.allThisPower" [checked]="row.allThisPower" [hasThreeStates]='false' (onChange)="secondSelect($event, row)"></sui-checkbox>
+        
+        </div><div class="role-management-row2 tl di row2">
+            <p class=" ml-xsmall">{{row.modulename}}</p>
+        
+        </div><div class="role-management-row3 tl di row3">
+            <span class="ml-xsmall power-text" *ngFor="let power of row.myPowerList, let p = index">
+                <sui-checkbox class="sui-checkboxs" [(ngModel)]="power.sel" [checked]="power.sel" (onChange)="thirdSelect($event, row)">{{power.name}}{{power.sel}}</sui-checkbox>
+            </span>
+        </div>
+    </li>
+    <!--二级-->
+</ul>

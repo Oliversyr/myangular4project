@@ -1,0 +1,31 @@
+.purchase-input-add-modal {
+    overflow: hidden;
+
+    .alert-content {
+        display: flex;
+        flex-direction: column;
+
+        .sui-search-content {
+            display: flex;
+            flex-direction: row;
+            height: 28px;
+
+            .sui-search-item {
+                &:last-child {
+                    margin-right: 0;
+                }
+                margin-right: 10px;             
+            }           
+        }
+
+        .sui-grid-content {
+            display: flex;
+            flex: 1;
+            margin-top: 10px;
+            sui-grid {
+                height: 100%!important;
+            }
+        }
+
+    }
+}

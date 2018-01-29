@@ -1,0 +1,35 @@
+.transfer-add-modal {
+    overflow: hidden;
+    .alert-content {
+        flex-direction: column;
+        label {
+            display: inline-block;
+            vertical-align: middle;
+            height: 27px;
+            margin-top: -10px;
+        }
+        .sui-organ {
+            display: inline-block;
+        }
+        .sui-search-content {
+            display: flex;
+            .sui-search-item {
+                &:last-child {
+                    margin-right: 0;
+                }
+                margin-right: 10px;
+            }
+        }
+        .sui-grid-content {
+            flex: 1;
+            margin-top: 10px;
+            sui-grid {
+                height: 100%!important;
+            }
+        }
+    }
+}
+
+.sui-ac-listbox {
+    z-index: 99999!important;
+}

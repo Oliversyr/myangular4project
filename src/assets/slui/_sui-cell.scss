@@ -1,0 +1,188 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-03 04:09:32
+ * @modify date 2018-01-17 02:44:03
+ * @desc  sui-cell 输入框类型组件重置样式
+*/
+
+.sui-cell {//包含左中右,父盒
+
+   input::-webkit-input-placeholder {
+         color: $gray;
+     }
+
+    .sui-cell-left {//左侧部分
+        /*10-13 处理输入框组件边框线，圆角组合问题*/
+        .sui-input-group-addon { /*左侧标题span*/
+            position: relative;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 26px;
+            color: rgba(0, 0, 0, .65);
+            text-align: center;
+            background-color: $sui-cell-left-bg;
+            border: 1px solid $sui-cell-border;
+            border-right: none;
+            @include transition(.3s);
+            @include border-left-radius(4px);
+            @include border-right-radius(0);
+        }//.sui-input-group-addon end
+
+        // sui-select {//左侧标题-下拉框形式的标题
+        //     .jqx-dropdownlist-state-normal {
+        //         .jqx-dropdownlist-content {
+        //             margin-top: 0 !important;
+        //             margin-bottom: 0 !important;
+        //             line-height: 26px;
+        //         }
+        //     }
+        // }//sui-select end
+
+         sui-select {//左侧标题的-输入框组的下拉框==
+            .jqx-dropdownlist-state-normal {
+                background-color:  $sui-cell-left-bg !important;
+                border: 1px solid $sui-cell-border !important;
+                border-right: none !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+                .jqx-dropdownlist-content {
+                    width: 78% !important;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    line-height: 26px;
+                    padding: 0 10px !important;
+                }
+            }
+            .jqx-dropdownlist-state-normal.jqx-fill-state-focus {
+                border-color: $primary !important;
+                outline: 0;
+                box-shadow: 0 0 0 1px rgba(16, 142, 233, .2);
+            }
+        }//sui-select 输入框组的下拉框 end ==
+
+        .jqx-dropdownlist-content {//输入框左边下拉
+            text-align: center;
+        }
+
+    }//.sui-cell-left end ========================================================== 
+
+    .sui-cell-content {//中间内容部分==
+
+        sui-auto-complete {//自动补全输入框 20180103
+            .jqx-combobox {
+               height: 26px !important;
+               @include border-left-radius(0); 
+               width: 100% !important;
+
+               .jqx-combobox-content {
+                 width: 100% !important; 
+                 border-right: none;
+                 @include border-right-radius(4px); 
+
+                 .jqx-combobox-input {
+                    padding: 0px 30px 0 10px!important;
+                 }
+               }
+
+            //    .sui-autocomplete-more-icon {
+            //        position: absolute;
+            //        right: 18px;
+            //        top: 6px;
+            //    }
+            }//.jqx-combobox
+
+             .jqx-fill-state-normal {//默认风格样式
+                box-sizing: border-box !important;
+                background: $primary !important;
+                border-color: $primary!important;
+            }
+            .jqx-combobox-multi-item {//选中项在输入框的样式设置
+                height: 22px  !important;
+                line-height: 20px;
+                padding: 0 2px;
+            }
+        }//自动补全输入框 end======
+
+        sui-select {//中间内容部分的输入框组的下拉框==
+            .jqx-dropdownlist-state-normal {
+                /*下拉中间内容显示的表现方式*/
+                z-index: 2;
+                position: relative;
+                box-sizing: border-box !important;
+                height: 28px !important;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                background: $white !important;   
+                border-color: #d9d9d9 !important; 
+
+                .jqx-dropdownlist-content {
+                    width: 78% !important;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    line-height: 26px;
+                    padding: 0 10px !important;
+                }
+            }
+            .jqx-dropdownlist-state-normal.jqx-fill-state-focus {
+                border-color: #49a9ee !important;
+                outline: 0;
+                box-shadow: 0 0 0 1px rgba(16, 142, 233, .2);
+            }
+        }//sui-select 输入框组的下拉框 end ==
+
+        sui-date {//日期选择 20180122 add
+            .jqx-datetimeinput {
+                width: 100% !important;
+                height: 26px !important;
+                @include border-left-radius(0);
+                .jqx-input-content {
+                    padding: 0 10px !important;
+                    line-height: 26px;
+                    @include border-right-radius(4px);
+                }
+                .jqx-action-button {
+                    left: calc(100% - 22px) !important;
+                    @include border-right-radius(4px);
+                }
+            }//.jqx-datetimeinput end
+        }//sui-date 日期选择 end
+
+    }//.sui-cell-content 中间 end ===============================================  
+
+
+    .sui-cell-right {//右侧部分
+
+        .ant-select-selection {
+            border-left: 0;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+    }//.sui-cell-right end ======================== 
+
+
+    
+    .ant-select-selection,
+    .ant-input { /*输入框*/
+        box-sizing: border-box;
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+    }
+
+    
+
+
+    sui-input {
+        .ant-input {
+            &:focus {
+                @include box-shadow-input;
+            }
+        }
+    }
+
+
+}//.sui-cell end ======================

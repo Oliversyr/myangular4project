@@ -1,0 +1,38 @@
+<div class="sui-custom">
+   <sui-auto-complete #myCustomer [option]="option" [minLength]="1" [width]="200" [height]="25" 
+                    [displayMember]="'ename'" [dropDownWidth]="700" [dropDownHeight]="200"
+                    [customTabindex]="customTabindex" 
+                    (onChange)="autoChange($event)">
+            </sui-auto-complete>
+   <!--更多按钮-客户选择-->
+   <sui-modal  #moreCustom [width]="820" [height]="600" [autoOpen]="false"
+                [isModal]="true"
+                [maxHeight]="1000" [minHeight]="200" [maxWidth]="2920" [minWidth]="500"
+                [showCollapseButton]="false">
+			    <div #windowHeader>
+					  <span>选择客户</span>
+			    </div>
+
+                <div #windowContent class="alert-box ">
+                    <div class="alert-content" style="flex-direction: column;">
+                        <div class="mb-xsmall">
+                            客户：
+                            <sui-input [(ngModel)]="searchKey" customTabindex="1" placeHolder="请输入客户名称、内码、助记码" style="width: 235px;">
+                            </sui-input>
+                
+                            <button class="slic-btn slic-btn-theme3" (click)="doSearch()">查询</button>
+                        </div>
+                
+                        <div class="flex-col">
+                            <sui-grid #mygrid [gridOption]="gridOption" [page]="gridPage">
+                            </sui-grid>
+                        </div>
+                    </div>
+                
+                    <div class="alert-foot">
+                        <button (click)="doConfirm()" class="slic-btn slic-btn-theme3  mr-xsmall">确定</button>
+                        <button (click)="doClose()" class="slic-btn slic-btn-theme4  mr-xsmall">取消</button>
+                    </div>
+                </div>
+	</sui-modal>     
+</div>

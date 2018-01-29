@@ -1,0 +1,108 @@
+
+
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <!-- <ng-template #suiHelpContent>
+        <div>筹备中aaaaaaaaaaa...</div>
+    </ng-template> -->
+    <ng-template #suiShowContent>
+        <sui-panel title="仓库信息">
+            <div sui-panel-content>
+                <div sui-row >
+                    <div sui-col [nzXs]="14" [nzSm]="10" [nzMd]="8">
+                        上级机构： 【{{storehouseInfo.parentid}}】{{storehouseInfo.parentfullname}}
+                    </div>
+                    <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="4">
+                        仓库编码：{{storehouseInfo.stockid}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        仓库名称：{{storehouseInfo.ename}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        状态：{{storehouseInfo.status === 0 ? "禁用" : "正常"}}
+                    </div>
+                </div>
+                <div sui-row>
+                    <div sui-col [nzXs]="14" [nzSm]="10" [nzMd]="8">
+                        仓库地址：{{storehouseInfo.address}}
+                        
+                    </div>
+                    <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="4">
+                        仓库类型： {{storehouseInfo.stocktypename}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        仓管员：{{storehouseInfo.manager}}
+                    </div>
+                    <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                        联系电话：{{storehouseInfo.contacttele}}
+                    </div>
+                </div>
+            </div>
+                
+        </sui-panel>
+        
+    </ng-template>
+
+    
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="8">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="店铺名称">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.shopName" customTabindex="1" placeHolder="请输入店铺名称">
+
+                        </sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="8">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="所属店组">
+                    <ng-template #cellContent>
+                        <sui-select placeHolder="选择所属店组" customTabindex="5" class="suid-per100" style="display:inline-block;vertical-align: middle;" 
+                                    [(ngModel)]="searchParams.groupId" [source]="groupList" [displayMember]="'groupName'" [valueMember]="'groupId'">
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+   
+    <!-- <div sui-grid-sort>
+        <sui-grid-sort [grid]="grid" [sorts]="sorts"></sui-grid-sort>
+    </div> -->
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
+
+<sui-modal  #moreShop [width]="820" [height]="600" [autoOpen]="false"
+                [isModal]="true"
+                [maxHeight]="1000" [minHeight]="200" [maxWidth]="2920" [minWidth]="500"
+                [showCollapseButton]="false" >
+			    <div #windowHeader>
+					  <span>选择店铺</span>
+			    </div>
+
+				<div #windowContent style="padding: 30px;">
+                    <div >
+                        店铺：
+                        <sui-input [(ngModel)]="searchKey" customTabindex="1" placeHolder="请输入店铺名称" style="width: 235px;"></sui-input>
+                        <button class="slic-btn slic-btn-theme3" (click)="doModalSearch()">查询</button>
+                    </div>
+
+                    <div style="height: 435px;margin: 10px 0;" class="flex-col">
+                        <sui-grid #shopgrid [gridOption]="shopGridOption" [page]="gridPage" style="height: 435px;margin: 10px 0;">
+                            </sui-grid>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button (click)="doModalConfirm()"   class="slic-btn slic-btn-theme3 ml5" >确定</button>
+                        <button (click)="doModalClose()" class="slic-btn slic-btn-theme4 ml5">取消</button>
+                    </div>
+				</div>
+</sui-modal> 

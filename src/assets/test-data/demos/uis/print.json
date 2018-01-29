@@ -1,0 +1,75 @@
+{
+    "retCode": 0,
+    "printTemplates": [{
+            "eid": 0,
+            "isdefault": 1,
+            "moduleid": 200030,
+            "modulename": "销售记录",
+            "ptlid": 1,
+            "rptid": 1,
+            "rptname": "销售默认模板",
+            "rpturl": "saletemplate",
+            "printType": "NODE_SERVER"
+        },
+        {
+            "eid": 0,
+            "isdefault": 0,
+            "moduleid": 200030,
+            "modulename": "销售记录",
+            "ptlid": 1,
+            "rptid": 1,
+            "rptname": "销售模板002",
+            "rpturl": "saletemplate_002",
+            "printType": "NODE_SERVER"
+        },
+        {
+            "eid": 0,
+            "isdefault": 0,
+            "moduleid": 200030,
+            "modulename": "销售记录",
+            "ptlid": 1,
+            "rptid": 1,
+            "rptname": "销售模板003",
+            "rpturl": "saletemplate_003",
+            "printType": "WEB"
+        },
+        {
+            "eid": 0,
+            "isdefault": 0,
+            "moduleid": 200030,
+            "modulename": "销售记录",
+            "ptlid": 1,
+            "rptid": 1,
+            "rptname": "销售模板004",
+            "rpturl": "saletemplate_004",
+            "printType": "WEB"
+        },
+        {
+            "eid": 0,
+            "isdefault": 0,
+            "moduleid": 200030,
+            "modulename": "销售记录",
+            "ptlid": 1,
+            "rptid": 1,
+            "rptname": "销售模板005",
+            "rpturl": "saletemplate_005",
+            "printType": ""
+        }
+    ],
+    "printers": [{
+            "name": "打印机001"
+        },
+        {
+            "name": "打印机002"
+        },
+        {
+            "name": "打印机003"
+        },
+        {
+            "name": "打印机004"
+        },
+        {
+            "name": "打印机005"
+        }
+    ]
+}

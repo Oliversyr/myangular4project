@@ -1,0 +1,40 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-28 05:52:16
+ * @modify date 2017-12-28 05:52:16
+ * @desc 2D/3D转换
+*/
+
+@mixin translate($x,$Y){//通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数：
+  transform: translate($x,$Y);
+  // -ms-transform: translate(50px,100px);		/* IE 9 */
+  // -webkit-transform: translate(50px,100px);	/* Safari and Chrome */
+  // -o-transform: translate(50px,100px);		/* Opera */
+  // -moz-transform: translate(50px,100px);		/* Firefox */
+}
+
+@mixin rotate($rotate) {//通过 rotate() 方法，元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。
+  transform: rotate($rotate);
+  // transform: rotate(30deg);
+  // -ms-transform: rotate(30deg);		/* IE 9 */
+  // -webkit-transform: rotate(30deg);	/* Safari and Chrome */
+  // -o-transform: rotate(30deg);		/* Opera */
+  // -moz-transform: rotate(30deg);		/* Firefox */
+}
+
+@mixin scale($x,$Y) {//通过 scale() 方法，元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数：
+  transform: scale($x,$Y);
+  // -ms-transform: scale(2,4);	/* IE 9 */
+  // -webkit-transform: scale(2,4);	/* Safari 和 Chrome */
+  // -o-transform: scale(2,4);	/* Opera */
+  // -moz-transform: scale(2,4);	/* Firefox */
+}
+
+@mixin skew($x,$Y) {//通过 skew() 方法，元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数：
+  transform: skew($x,$Y);
+  // -ms-transform: skew(30deg,20deg);	/* IE 9 */
+  // -webkit-transform: skew(30deg,20deg);	/* Safari and Chrome */
+  // -o-transform: skew(30deg,20deg);	/* Opera */
+  // -moz-transform: skew(30deg,20deg);	/* Firefox */
+}
+

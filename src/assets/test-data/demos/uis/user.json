@@ -1,0 +1,72 @@
+{
+    "retCode": "SUCCESS",
+    "retMsg": "操作成功",
+    "result": [
+        {
+            "userId": 1,
+            "userName": "采购员1",
+            "userType": 0,
+            "notes": "采购员"
+        },
+        {
+            "userId": 2,
+            "userName": "仓管员1",
+            "userType": 1,
+            "notes": "仓管员"
+        },
+        {
+            "userId": 3,
+            "userName": "操作员1",
+            "userType": 2,
+            "notes": "操作员"
+        },
+        {
+            "userId": 4,
+            "userName": "业务员1",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 5,
+            "userName": "业务员2",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 6,
+            "userName": "业务员3",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 7,
+            "userName": "业务员4",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 8,
+            "userName": "业务员5",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 9,
+            "userName": "业务员6",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 10,
+            "userName": "业务员7",
+            "userType": 3,
+            "notes": "业务员"
+        },
+        {
+            "userId": 11,
+            "userName": "业务员8",
+            "userType": 3,
+            "notes": "业务员"
+        }
+    ]
+}

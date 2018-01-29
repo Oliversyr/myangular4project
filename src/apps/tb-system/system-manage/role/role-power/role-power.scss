@@ -1,0 +1,29 @@
+
+.sui-table-tbody {
+    .di {
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+
+        &.row1 {
+            padding-top: 10px;
+            padding-left: 23px;
+        }
+
+        &.row2 {
+            vertical-align: top;
+        }
+
+        &.row3 {
+            width: calc(100% - 235px);
+            vertical-align: top;
+
+            .power-text {
+                display: inline-block;
+                
+            }
+        }
+    }
+}
+
+

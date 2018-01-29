@@ -1,0 +1,119 @@
+<!-- 单据列表布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    
+    
+        <ng-template #suiTopToolbar>
+            <sui-toolbar [toolBarData]="grid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+        </ng-template>
+    
+        <ng-template #suiMain>
+            <sui-panel title="基本信息" [isShowToggleIcon]="false" [expanded]="true">
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">资金账号：</div>
+                            <div class="con">
+                                {{subAcctInfo.acctid}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">账号类型：</div>
+                            <div class="con">
+                                {{subAcctInfo.acctTytpe}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">客户编码：</div>
+                            <div class="con">
+                                {{subAcctInfo.custid}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="4" [nzMd]="4">
+                            <div class="til">客户名称：</div>
+                            <div class="con">
+                                {{subAcctInfo.name}}
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">资金账户：</div>
+                            <div class="con">
+                                {{subAcctInfo.subacctid}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">账户名称：</div>
+                            <div class="con">
+                                {{subAcctInfo.subacctname}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">账户余额：</div>
+                            <div class="con">
+                                {{subAcctInfo.balance | currency:'￥'}}
+                            </div>
+                        </div>
+    
+                        <div sui-col [nzXs]="12" [nzSm]="4" [nzMd]="4">
+                            <div class="til">可用余额：</div>
+                            <div class="con">
+                                {{subAcctInfo.usablevalue | currency:'￥'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </ng-template>
+        <ng-template #suiTotal>
+            <div sui-panel-content>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                    <sui-date-range class="sui-date-range" [customTabindexs]="[5,6,7]" leftClass="sui-label-width-md"
+                    [leftLabel]="'交易日期'" [(ngModel)]="dateValue"></sui-date-range>
+                </div>
+                <div class="query-condition" sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                    <sui-cell leftClass="sui-label-width-md" leftLabel="交易类型">
+                        <ng-template #cellContent>
+                            <sui-select customTabindex="8" [(ngModel)]="searchParam.sheettype" 
+                            [source]="sheetData" [displayMember]="'label'" [valueMember]="'value'"></sui-select>
+                        </ng-template>
+                    </sui-cell>
+                </div>
+                <div class="query-condition" sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        <sui-cell leftClass="sui-label-width-md" leftLabel="摘要">
+                                <ng-template #cellContent>
+                                        <sui-input [(ngModel)]="searchParam.querykey" placeHolder="请输入摘要" customTabindex="9"></sui-input>
+                                </ng-template>
+                        </sui-cell>
+                </div>
+                <div class="query-condition" sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                        <button  class="slic-btn slic-btn-theme3 condition-fl"  type="button" (click)="doQuery()">查询</button>
+                        <button  class="slic-btn slic-btn-theme3 condition-fl"  type="button" (click)="doReset()">重置</button>
+                </div>
+            </div>
+            <div>
+                
+            </div>
+        </ng-template>
+        <ng-template #suiGrid>
+            <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
+            <sui-grid #grid [gridOption]="gridOption" [gridEditOption]="gridEditOption" (onToolBtnClick)="onToolBtnClick($event)">
+            </sui-grid>
+        </ng-template>
+        <ng-template #suiFooter>
+            <div sui-panel-headerRight class="foot-content">
+                <span class="mr foot-font-weight">当前查询状态收支合计</span>
+                <span class="mr foot-color-green">收入: {{gridFooter.incometotal||0 | currency:'￥'}}</span>
+                <span class="mr foot-color-red">支出:{{gridFooter.expendtotal||0 | currency:'￥'}}</span>
+            </div>
+        </ng-template>
+    </template-detail>
+    <div class="add-transfer">
+            <subacct-transfer #elwinTransfer (addTransfer)="doConfirmAdd($event)"></subacct-transfer>
+     </div>

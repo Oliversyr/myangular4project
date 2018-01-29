@@ -1,0 +1,96 @@
+<!-- 列表页面布局 -->
+<div class="sui-pageEdit">
+    <!-- 列表头部 -->
+    <div class="sui-header mt-xsmall">
+        <!-- 列表头部面包屑 -->
+        <div class="sui-header-left">
+            <!-- 列表头部面包屑 -->
+            <div *ngIf="crumbMenuNames && crumbMenuNames.length != 0" class="sui-bread">
+                <sui-breadcrumb nzSeparator=">">
+                    <sui-breadcrumb-item *ngFor="let item of crumbMenuNames">
+                        {{item.label}}
+                    </sui-breadcrumb-item>
+                </sui-breadcrumb>
+                <div class="help" (mouseover)="showHelpContent()" (mouseleave)="helpHover=false">
+                    <!-- <img src="./assets/imgs/help.png" class="help-icon" /> -->
+                    <i class="help-icon"></i>
+                    <div class="help-content" [ngClass]="{'sui-show': helpHover,'sui-hidden': !helpHover}">
+                        <div class="help-content-til">
+                            <span class="help-name">
+                                【<span *ngFor="let item of crumbMenuNames;first as isFirst">
+                                      {{isFirst ? "" : "-"}} {{item.label}}
+                                    </span>】
+                            </span>
+                            <!-- <span class="help-more"> 查看更多帮助 </span> -->
+                        </div>
+                        <!-- <ng-content select="[sui-help-content]"></ng-content> -->
+                        <ng-template [ngTemplateOutlet]="suiHelpContent?suiHelpContent:suiHelpContentDefault">
+                        </ng-template>
+                        <ng-template #suiHelpContentDefault>
+                            <div #el_helpContent>筹备中...</div>
+                        </ng-template>
+                        <!-- <div *ngIf="option.helpUrl">
+                                {{option.helpUrl | textRemote}}
+                            </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sui-header-right">
+                <ng-template [ngTemplateOutlet]="suiTopToolbar">
+               
+                    </ng-template>
+        </div>
+    </div>
+    <!-- 主表信息 -->
+    <div class="sui-main mt-xsmall">
+        <ng-template [ngTemplateOutlet]="suiMain">
+        </ng-template>
+        <!-- <ng-content select="[sui-main]"></ng-content> -->
+    </div>
+
+    <div class="sui-panel mt-xsmall" *ngIf="suiItemInputContent">
+        <!-- 汇总 -->
+        <!-- <div class="sui-total ">
+            <ng-template [ngTemplateOutlet]="suiTotal">
+            </ng-template>
+        </div> -->
+        <!-- 表格数据录入 -->
+        <div class="sui-itemInput">
+            <!--表格数据录入 内容区域-->
+            <div class="sui-itemInput-left">
+                <ng-template [ngTemplateOutlet]="suiItemInputContent">
+                </ng-template>
+                <!-- <ng-content select="[sui-itemInput-content]"></ng-content> -->
+            </div>
+            <!-- 按钮区域 -->
+            <div class="sui-itemInput-right">
+                <!-- <span (click)="_pageBtnClick('addToGrid',$event)" class="sui-a" title="数据加入下面表格中; 快捷键:Ctrl+↓ ">添加(Ctrl+↓)</span> -->
+                <button class="slic-btn slic-btn-theme3 " suiHotKey="ITEM_ADDGRID" type="button" title="数据加入下面表格中" (click)="_pageBtnClick('addToGrid',$event)">添加({{hotkeys.ITEM_ADDGRID}})</button>
+                <!-- <ng-content select="[sui-itemInput-btns]"></ng-content> -->
+            </div>
+
+
+        </div>
+    </div>
+    <div class="sui-panel mt-xsmall flex-col" *ngIf="suiTotal||suiGrid||suiFooter">
+        <!-- 汇总 -->
+        <div class="sui-total " *ngIf="suiTotal">
+            <ng-template [ngTemplateOutlet]="suiTotal">
+            </ng-template>
+            <!-- <ng-content select="[sui-total]"></ng-content> -->
+        </div>
+        <!-- 列表 表格 -->
+        <div class="sui-grid-wrap mt-xsmall" *ngIf="suiGrid">
+            <ng-template [ngTemplateOutlet]="suiGrid">
+            </ng-template>
+            <!-- <ng-content select="[sui-grid]"></ng-content> -->
+        </div>
+    </div>
+
+    <div class="sui-footer mt-xsmall" *ngIf="suiFooter">
+        <ng-template [ngTemplateOutlet]="suiFooter">
+        </ng-template>
+        <!-- <ng-content select="[sui-footer]"></ng-content> -->
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="sui-print " (mouseover)="showPrintBody=true" (mouseleave)="printMoveOut()">
+    <div style="display:none;">
+        <span suiHotKey="PRINT_PREBROWSE" (click)="doPreview(null,$event)" title="预览打印内容"></span>
+        <span suiHotKey="PRINT_PREEXPORT" (click)="doExport(null,$event)" title="导入打印内容到execl"></span>
+    </div>
+    <!-- <div class="print-btn slic-btn slic-btn-theme3" (click)="doPrint('DEFAULT','DEFAULT',$event)" title="点击使用默认模板直接打印"> -->
+    <div suiHotKey="PRINT" class="print-btn" (click)="doPrint('DEFAULT','DEFAULT',$event)" title="点击使用默认模板直接打印">
+        <!--显示临时解决方案-->
+        <!-- <button type="button" class="slic-btn slic-btn-theme3 ">打印 <i class="fa fa-caret-down ml-xs"></i></button> -->
+        <span>打印  <svg class="svgicon icon-arrow"><use xlink:href="#icon-arrow"></use></svg></span>
+    </div>
+    <div class="print-body" [hidden]="!showPrintBody">
+        <div class="print-tpl">
+            <div class="print-tpl-item" *ngFor="let tpl of printTpls;index as tplIndex " [ngClass]="{'active': tplIndex==selectTplIndex ,'': selectTplIndex!=tplIndex}" title="{{tpl.rptname}}" (click)="doPrint(tpl,'DEFAULT',$event)" (mouseover)="selectPrintTpl(tplIndex,$event)">
+                <span (click)="choosePrinter($event)" title="选择打印机"> <i  class="suicon suicon-print"></i></span>
+                <span (click)="doPreview(tpl,$event)" title="预览打印内容"><i  class="suicon suicon-preview"></i></span>
+                <span (click)="doExport(tpl,$event)" title="导入打印内容到execl"><i  class="suicon suicon-import"></i></span> {{tpl.rptname}}
+            </div>
+        </div>
+        <div class="print-printer" [hidden]="!showPrinter">
+            <div class="print-printer-til">选择打印机 <i class="anticon anticon-setting" (click)="setPrinter($event)" title="设置打印机" id="setprint"></i></div>
+            <div class="print-printer-item" *ngFor="let printer of printers" title="{{printer.name}}" (click)="doPrint(printTpls[selectTplIndex], printer.name, $event)">{{printer.name}}</div>
+        </div>
+    </div>
+
+    <sui-modal-toast #msgtoast></sui-modal-toast>
+
+    <!--<sui-modal-alert #msgalert></sui-modal-alert>-->
+
+    <!--默认打印机设置弹窗-->
+    <sui-modal #windowReference [width]="800" [height]="300" [autoOpen]="false" [isModal]="true" [maxHeight]="800" [minHeight]="200" [maxWidth]="2920" [minWidth]="500" [showCollapseButton]="false" class="myPrintWindow">
+        <div #windowHeader>
+            <span>打印设置</span>
+        </div>
+
+        <div #windowContent style="padding: 30px;">
+            <sui-print-set (closeWindow)="closeWindow($event)"></sui-print-set>
+        </div>
+    </sui-modal>
+
+    <!--打印服务器选择弹窗-->
+    <sui-modal #printServerWindow [width]="400" [height]="200" [autoOpen]="false" [isModal]="true" [showCollapseButton]="false" class="myPrintWindow">
+        <div #windowHeader>
+            <span>打印服务器选择</span>
+        </div>
+
+        <div #windowContent style="padding: 30px;">
+            <div class="printServerWindow">
+                <div class="print-server-content">
+                    <label class="print-server-select">
+                                <sui-radio-group [name]="'printser'" [value]="'NODE_SERVER'"  [(ngModel)]="printParam.printServer"
+                                    >
+                                    NodeServer打印
+                                </sui-radio-group>
+                            </label>
+
+                    <label class="print-server-select">
+                                <sui-radio-group [title]="'接口开发中'" [name]="'printser'" [value]="'WEB'" [(ngModel)]="printParam.printServer"
+                                    >
+                                    WEB打印
+                                </sui-radio-group>
+                            </label>
+                </div>
+
+                <div class="print-server-footer">
+                    <button class="slic-btn slic-btn-theme3" (click)="selectPrintServer()">
+                                确定(ENTER)
+                            </button>
+
+                    <button class="slic-btn slic-btn-theme4" (click)="cancelPrintServer()">
+                                取消(ESC)
+                            </button>
+                </div>
+            </div>
+
+        </div>
+    </sui-modal>
+
+    <!--node服务器下载弹窗-->
+    <sui-modal #printNode [width]="400" [height]="260" [autoOpen]="false" [isModal]="true" [maxWidth]="2920" [minWidth]="300" [showCollapseButton]="false" class="myPrintWindow">
+        <div #windowHeader>
+            <span>打印提示</span>
+        </div>
+
+        <div #windowContent style="padding: 30px;">
+            <h3 style="margin-top: 10px;">调用Node服务打印失败，原因：</h3>
+            <div style="margin-top: 10px;">1.未启动node服务，请先启动node服务；</div>
+            <div style="margin-top: 10px;">2.未安装node服务，<span class="downloadNode" [ngClass]="{'downloading': downloadNode>0 && downloadNode< 100}" (click)="doDownloadNode()">去下载</span></div>
+            <div style="margin-top: 10px;">
+                <div style="margin-bottom: 10px;">node服务下载中：{{downloadNode}}%</div>
+                <sui-progress-bar #horizontal [animationDuration]="0" style="color: #28e;" [width]="340" [height]="30" [value]="downloadNode">
+                </sui-progress-bar>
+            </div>
+        </div>
+
+    </sui-modal>
+
+</div>
+
+<!--<div style="margin-top: 20px;" [hidden]="true">
+    <sui-autocomplete [dataList]="autodata" 
+                      (source)="getCustomList($event)"
+                      [displayProperty]="'ename'"
+                      [multiple]="false"
+                      [width]="'750'"
+                      [colWidth]="'20,30,30,20'"
+                      [showField]="'ename,address,contactmobile,contact'"
+                      [headField]="'客户名称,地址,联系电话,联系人'"
+                      [placeholder]="'请输入客户名称或编码'"
+                      (selected)="toDetail($event)"
+                      >
+    </sui-autocomplete>
+    
+</div>-->
+
+<div>
+    <ul>
+        <li *ngFor="let list of PNlist, index as i" style="margin-bottom: 15px;cursor: pointer;" (click)="toDetail(list, i)">index: {{i}}, coeid: {{list.coeid}},ename: {{list.ename}}</li>
+    </ul>
+</div>

@@ -1,0 +1,18 @@
+@import "./index";
+.@{breadcrumb-prefix-cls} {
+  display: block;
+  & > sui-breadcrumb-item {
+    font-size: 14px;
+    color: #555;
+    font-family: '微软雅黑';
+  }
+  & > sui-breadcrumb-item:last-child {
+    font-weight: bold;
+    color: @text-color;
+    color:#333;
+  }
+
+  & > sui-breadcrumb-item:last-child &-separator {
+    display: none;
+  }
+}

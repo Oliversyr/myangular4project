@@ -1,0 +1,64 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-03 10:50:28
+ * @modify date 2018-01-03 10:50:28
+ * @desc  文件上传
+*/
+
+/*demo
+<div class="sui-inputText-group "  style="width:400px">
+    <span class="til">证书文件：</span>
+    <span class="con">
+        <div class="sui-upload">
+            <button type="button" class="sui-upload-btn"> 
+            <svg class="svgicon icon-select-add"><use xlink:href="#icon-select-add"></use></svg>     
+                只允许上传p12,jpg,png,...
+            </button>   
+            <input type="file" name="file" class="sui-upload-input">
+        </div> 
+    </span>
+</div>  
+*/
+.sui-upload {
+    position: relative;
+    width: 100%;
+    min-height: 28px;
+    @include transition(.25s);
+    @include clearfix;
+
+    .sui-upload-input{//隐藏浏览器默认上传输入框
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 0;
+        height: 28px;
+        cursor: pointer;
+    }
+
+    .sui-upload-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 28px;
+        color: $gray;
+        border: 1px dashed $gray-medium;
+        background-color: $white;
+        border-radius: 4px;
+    }
+
+    &:hover .sui-upload-btn{
+        border-color: $primary;
+        color: $primary;
+
+        .svgicon {
+            color: $primary;
+        }
+    }
+
+}//sui-upload end

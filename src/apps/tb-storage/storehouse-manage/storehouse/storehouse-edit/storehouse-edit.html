@@ -1,0 +1,132 @@
+<!-- 单据列表布局 -->
+<template-edit [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="grid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+
+    <ng-template #suiMain>
+        <div [sui-validator] #el_validator [rules]="rootValidators">
+            <sui-panel title="基本信息" [isShowToggleIcon]="true" [expanded]="true">
+                <div sui-panel-content>
+                    <div [sui-row] class="sui-inputText-group">
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til " [ngClass]="{'sui-star': tab.attr === 'A'}">上级机构：</div>
+                            <div class="con">
+                                <sui-organ (selectOrgan)="selectedOrgan($event)" [isMult]="false" *ngIf="tab.attr === 'A'" [customTabindex]="1" [suiRules]="valid.parentid"></sui-organ>
+                                <span class="tx-overflow" *ngIf="tab.attr === 'M'">【{{storehouseInfo.parentid}}】{{storehouseInfo.parentfullname}}</span>
+                            </div>
+                        </div>
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">仓库编码：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.stockid" placeHolder="系统自动生成" [disabled]="true">
+
+                                </sui-input>
+                            </div>
+                        </div>
+
+                        <div [sui-col] [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til sui-star">仓库名称：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.ename" customTabindex="5" placeHolder="请输入仓库名称" [suiRules]="'required'">
+
+                                </sui-input>
+                            </div>
+                        </div>
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">仓库状态：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.ostatus" placeHolder="" [disabled]="true">
+
+                                </sui-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til sui-star">仓库类型：</div>
+                            <div class="con">
+                                <sui-select placeHolder="选择仓库类型" customTabindex="9" class="suid-per100" style="display:inline-block;vertical-align: middle;" [suiRules]="valid.stocktype" [(ngModel)]="storehouseInfo.stocktype" [source]="stocktypeData" [displayMember]="'stocktypename'"
+                                    [valueMember]="'stocktype'">
+
+                                </sui-select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </sui-panel>
+
+            <sui-panel title="仓库信息" [isShowToggleIcon]="true" [expanded]="true"  class="mt-xsmall sui-show">
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">仓管员：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.manager" customTabindex="13" placeHolder="请输入仓管员名称">
+
+                                </sui-input>
+                            </div>
+                        </div>
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">联系电话：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.contacttele" customTabindex="15" placeHolder="请输入联系电话" [suiRules]="'mobile'">
+
+                                </sui-input>
+
+                            </div>
+                        </div>
+
+                        <div sui-col [nzXs]="12" [nzSm]="12" [nzMd]="12">
+                            <div class="til">仓库地址：</div>
+                            <div class="con">
+                                <sui-input [(ngModel)]="storehouseInfo.address" customTabindex="17" placeHolder="请输入仓库地址">
+
+                                </sui-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div sui-row class="sui-inputText-group">
+
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">配送店铺：</div>
+                            <div class="con">
+                                <span>{{storehouseInfo.shopnum}}家</span>
+                                <span class="sui-link-btn" style="margin-left: 20px;" (click)="doShopmanage()" *ngIf="tab.attr === 'M'">管理配送店铺</span>
+                                <!-- <sui-input [(ngModel)]="storehouseInfo.shopnum" placeHolder="" [disabled]="true">
+                                        <ng-template #addOnAfter>家</ng-template>
+                                    </sui-input> -->
+
+                            </div>
+                        </div>
+
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            <div class="til">库存商品：</div>
+                            <div class="con">
+                                <span>{{storehouseInfo.goodsnum}}种</span>
+                                <span class="sui-link-btn" style="margin-left: 20px;" (click)="doStoragelist()" *ngIf="tab.attr === 'M'">查看库存清单</span>
+                                <!-- <sui-input [(ngModel)]="storehouseInfo.goodsnum" placeHolder="" [disabled]="true">
+                                        <ng-template #addOnAfter>种</ng-template>
+                                    </sui-input> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+
+
+        </div>
+    </ng-template>
+
+</template-edit>

@@ -1,0 +1,11 @@
+<sui-modal (onClose)="close($event)" #windowReference [title]="title" [isModal]="true" [autoOpen]="false" [width]="700" [height]="300" [minHeight]="200">
+    <div class="alert-box" [suikeyboard] style="overflow: hidden;" #windowContent>
+        <div class="alert-content">
+            <sui-grid #grid [gridOption]="gridOption" [page]="page" [autoheight]="false">
+            </sui-grid>
+        </div>
+        <div class="alert-foot">
+            <button suiHotKey="ENTER" (click)="confirm()" class="sui-btn sui-btn-primary mr-xsmall">确定({{hotkeys.ENTER}})</button>
+        </div>
+    </div>
+</sui-modal>

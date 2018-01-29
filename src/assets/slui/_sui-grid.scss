@@ -1,0 +1,237 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-08 03:44:33
+ * @modify date 2018-01-26 05:21:25
+ * @desc 表格重置样式表
+*/
+
+//临时解决方案,后续解决 20180110 .sui-grid > div
+// .sui-grid,
+// sui-grid {
+//     @include flex-col;
+// }
+
+// .sui-grid,
+// sui-grid {/*20180122*/
+//     width: 100%;
+//     height: 100%;
+// }
+
+.sui-grid-wrap,
+.sui-grid,
+sui-grid {/*20180123*/
+    width: 100%;
+    height: 100%;
+}
+
+//
+    .sui-grid-wrap,
+    .sui-grid {
+
+        // .jqx-widget .jqx-grid-cell {
+        //     display: inline-block;
+        //     height: 100%;
+        //     line-height: 29px;
+        //     text-align: center;
+        //     color: #777777;
+        //     cursor: pointer;
+
+        // }
+
+        .jqx-widget .jqx-grid-cell, .jqx-widget .jqx-grid-column-header, .jqx-widget .jqx-grid-group-cell {
+            border-color: #ccc;
+            font-family: sans-serif, $font-family-sans-serif !important; //20171228
+            color: $gray-dark !important; //20171228
+        }
+
+        .sui-grid-a {/*表格a链接*/
+            // display: inline-block;
+            // width: 100%;
+            // height: 100%;
+            // line-height: 29px;
+            text-align: center;
+            color: $gray-dark;
+            cursor: pointer;
+            &:hover {
+                color: $primary;
+            }
+        }
+    
+        .sui-grid-btn {/*表格操作按钮 10-11*/
+            position: relative;
+            display: inline-block;
+            font-size: 12px;
+            color: $gray;
+            cursor: pointer;
+            margin-left: 5px;
+            &:first-child {
+                margin-left: 10px;
+            }
+            // margin-top: 6px;
+            &:hover {
+                color: $primary;
+            }
+        }
+
+        /*jqx 表格*/
+        .jqx-grid-column-header.jqx-widget-header {//20171218
+            background-color: #ececec !important;
+        }
+        
+        .jqx-grid-header {//表格头部宽度继承父类，达到100%
+            width: inherit !important;
+        }
+
+        .sui-grid-more {/*更多操作按钮 10-11*/
+            z-index: 999;
+            position: absolute;
+            top: 10px;
+            left: -70px;
+            width: 100px;
+            min-height: 60px;
+            max-height: 180px;
+            overflow-y: auto;
+            border-radius: 4px;
+            background-color: $white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            display: none;
+            li {
+                box-sizing: border-box;
+                width: 100%;
+                height: 30px;
+                padding-left: 10px;
+                line-height: 30px;
+                color: $gray-dark;
+                &:hover {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 30px;
+                    padding-left: 10px;
+                    line-height: 30px;
+                    color: $primary-dark;
+                    background-color: $sui-grid-more-hover;
+                }
+            }
+        }
+
+        .sui-grid-btn:hover .sui-grid-more {//显示更多操作按钮
+            display: block;
+        }
+
+        .sui-grid-edit-title::before {//显示红色星号
+            content: "*";
+            color: $red;
+        }
+
+        //表格头部标题居中
+        .jqx-grid-column-header.jqx-widget-header > div ,
+        .jqx-grid-column-header.jqx-widget-header > div > div {
+            text-align: center !important;
+            color: $gray-darker;
+        }
+/* 
+        .jqx-position-absolute.jqx-grid-pager.jqx-widget-header {//脚部位置 20171218
+            top: calc(100% - 35px) !important;
+        }
+        .jqx-position-absolute.jqx-scrollbar.jqx-widget.jqx-widget-content {//表格滚动条位置 20171218
+            top: calc(100% - 52px) !important;
+        } */
+        
+        .jqx-grid-content.jqx-widget-content {//隐藏属性重置掉 20171219
+            // overflow: hidden !important;
+            overflow: visible!important; 
+        }
+        .jqx-grid-content.jqx-widget-content > div { //表格内容区域每行100% ,重置掉计算出来的宽度  隐藏属性重置掉 20171219
+            // width: inherit !important; 
+            min-width: 100% !important; 
+            overflow: visible!important;
+            // overflow: hidden !important; 
+        }
+        
+
+        div[role="row"] {//表格每一行的样式
+            border-bottom: 1px solid #e8e8e8;//每行添加下边框线  20171219
+            // &:hover {
+            //     background: $primary-light!important;
+            // }
+
+            .jqx-grid-cell {
+                overflow: visible !important;
+                border-style: none !important; //20171218
+                // background: none !important;//20171219
+                box-sizing: border-box;/*20180123*/
+                padding: 0 10px;/*20180123*/
+            }
+
+            .jqx-grid-cell-alt {//偶数行的背景色去掉，重置 20171219
+                // background: none !important;
+                background-color: $white; //20171220
+            }
+            .jqx-fill-state-hover {
+                border-color: $primary-light!important;
+                background-color: $primary-light!important;
+                // border-color: none !important;
+                // background-color: none !important;
+            }
+
+            .jqx-checkbox-hover.jqx-fill-state-hover  {//表格里的checkbox hover状态 20171221
+                border-color: $primary !important;
+                background: $white !important;
+                border-radius: 4px !important;
+            }
+
+            .jqx-fill-state-pressed {//被复选框选中的行内容样式 20171221
+                background-color: $primary-light!important;
+            }
+
+            .jqx-grid-cell-sort {
+                background-color: $primary-light!important;
+            }
+            .jqx-grid-cell-sort-alt {
+                background-color: $primary-light!important;
+            }
+        }//div[role="row"] 表格每一行 end
+
+        .jqx-overflow-hidden  {//表格的隐藏属性重置
+            // overflow: hidden !important;
+            overflow: visible !important;
+        }
+        
+
+        .jqx-scrollbar-thumb-state-normal-horizontal {//表格滚动条重置
+            // height: 12px !important;
+            border: none;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
+            background-color: $scrollbar-bg;
+            
+        }
+
+    }//.sui-grid end
+
+
+/*表格过滤条件*/
+.jqx-menu-wrapper[id*="menuWrappergridmenujqxWidget"] {
+
+    
+    .jqx-dropdownlist-content.jqx-disableselect {/*选中项的top值重置*/
+        span {
+            top: 0 !important;
+        }
+    }
+    .jqx-dropdownlist-state-normal {/*子项目的高度*/
+        height: 23px !important;
+        line-height: 23px !important;
+    }
+    .filterbutton,
+    .filterclearbutton {
+        font-size: 13px !important;
+        font-family: $font-family-sans-serif;
+    }
+    .filterbutton.jqx-fill-state-hover,
+    .filterclearbutton.jqx-fill-state-hover {
+        font-size: 13px !important;
+        font-family: $font-family-sans-serif;
+    }
+}

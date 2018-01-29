@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <Product ProductID="1">
+    <ProductName>Chai</ProductName>
+    <SupplierID>1</SupplierID>
+    <CategoryID>1</CategoryID>
+    <QuantityPerUnit>10 boxes x 20 bags</QuantityPerUnit>
+    <UnitPrice>18.0000</UnitPrice>
+    <UnitsInStock>39</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>10</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="2">
+    <ProductName>Chang</ProductName>
+    <SupplierID>1</SupplierID>
+    <CategoryID>1</CategoryID>
+    <QuantityPerUnit>24 - 12 oz bottles</QuantityPerUnit>
+    <UnitPrice>19.0000</UnitPrice>
+    <UnitsInStock>17</UnitsInStock>
+    <UnitsOnOrder>40</UnitsOnOrder>
+    <ReorderLevel>25</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="3">
+    <ProductName>Aniseed Syrup</ProductName>
+    <SupplierID>1</SupplierID>
+    <CategoryID>2</CategoryID>
+    <QuantityPerUnit>12 - 550 ml bottles</QuantityPerUnit>
+    <UnitPrice>10.0000</UnitPrice>
+    <UnitsInStock>13</UnitsInStock>
+    <UnitsOnOrder>70</UnitsOnOrder>
+    <ReorderLevel>25</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="4">
+    <ProductName>Chef Anton's Cajun Seasoning</ProductName>
+    <SupplierID>2</SupplierID>
+    <CategoryID>2</CategoryID>
+    <QuantityPerUnit>48 - 6 oz jars</QuantityPerUnit>
+    <UnitPrice>22.0000</UnitPrice>
+    <UnitsInStock>53</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>0</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="5">
+    <ProductName>Chef Anton's Gumbo Mix</ProductName>
+    <SupplierID>2</SupplierID>
+    <CategoryID>2</CategoryID>
+    <QuantityPerUnit>36 boxes</QuantityPerUnit>
+    <UnitPrice>21.3500</UnitPrice>
+    <UnitsInStock>0</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>0</ReorderLevel>
+    <Discontinued>true</Discontinued>
+  </Product>
+  <Product ProductID="6">
+    <ProductName>Grandma's Boysenberry Spread</ProductName>
+    <SupplierID>3</SupplierID>
+    <CategoryID>2</CategoryID>
+    <QuantityPerUnit>12 - 8 oz jars</QuantityPerUnit>
+    <UnitPrice>25.0000</UnitPrice>
+    <UnitsInStock>120</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>25</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="7">
+    <ProductName>Uncle Bob's Organic Dried Pears</ProductName>
+    <SupplierID>3</SupplierID>
+    <CategoryID>7</CategoryID>
+    <QuantityPerUnit>12 - 1 lb pkgs.</QuantityPerUnit>
+    <UnitPrice>30.0000</UnitPrice>
+    <UnitsInStock>15</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>10</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="8">
+    <ProductName>Northwoods Cranberry Sauce</ProductName>
+    <SupplierID>3</SupplierID>
+    <CategoryID>2</CategoryID>
+    <QuantityPerUnit>12 - 12 oz jars</QuantityPerUnit>
+    <UnitPrice>40.0000</UnitPrice>
+    <UnitsInStock>6</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>0</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+  <Product ProductID="9">
+    <ProductName>Mishi Kobe Niku</ProductName>
+    <SupplierID>4</SupplierID>
+    <CategoryID>6</CategoryID>
+    <QuantityPerUnit>18 - 500 g pkgs.</QuantityPerUnit>
+    <UnitPrice>97.0000</UnitPrice>
+    <UnitsInStock>29</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>0</ReorderLevel>
+    <Discontinued>true</Discontinued>
+  </Product>
+  <Product ProductID="10">
+    <ProductName>Ikura</ProductName>
+    <SupplierID>4</SupplierID>
+    <CategoryID>8</CategoryID>
+    <QuantityPerUnit>12 - 200 ml jars</QuantityPerUnit>
+    <UnitPrice>31.0000</UnitPrice>
+    <UnitsInStock>31</UnitsInStock>
+    <UnitsOnOrder>0</UnitsOnOrder>
+    <ReorderLevel>0</ReorderLevel>
+    <Discontinued>false</Discontinued>
+  </Product>
+</Products>

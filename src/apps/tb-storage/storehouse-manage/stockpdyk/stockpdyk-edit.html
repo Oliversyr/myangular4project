@@ -1,0 +1,85 @@
+<!-- 单据浏览详情布局 -->
+<template-edit [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    
+        <ng-template #suiTopToolbar>
+            <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+        </ng-template>
+    
+        <ng-template #suiMain>
+            <div class="mt-xsmall">
+    
+                <sui-panel title="基本信息" [expanded]="expanded" (toggle)="showHead($event)">
+                    <div sui-panel-headerRight></div>
+                    <div sui-panel-content>
+                        <div sui-row class="sui-inputText-group">
+                            <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                                <div class="til">盘点单号：</div>
+                                <div class="con">
+                                    {{headInfo?.sheetid}}
+                                </div>
+                            </div>
+                            <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                                <div class="til">盘点日期：</div>
+                                <div class="con">
+                                    {{headInfo?.editdate}}
+                                </div>
+                            </div>
+                            <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                                <div class="til">盘点类型：</div>
+                                <div class="con">
+                                    {{headInfo?.pdtypeName}}    
+                                </div>
+                            </div>
+                            <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="8">
+                                <div class="til">盘点地点：</div>
+                                <div class="con">
+                                    {{headInfo?.pdaddr}}
+                                </div>
+                            </div>
+    
+                            <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                                <div class="til">盘点状态：</div>
+                                <div class="con">
+                                    {{headInfo?.statusName}}    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </sui-panel>
+            </div>
+        </ng-template>
+
+        <ng-template #suiItemInputContent>
+            <div class="sui-iteminput-item" style=" width: 300px;">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods [customTabindex]="1" (selectGoods)="selectGoods($event)" #goodsSelect></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            <div class="sui-iteminput-item"  style=" width: 300px;">
+                <span class="sui-input-group">
+                    <span class="sui-input-group-addon sui-star">数量</span>
+                    <input type="number" [(ngModel)]='pdQty' customTabindex="2" class="sui-input" placeholder="请输入数量"  [suiRules]="'required,bulkQty'">
+                </span>
+            </div>
+
+            <div class="sui-iteminput-item"  style=" width: 300px;">
+                <span class="sui-input-group">
+                    <span class="sui-input-group-addon sui-star">备注</span>
+                    <input type="text"  [(ngModel)]='pdNotes'  customTabindex="3" class="sui-input" placeholder="请填写备注" [suiRules]="'len_0_12'">
+                </span>
+            </div>
+        </ng-template>
+    
+        <ng-template #suiGrid>
+            <sui-grid #grid [gridOption]="gridOption" [page]='gridPage' [gridEditOption]="gridEditOption" (onCellendedit)="cellEndEditEvent($event)" (onToolBtnClick)="onToolBtnClick($event)">
+            </sui-grid>
+        </ng-template>
+    
+        <sui-batch-result-alert [title]="'盘点录入结果'" [cols]="cols" (onClose)="onClose($event)" #el_openBatchResult></sui-batch-result-alert>
+    </template-edit>
+    
+    

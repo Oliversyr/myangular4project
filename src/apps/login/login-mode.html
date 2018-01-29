@@ -1,0 +1,17 @@
+<div class="login-mode">
+    <sui-spin [nzSpinning]="loadSpin.isOpen" [nzTip]="loadSpin.message">
+        <div class="login-box">
+            <div class="login-box-head mt20 clearfix">
+                <span class="login-box-head-person fl" id="login-person" [ngClass]="{ active: userInfo?.loginType==='mobile' }" (click)="switchLoginType('mobile')">个人手机登陆</span>
+                <span class="login-box-head-company fr" id="login-company" [ngClass]="{ active: userInfo?.loginType==='acct' }" (click)="switchLoginType('acct')">企业账号登陆</span>
+            </div>
+            <ng-template #loginModeContainer></ng-template>
+            <div *ngIf="userInfo?.errorMessage" class="jqx-validator-error-label">
+                {{userInfo?.errorMessage}}
+            </div>
+        </div>
+    </sui-spin>
+</div>
+<div class="forget-password-dialog">
+    <forget-mobile-password #el_forgetMobilePassword></forget-mobile-password>
+</div>

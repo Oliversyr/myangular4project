@@ -1,0 +1,179 @@
+<!-- 单据浏览详情布局 -->
+<template-detail [suikeyboard] [option]="option" (pageBtnClik)="onToolBtnClick($event)">
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [tools]="tools" [toolBarData]="toolBarData" (onToolBtnClick)="onToolBtnClick($event)" class="fr"></sui-toolbar>
+        <div class="sui-process fr mr-xsmall">
+            <button class="sui-btn sui-btn-default mr-xsmall" (click)="onBtnClick('startpd')" [ngClass]="{'active disable':headInfo?.status==0,'':headInfo?.status!=0}">
+                <i class="sui-arabic1"></i>盘点录入 </button>
+            <svg class="svgicon icon-angle-double-right" [ngClass]="{'active disable':headInfo?.status==0,'':headInfo?.status!=0 }">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+            <button class="sui-btn sui-btn-default mr-xsmall" (click)="onBtnClick('makeReport')" [ngClass]="{'active disable':headInfo?.status==0,'':headInfo?.status!=0}">
+                <i class="sui-arabic2"></i> 生成报告 </button>
+            <svg class="svgicon icon-angle-double-right" [ngClass]="{'active disable':headInfo?.status==0,'':headInfo?.status!=0}">
+                <use xlink:href="#icon-angle-double-right"></use>
+            </svg>
+            <button class="sui-btn sui-btn-default mr-xsmall" (click)="onBtnClick('makesure')" [ngClass]="{'active disable':headInfo?.status==3,'':headInfo?.status!=3}">
+                <i class="sui-arabic3"></i> 确认盘点 </button>
+                <!-- <button class="sui-btn sui-btn-default mr-xsmall" (click)="changeStatus()"> 修改状态 {{headInfo?.status}} </button> -->
+        </div>
+    </ng-template>
+    <ng-template #suiMain>
+        <div class="mt-xsmall">
+            <sui-panel title="基本信息" [expanded]="expanded" (toggle)="showHead($event)">
+                <div sui-panel-headerRight></div>
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                            <div class="til">盘点单号：</div>
+                            <div class="con"> {{headInfo?.sheetid}} </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="8">
+                            <div class="til">盘点日期：</div>
+                            <div class="con"  *ngIf='!inEdit'> {{headInfo?.editdate}} </div>
+                            <div class="con">
+                                <sui-date  *ngIf='inEdit' [(ngModel)]="headInfo.newEditdate"></sui-date>
+                            </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                            <div class="til">盘点类型：</div>
+                            <div class="con"> {{headInfo?.pdtypeName}} </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="24" [nzMd]="4">
+                            <div class="til">盘点地点：</div>
+                            <div class="con"> {{headInfo?.pdaddr}} </div>
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="4">
+                            <div class="til">盘点状态：</div>
+                            <div class="con"> {{headInfo?.statusName}} </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-panel>
+        </div>
+    </ng-template>
+    <!--start  查看快照-->
+    <ng-template #suiTotal>
+        <div class="sui-amount-panel">
+            <span class="sui-amount-panel-item  animated zoomIn"> 总计: </span>
+            <span class="sui-amount-panel-item  animated zoomIn"> 快照商品:
+                <label class="fz18 c-red">{{headInfo?.stkgoodsnum | suiNum: '#,##0.00': 0}} 种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn"> 盘点商品:
+                <label class="fz18 c-red">{{headInfo?.pdgoodsnum | suiNum: '#,##0.00': 0}} 种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn" *ngIf='headInfo?.status==1 || headInfo?.status==3'> 盘盈商品:
+                <label class="fz18 c-red">{{headInfo?.pdygoodsnum | suiNum: '#,##0.00': 0}} 种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn" *ngIf='headInfo?.status==1 || headInfo?.status==3'> 盘亏商品:
+                <label class="fz18 c-red">{{headInfo?.pdkgoodsnum | suiNum: '#,##0.00': 0}} 种</label>
+            </span>
+            <span class="sui-amount-panel-item  animated zoomIn" *ngIf='headInfo?.status==1'> 盈亏金额:
+                <label class="fz18 c-red">&yen;{{headInfo?.pdykvalue | suiNum: '#,##0.00': 0}} 种</label>
+            </span>
+        </div>
+        <div sui-row class="clearfix mt-xsmall">
+            <div style="width:295px" class="fl">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="商品">
+                    <ng-template #cellContent>
+                        <sui-goods [customTabindex]="1" (selectGoods)="selectGoods($event)"></sui-goods>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div style="width:60px" class="fl">
+                <button class="sui-btn sui-btn-primary mr-xsmall" (click)="queryGoods()"> 查询</button>
+            </div>
+            <div style="width:490px" class="fr" *ngIf='headInfo?.status==1 || headInfo?.status==3'>
+                <div class="sui-fast-filter">
+                    <div class="sui-fast-filter-title">快速筛选</div>
+                    <ul class="sui-fast-filter-list">
+                        <li class="sui-fast-filter-item" *ngFor="let filter of filters, i as index" (click)="fastFilter(filter, i,$event)">
+                            <span class="sui-fast-filter-item-content" [ngClass]="{'active': filter.active}">{{filter.label}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" [page]='gridPage' [gridEditOption]="gridEditOption" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+    <ng-template #suiFooter>
+        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+            <div sui-panel-headerRight>
+                <span class="mr">制单人: {{headInfo?.editor}}</span>
+                <span class="mr">制单时间: {{headInfo?.editdate}}</span>
+                <span class="mr">审核人: {{headInfo?.checker}}</span>
+                <span class="mr">审核时间: {{headInfo?.checkdate}} </span>
+            </div>
+        </sui-panel>
+    </ng-template>
+</template-detail>
+<sui-modal #stockPdGoodsInfoModal [width]="780" [height]="440" [autoOpen]="false" [isModal]="true" [maxHeight]="1000" [minHeight]="200"
+    [maxWidth]="2920" [minWidth]="500" [showCollapseButton]="false">
+    <div #windowHeader>
+        <span>盘点录入数据</span>
+    </div>
+    <div #windowContent class="pt-xsmall" class="alert-box">
+        <div class="alert-content" style="flex-direction: column;">
+            <div class="mt-xsmall">
+                <div sui-panel-content>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="16">
+                            <div class="til">盘点地点：</div>
+                            <div class="con"> {{viewedGoods?.pdaddr}} </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+                            <div class="til">货道号：</div>
+                            <div class="con"> {{viewedGoods?.palletid}} </div>
+                        </div>
+                    </div>
+                    <div sui-row class="sui-inputText-group">
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="10">
+                            <div class="til">商品：</div>
+                            <div class="con"> {{viewedGoods?.goodsname}} </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+                            <div class="til">条码：</div>
+                            <div class="con"> {{viewedGoods?.barcode}} </div>
+                        </div>
+                        <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+                            <div class="til">规格：</div>
+                            <div class="con"> {{viewedGoods?.spec}} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" mt-xsmall">
+                <table class="sui-table">
+                    <thead class="sui-table-thead ">
+                        <tr>
+                            <th class=" per30">录入时间</th>
+                            <th class=" per20">录入人</th>
+                            <th class=" per20">录入数量</th>
+                            <th class=" per30">备注</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="sui-table-wrap" style="height: 180px;">
+                    <div class="page-scroll">
+                        <table class="sui-table">
+                            <tbody class="sui-table-tbody">
+                                <tr *ngFor='let item of goodsInfo; index as i; first as isFirst'>
+                                    <td class="per30">{{item.createdate}}</td>
+                                    <td class="per15">{{item.operator}}</td>
+                                    <td class="per15">{{item.pdqty}}</td>
+                                    <td class="per40">{{item.notes}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert-foot">
+            <button (click)="doClose()" class="sui-btn sui-btn-primary mr-xsmall"> 返回</button>
+        </div>
+    </div>
+</sui-modal>

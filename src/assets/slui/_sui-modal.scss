@@ -1,0 +1,91 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-06 03:32:08
+ * @modify date 2017-12-06 03:32:08
+ * @desc modal弹出框样式
+*/
+.jqx-window {
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	// z-index: 1801;
+	z-index: 491 !important;
+			
+	.jqx-widget-header {
+		background-color: $white !important;
+		font-size: 14px;  
+
+		img {//标题头部没有图片显示
+			display: none;
+		}
+	}
+
+	.alert-box { //js计算的高度问题，暂时用覆盖的办法
+		width: 100% !important;
+		height: calc(100% - 30px)!important;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+		.alert-content {//内容部分
+			display: flex;
+			flex: 1;
+			height: calc(100% - 50px);
+			padding: 15px;
+			line-height: 18px;
+		}
+		.alert-foot {//脚部按钮部分
+			box-sizing:border-box;
+			height: 50px;
+			line-height: 50px;
+			text-align: right;
+			border-top: 1px solid $gray-light;
+		}
+	}
+}//jqx-window end
+.jqx-window-modal {//蒙版
+	// z-index: 1800;
+	z-index: 490 !important;
+}//jqx-window-modal end
+
+// .jqx-widget-header {
+// 	background-color: $white !important;  
+	
+	
+// 	&>div{
+// 		width: 100%;
+// 		text-align: center;
+// 	}
+// }
+
+
+
+// .alert-title {//标题部分
+// 	text-align: center;
+// 	&>div{
+// 		width: 100%;
+// 		&>img {
+// 			vertical-align: middle;
+// 			position: absolute;
+//    			left: 5px;
+			
+// 		}
+// 	}
+// }
+
+// .alert-box {
+//     display: flex;
+//     flex-direction: column;
+//     .alert-content {//内容部分
+//         display: flex;
+// 		flex: 1;
+		
+// 		padding: 15px;
+//     }
+//     .alert-foot {//脚部按钮部分
+//         height: 45px;
+//         line-height: 45px;
+//         margin-left: -5px;
+//         margin-right: -5px;
+//         text-align: center;
+//         border-top: 1px solid #e5e5e5;
+//     }
+// }

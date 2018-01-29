@@ -1,0 +1,329 @@
+[{
+        "moduleid": "1000",
+        "modulename": "工具(utils)",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+                "moduleid": "1001",
+                "modulename": "工具",
+                "parentmoduleid": "1000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "url": "utils"
+            },
+            {
+                "moduleid": "1002",
+                "modulename": "日志测试",
+                "parentmoduleid": "1000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "url": "utils/logs"
+            },
+            {
+                "moduleid": "1003",
+                "modulename": "rxjs",
+                "parentmoduleid": "1000",
+                "rightvalue": "511",
+                "displayorder": "3",
+                "isDefOpen": false,
+                "url": "utils/rxjs"
+            }
+        ]
+    },
+    {
+        "moduleid": "1100",
+        "modulename": "框架组件",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "7",
+        "url": "",
+        "childrens": [{
+                "moduleid": "1101",
+                "modulename": "框架组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "url": "iframe"
+            },
+            {
+                "moduleid": "1102",
+                "modulename": "页签管理",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "url": "uis/tab-manager"
+            },
+            {
+                "moduleid": "1103",
+                "modulename": "非编辑表格",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-grid"
+            },
+            {
+                "moduleid": "1104",
+                "modulename": "模板",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-content-tpl"
+            },
+            {
+                "moduleid": "1105",
+                "modulename": "布局设计",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/layout-design"
+            },
+            {
+                "moduleid": "1106",
+                "modulename": "flex",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/flex"
+            },
+            {
+                "moduleid": "1107",
+                "modulename": "单据列表",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": true,
+                "url": "uis/sheet"
+            },
+            {
+                "moduleid": "1110",
+                "modulename": "常用管道",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/pipes"
+            },
+            {
+                "moduleid": "1111",
+                "modulename": "远程管道",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/pipes/remote"
+            },
+            {
+                "moduleid": "1112",
+                "modulename": "生命周期钩子",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/hooks"
+            },
+            {
+                "moduleid": "1113",
+                "modulename": "打印组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/print"
+            },
+            {
+                "moduleid": "1121",
+                "modulename": "上一单下一单",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/previous-next"
+            },
+            {
+                "moduleid": "1114",
+                "modulename": "文本与输入",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/text-input"
+            },
+            {
+                "moduleid": "1115",
+                "modulename": "弹出框",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/modal"
+            },
+            {
+                "moduleid": "1115",
+                "modulename": "键盘操作",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/keyboard"
+            },
+            {
+                "moduleid": "1117",
+                "modulename": "树组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-tree"
+            },
+            {
+                "moduleid": "1118",
+                "modulename": "区域组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-area"
+            },
+            {
+                "moduleid": "1119",
+                "modulename": "热键操作",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/hotkey"
+            },
+            {
+                "moduleid": "1120",
+                "modulename": "验证",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-validator"
+            },
+            {
+                "moduleid": "1121",
+                "modulename": "品类组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-category"
+            },
+            {
+                "moduleid": "1122",
+                "modulename": "品牌组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-brand"
+            },
+            {
+                "moduleid": "1123",
+                "modulename": "用户组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-user"
+            },
+            {
+                "moduleid": "1124",
+                "modulename": "combobox",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-combobox"
+            },
+            {
+                "moduleid": "1125",
+                "modulename": "客户/供应商/商品组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-custom"
+            },
+            {
+                "moduleid": "1126",
+                "modulename": "自动补全",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-auto-complete"
+            },
+            {
+                "moduleid": "1127",
+                "modulename": "导出组件",
+                "parentmoduleid": "1100",
+                "rightvalue": "511",
+                "displayorder": "7",
+                "isDefOpen": false,
+                "url": "uis/sui-export"
+            }
+
+
+        ]
+    },
+    {
+        "moduleid": "1200",
+        "modulename": "Primeng-Demo",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+            "moduleid": "1201",
+            "modulename": "表格",
+            "parentmoduleid": "1000",
+            "rightvalue": "511",
+            "displayorder": "3",
+            "isDefOpen": false,
+            "url": "primeng/grid"
+        }]
+    },
+    {
+        "moduleid": "1300",
+        "modulename": "Zorro-Demo",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+            "moduleid": "1301",
+            "modulename": "输入框",
+            "parentmoduleid": "1300",
+            "rightvalue": "511",
+            "displayorder": "3",
+            "isDefOpen": false,
+            "url": "zorro/zr-inputs"
+        }]
+    },
+    {
+        "moduleid": "1400",
+        "modulename": "jqwidgets-Demo",
+        "parentmoduleid": "0",
+        "rightvalue": "1",
+        "displayorder": "3",
+        "url": "",
+        "childrens": [{
+            "moduleid": "1401",
+            "modulename": "表格",
+            "parentmoduleid": "1400",
+            "rightvalue": "511",
+            "displayorder": "3",
+            "isDefOpen": false,
+            "url": "jqwidgets/jqx-grid"
+        }]
+    }
+]

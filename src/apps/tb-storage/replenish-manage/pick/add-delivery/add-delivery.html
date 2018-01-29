@@ -1,0 +1,55 @@
+
+<sui-modal  #addDelModal [width]="1180" [height]="600" [autoOpen]="false"
+                [isModal]="true"
+                [maxHeight]="1000" [minHeight]="200" [maxWidth]="2920" [minWidth]="500"
+                [showCollapseButton]="false" >
+			    <div #windowHeader>
+					  <span>添加配送单</span>
+			    </div>
+
+				<div #windowContent  class="alert-box ">
+                    <div  class="alert-content" style="flex-direction: column;">
+                        <div sui-row>
+                            
+                            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                                <sui-cell leftClass="sui-label-width-md" leftLabel="目的店铺">
+                                    <ng-template #cellContent>
+                                        <sui-organ (selectOrgan)="selectedShop($event)" [orgType]="'shop'" customTabindex="2" #shopSelect></sui-organ>
+                                    </ng-template>
+                                </sui-cell>
+                            </div>
+                            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                                <sui-date-range class="sui-date-range" [customTabindexs]="[1,2,3]" leftClass="sui-label-width-md" 
+                                                [leftLabel]="dateLabels" [leftPlaceHolder]="'全部'" [(ngModel)]="searchParams.dateValue"></sui-date-range>
+                            </div>
+                            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                                <sui-cell leftClass="sui-label-width-md" [leftLabel]="opLabels" [(ngModel)]="searchParams.opflag" [customTabindexs]="7">
+                                    <ng-template #cellContent>
+                                        <sui-input [(ngModel)]="searchParams.operator" customTabindex="8">
+                                        </sui-input>
+                                    </ng-template>
+                                </sui-cell>
+                            </div>
+
+                            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                                <button (click)="doSearch()"   class="slic-btn slic-btn-theme3 ml5" >查询</button>
+                                <button (click)="doReset()"   class="slic-btn slic-btn-theme3 ml5" >重置</button>
+                            </div>
+                
+                            
+                        </div>
+                        <div class="flex-col">
+                            <sui-grid #adjustgrid [gridOption]="gridOption" >
+                                </sui-grid>
+                        </div>
+
+                    </div>
+
+                    
+                    
+                    <div class="alert-foot">
+                        <button (click)="doModalConfirm()"   class="slic-btn slic-btn-theme3 mr-xsmall" >确认添加</button>
+                        <button (click)="doModalClose()" class="slic-btn slic-btn-theme4  mr-xsmall">取消</button>
+                    </div>
+				</div>
+</sui-modal> 

@@ -1,0 +1,26 @@
+<div class="sui-panel">
+    <!-- panel头部-->
+    <div class="sui-header">
+        <!-- panel头部左边-->
+        <div class="sui-panel-headerLeft" (click)="_toggle($event);">
+            <!-- panel 标题显示 beforeTitleIcon -->
+            <span [ngClass]="beforeTitleIcon" class="sui-panel-title">{{title}}</span>
+        </div>
+        <!-- panel头部右边-->
+        <div class="sui-panel-headerRight">
+            <ng-content select="[sui-panel-headerRight]"></ng-content>
+        </div>
+
+    </div>
+    <!--收缩小图标-->
+    <div *ngIf="isShowToggleIcon" class="sui-panel-toggle " (click)="_toggle($event);">
+        <!-- {{expanded?"折叠":"展开"}}   -->
+        <svg *ngIf="!expanded" class="svgicon icon-circle-right"><use xlink:href="#icon-circle-right"></use></svg>
+        <svg *ngIf="expanded" class="svgicon icon-circle-right"><use xlink:href="#icon-circle-down"></use></svg>
+    </div>
+    <div class="sui-panel-content" [hidden]="!expanded">
+        <!-- 正常显示内容 -->
+        <ng-content select="[sui-panel-content]"></ng-content>
+    </div>
+
+</div>

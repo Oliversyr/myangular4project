@@ -1,0 +1,21 @@
+<div class="transfer-add">
+    <sui-modal class="" #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="380" [height]="225"
+        [maxHeight]="900" [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+        <div class="alert-box transfer-add-modal" [suikeyboard]="'sui-modal'" #windowContent>
+            <div class="alert-content">
+                <div>
+                    <label>请选择调出仓库：</label>
+                    <sui-organ #outStoreOrgan (selectOrgan)="selectedStorehouse($event, 1)" [orgType]="'stock'" [customTabindex]="1"></sui-organ>
+                </div>
+                <div>
+                    <label>请选择调入仓库：</label>
+                    <sui-organ #inStoreOrgan (selectOrgan)="selectedStorehouse($event, 2)" [orgType]="'stock'" [customTabindex]="2"></sui-organ>
+                </div>
+            </div>
+            <div class="alert-foot">
+                <button suiHotKey="ENTER" (click)="confirm()" class="sui-btn sui-btn-primary mr-xsmall">新建({{hotkeys.ENTER}})</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="cancel()">取消({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+    </sui-modal>
+</div>

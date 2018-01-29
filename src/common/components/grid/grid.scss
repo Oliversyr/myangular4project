@@ -1,0 +1,40 @@
+// .ui-datatable-scrollable-body {
+//     border-bottom: 1px solid #d9d9d9;
+//     border-left: 1px solid #d9d9d9;
+//     border-right: 1px solid #d9d9d9;
+// }
+.sui-grid {
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    .sui-grid-top {
+        width: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        .sui-grid-total {
+            width: 100%;
+        }
+        .sui-grid-sortTools {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .sui-grid-sort {
+                padding: .1em;
+                .active {
+                    color: #FF0000;
+                }
+            }
+            .sui-grid-tools {
+                padding: .1em;
+            }
+            span {
+                padding: .2em;
+            }
+        }
+    }
+    .sui-grid-body {
+        flex-grow: 1;
+    }
+}

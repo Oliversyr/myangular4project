@@ -1,0 +1,6 @@
+<div class="sui-text" [ngClass]="textClass">
+    <span [ngClass]="labelClass" class="sui-text-label">{{label + "："}}</span>
+    <span *ngIf="content" class="sui-text-content" title="{{contentTitle}}">{{content}}</span>
+    <ng-content *ngIf="!content" select=".sui-text-content"></ng-content>
+    <!-- <ng-content select=".sui-text-right"></ng-content> -->
+</div>

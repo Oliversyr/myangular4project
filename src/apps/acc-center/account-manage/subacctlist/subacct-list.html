@@ -1,0 +1,51 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                
+                <sui-cell leftClass="sui-label-width-md" leftLabel="客户">
+                    <ng-template #cellContent>
+                        <sui-acc-customer (selectCustom)="selectedCustomer($event)"  [customTabindex]="1" #customerSelect [defSelectedItem]="defSelectedItem"></sui-acc-customer>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="账户类型">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择账户类型" customTabindex="6" class="suid-per100" [(ngModel)]="searchParams.subaccttype" [source]="accttypeData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择账户状态" customTabindex="5" class="suid-per100" [(ngModel)]="searchParams.status" [source]="statusData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="账户">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.subacctid" customTabindex="11" placeHolder="请输入账户"></sui-input>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)"></sui-grid>
+    </ng-template>
+</template-list>
+<div class="add-transfer">
+        <subacct-transfer #el_winTransfer (addTransfer)="doConfirmAdd($event)"></subacct-transfer>
+</div>

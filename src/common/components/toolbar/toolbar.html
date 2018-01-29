@@ -1,0 +1,13 @@
+<ng-template ngFor let-item let-index="index" [ngForOf]="singleBtns">
+    <button *ngIf="item.name!='print' && item.name!='preNext' && item.state && item.dataState !== false" [suiHotKey]="item.hotkey" type="button" class="slic-btn slic-btn-theme3 " (click)="_onTopToolBtnClick(item,$event); " title="{{item.placeholder}}">{{item.label}}</button>
+    <sui-print *ngIf="item.name=='print' && item.state && item.dataState !== false" (printClick)="_printClick($event)" [moduleId]="moduleId"></sui-print>
+    <sui-previous-next *ngIf="item.name=='preNext' && item.state && item.dataState !==false " [previousNextOption]="previousNextOption"></sui-previous-next>
+</ng-template>
+<button *ngIf="batchBtnState" type="button" class="slic-btn slic-btn-theme3 pst-rl sui-dropdown-btn">
+    批量操作 <svg class="svgicon icon-arrow"><use xlink:href="#icon-arrow"></use></svg>
+    <ul  class="sui-dropdown animated fadeIn" style="left: -18px;">
+        <ng-template ngFor let-item let-index="index" [ngForOf]="batchBtns">
+            <li *ngIf="item.state && item.dataState !==false " tabindex="0" [suiHotKey]="item.hotkey" (click)="_onTopToolBtnClick(item,$event); " title="{{item.placeholder}}">{{item.label}}</li>
+        </ng-template>
+    </ul>
+</button>

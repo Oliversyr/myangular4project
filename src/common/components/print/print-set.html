@@ -1,0 +1,42 @@
+<div class="flex-col pst-rl sl-page print-set" style="height: 100%;">
+	
+        <div class="flex-col">
+            <div style="margin-bottom: 5px;">
+                设置打印机方式:
+                <label style="margin-right: 20px;">
+                    <sui-radio-group [name]="'defaultPrintType'" [value]="'SYSTEM_DEFAULT'" [(ngModel)]="printerType" (change)="changePrinterType()">
+                                操作系统默认打印机
+                        </sui-radio-group>    
+                </label>
+                <label>
+                    <sui-radio-group [name]="'defaultPrintType'" [value]="'CUSTOM'" [(ngModel)]="printerType" (change)="changePrinterType()">
+                                自定默认打印机
+                        </sui-radio-group>        
+                </label>
+            </div>
+            <div [hidden]="printerType=='SYSTEM_DEFAULT'">
+                <div style="height: 40px;">
+                    默认打印机: {{printerName}}
+                </div>
+                <div style="margin-bottom: 5px;">
+                    可选打印机: 
+                </div>
+                <div *ngFor="let print of printers" style="display: inline-block;width: 30%;height: 30px;">
+                    <label  >
+                        <sui-radio-group [name]="'defaultPrintName'" [value]="print.name" [(ngModel)]="printerName" (change)="changePrint(print, $event)">
+                                {{print.name}}
+                        </sui-radio-group>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modelFoot"  style="clear: both; background: none;text-align: center;">
+            <button (click)="doConfirm()"   class="sl-btn sl-btn-normal sl-theme3 ml5" [hidden]="true">确定</button>
+            
+            <button (click)="doClose()" class="slic-btn slic-btn-theme3 ml5">关闭</button>
+            
+        </div>
+        
+        <sui-modal-toast #msgtoast></sui-modal-toast>
+    </div>

@@ -1,0 +1,82 @@
+/**
+ * @author [herj]
+ * @create date 2018-01-05 06:54:05
+ * @modify date 2018-01-05 06:54:05
+ * @desc 标记/标识
+*/
+
+/*demo:
+<div class="sui-badge-list"> 
+    <span class="sui-badge primary"> 删除  <svg class="svgicon icon-close"><use xlink:href="#icon-close"></use></svg></span>
+    <span class="sui-badge warning"> 删除  <svg class="svgicon icon-close"><use xlink:href="#icon-close"></use></svg></span>
+    <span class="sui-badge danger"> 删除  <svg class="svgicon icon-close"><use xlink:href="#icon-close"></use></svg></span>
+    <span class="sui-badge"> 删除标识  <svg class="svgicon icon-close"><use xlink:href="#icon-close"></use></svg></span>
+        
+</div>
+*/
+
+.sui-badge-list {
+    @include clearfix;
+
+    .sui-badge {
+        position: relative;
+        float: left;
+        display: inline-block;
+        margin-right: 15px;
+        min-width: 40px;
+        height: 22px;
+        line-height: 22px;
+        padding:0 5px;
+        text-align: center;
+        background-color: #f3f3f3;
+        border-radius: 4px;
+
+        .svgicon.icon-close {
+            width: 10px;
+            height: 10px;
+
+            &:hover {
+                color: $gray;
+            }
+        }
+    }//sui-badge end
+
+    .sui-badge.primary {
+        background-color: $primary;
+        color: $white;
+
+        .svgicon.icon-close {
+            width: 10px;
+            height: 10px;
+            color: $white;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+    .sui-badge.warning {
+        background-color: $warning;
+        color: $white;
+         .svgicon.icon-close {
+            width: 10px;
+            height: 10px;
+            color: $white;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+    .sui-badge.danger {
+        background-color: $danger;
+        color: $white;
+         .svgicon.icon-close {
+            width: 10px;
+            height: 10px;
+            color: $white;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+
+}//sui-badge-list end

@@ -1,0 +1,100 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-25 06:22:48
+ * @modify date 2018-01-15 11:39:58
+ * @desc  日期输入框组件重置
+*/
+
+/*日期组件 ************************/
+.sui-date-range {
+    display: flex;
+    flex-direction: row;
+
+    font-size: 0;
+    @include clearfix;
+    
+
+    // .jqx-fill-state-normal {
+    //     box-sizing: border-box !important;
+    //     height: 28px !important;
+    //     background: #eee !important;
+    //     border-color: #d9d9d9 !important;
+    // }
+
+    .jqx-fill-state-normal {
+        box-sizing: border-box !important;
+        height: 28px !important;
+        background: #eee !important;
+        border-color: #d9d9d9 !important;
+    }
+
+    .jqx-rc-all:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .jqx-widget-content {
+        box-sizing: border-box !important;
+        height: 28px !important;
+        border-left: 0 !important;
+    }
+
+    .sui-lefeLabel {//文本左侧标题 20180110
+        float: left;
+        border-right: 1px solid #d9d9d9;
+    }
+    
+    sui-select {//输入框组的下拉框=====================================
+        .jqx-dropdownlist-state-normal {
+            .jqx-dropdownlist-content {
+                width: 76% !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                line-height: 26px;
+                padding: 0 10px !important;
+            }
+        }
+    }//sui-select 输入框组的下拉框 end ==
+
+    sui-date {//右侧内容-日期选择部分 == 圆角处理 ===================================
+        display: flex;
+        flex: 1;
+
+        .sui-dates-begin {
+            width: 100% !important;
+            border-radius: 0;
+
+            .jqx-input-content {
+                width: 100% !important;
+                height: 26px !important;
+                line-height: 26px;
+                padding: 0 10px !important;
+            }//.jqx-input-content  end
+
+            .jqx-action-button {//日期图标按钮
+                left: calc(100% - 22px) !important;
+            }//.jqx-action-button  end
+
+        }//.sui-dates-begin end
+        .sui-dates-end {
+            width: 100% !important;
+            @include border-left-radius(0);
+            @include border-right-radius(4px);
+
+            .jqx-input-content { //输入框
+                width: 100% !important;
+                height: 26px !important;
+                line-height: 26px;
+                padding: 0 10px !important;
+                @include border-right-radius(4px);
+                
+            }// .jqx-input-content  end
+
+            .jqx-action-button {//日期图标按钮
+                left: calc(100% - 22px) !important;
+                @include border-right-radius(4px);
+                height: 26px !important;
+            }//.jqx-action-button  end
+        }//.jqx-input-content end
+
+    }//sui-date  end
+}//.sui-date-range end

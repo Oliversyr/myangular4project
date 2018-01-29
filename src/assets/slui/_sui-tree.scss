@@ -1,0 +1,25 @@
+/**
+ * @author [herj]
+ * @create date 2017-12-21 11:12:41
+ * @modify date 2017-12-21 11:12:41
+ * @desc jqx 树重置样式
+*/
+
+.jqx-tree {
+    border-radius: 4px;
+    border: 1px solid $sui-tree-border;
+    .jqx-tree-dropdown-root {
+        padding: 10px;
+    }
+    .jqx-fill-state-pressed {
+        border-color: $sui-tree-bg;
+        background-color: $sui-tree-bg;
+    }
+    .jqx-fill-state-hover {
+        border-color: $sui-tree-bg;
+        background-color: $sui-tree-bg;
+    }
+    .jqx-tree-item {
+        width: 100%;
+    }
+}//.jqx-tree end

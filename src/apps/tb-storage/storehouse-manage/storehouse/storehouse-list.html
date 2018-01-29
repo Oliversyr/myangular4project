@@ -1,0 +1,112 @@
+<!-- 单据列表布局 -->
+<template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
+    <!-- <ng-template #suiHelpContent>
+        <div>筹备中aaaaaaaaaaa...</div>
+    </ng-template> -->
+    <ng-template #suiSearchNormal>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="上级机构">
+                    <ng-template #cellContent>
+                        <!-- <sui-input [(ngModel)]="searchParams.parentOrg" customTabindex="1" placeHolder="请输入上级机构名称">
+
+                        </sui-input> -->
+
+                        <sui-organ (selectOrgan)="selectedOrgan($event)" [customTabindex]="1" #organSelect></sui-organ>
+
+                        <!-- <sui-auto-complete #myComboBox [option]="option" [minLength]="1" [width]="200" [height]="25" [displayMember]="'CustomerID'" 
+                                            [dropDownWidth]="dropDownWidth" [dropDownHeight]="dropDownHeight" (onChange)="autoChange($event)">
+                        </sui-auto-complete> -->
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="仓库">
+                    <ng-template #cellContent>
+                        <sui-organ (selectOrgan)="selectedStorehouse($event)" [orgType]="'stock'" customTabindex="2" #storehouseSelect></sui-organ>
+                        <!-- <sui-input [(ngModel)]="searchParams.stock" customTabindex="3" placeHolder="请输入仓库名称">
+
+                        </sui-input> -->
+
+                        <!-- <sui-auto-complete #myComboBox [option]="option" [minLength]="1" [width]="200" [height]="25" [displayMember]="'CustomerID'" 
+                                            [dropDownWidth]="dropDownWidth" [dropDownHeight]="dropDownHeight" (onChange)="autoChange($event)">
+                        </sui-auto-complete> -->
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="仓库类型">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择仓库类型" customTabindex="5" class="suid-per100" [(ngModel)]="searchParams.stocktype" [source]="stocktypeData" [displayMember]="'stocktypename'" [valueMember]="'stocktype'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="状态">
+                    <ng-template #cellContent>
+
+                        <sui-select placeHolder="选择仓库状态" customTabindex="6" class="suid-per100" [(ngModel)]="searchParams.status" [source]="statusData" [displayMember]="'label'" [valueMember]="'value'">
+
+                        </sui-select>
+                    </ng-template>
+                </sui-cell>
+            </div>
+        </div>
+    </ng-template>
+    <!-- more -->
+    <ng-template #suiSearchMore>
+        <div sui-row>
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="配送店铺">
+                    <ng-template #cellContent>
+                        <!-- <sui-input [(ngModel)]="searchParams.myshop" customTabindex="1" placeHolder="请输入配送店铺名称">
+
+                        </sui-input> -->
+
+                        <sui-organ (selectOrgan)="selectedShop($event)" [orgType]="'shop'" [customTabindex]="7" #shopSelect></sui-organ>
+
+                        <!-- <sui-auto-complete #myComboBox [option]="option" [minLength]="1" [width]="200" [height]="25" [displayMember]="'CustomerID'" 
+                                            [dropDownWidth]="dropDownWidth" [dropDownHeight]="dropDownHeight" (onChange)="autoChange($event)">
+                        </sui-auto-complete> -->
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+            <div sui-col [nzXs]="12" [nzSm]="8" [nzMd]="6">
+                <sui-cell leftClass="sui-label-width-md" leftLabel="仓管员">
+                    <ng-template #cellContent>
+                        <sui-input [(ngModel)]="searchParams.manager" customTabindex="11" placeHolder="请输入仓管员名称">
+
+                        </sui-input>
+
+                        <!-- <sui-auto-complete #myComboBox [option]="option" [minLength]="1" [width]="200" [height]="25" [displayMember]="'CustomerID'" 
+                                            [dropDownWidth]="dropDownWidth" [dropDownHeight]="dropDownHeight" (onChange)="autoChange($event)">
+                        </sui-auto-complete> -->
+                    </ng-template>
+                </sui-cell>
+            </div>
+
+        </div>
+    </ng-template>
+    <!-- <div sui-grid-sort>
+        <sui-grid-sort [grid]="grid" [sorts]="sorts"></sui-grid-sort>
+    </div> -->
+
+    <ng-template #suiTopToolbar>
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+    </ng-template>
+    <ng-template #suiGrid>
+            <!-- <jqxGrid #myGrid
+            [width]="850" [source]="dataAdapter" [columns]="columns" 
+            [sortable]="true" 
+            [pageable]="true" [showfilterrow]="true" [filterable]="true"
+            [autoheight]="true" [editable]="true" [selectionmode]="'singlecell'" 
+            > 
+        </jqxGrid>-->
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)">
+        </sui-grid>
+    </ng-template>
+</template-list>
