@@ -1,0 +1,63 @@
+
+  <sui-modal class="" #windowReference [isModal]="true" [title]="title" [autoOpen]="false" [width]="560" [height]="400" [maxHeight]="900"
+    [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+    <div class="alert-box offwithdraw-add-modal" [suikeyboard]="'sui-modal'" [rules]=""  [sui-validator] #el_mainValidator >
+        <div  class="alert-content">
+          
+          <div class="offwithdraw-title mb"> 提现信息 </div>
+          
+          <div class="sui-row-group">
+            <span class="sui-row-group-til sui-star ">客户：</span>
+            <span class="sui-row-group-con" *ngIf="cfginfo.isonlyopen4plat">{{beseParam.name}}</span>
+            <div *ngIf="!cfginfo.isonlyopen4plat" class="sui-row-group-con">
+              <sui-acc-customer (selectCustom)="selectedCustomer($event)" [customTabindex]="1" #customerSelect [defSelectedItem]="defSelectedItem"></sui-acc-customer>
+            </div>
+
+          </div>
+
+          <div class="sui-row-group">
+            <span class="sui-row-group-til">资金账户：</span>
+            <span class="sui-row-group-con">{{beseParam.acctid}}</span>
+          </div>
+
+          <div class="sui-row-group">
+            <span class="sui-row-group-til sui-star">提现账户：</span>
+            <div class="sui-row-group-con">
+              <sui-select placeHolder="选择转入账户" customTabindex="9"
+                [(ngModel)]="beseParam.subacctid" (onSelect)="subSelect($event)" [source]="subaccList" [displayMember]="'subacctname'" [valueMember]="'subacctid'">
+              </sui-select>
+            </div>
+            <span>{{subSelectedItem.usablevalue | currency:'￥'}}</span>
+          </div>
+
+          <div class="sui-row-group">
+            <span class="sui-row-group-til sui-star">提现金额：</span>
+            <div class="sui-row-group-con">
+              <sui-input [(ngModel)]="beseParam.amount" [suiRules]="'required,money'" customTabindex="17" placeHolder="请输入提现金额(不超过可用余额)"></sui-input>
+            </div>
+          </div>
+
+          <div class="sui-row-group">
+            <span class="sui-row-group-til sui-star">提现凭证号：</span>
+            <div class="sui-row-group-con">
+              <sui-input [(ngModel)]="beseParam.paymentno" [suiRules]="'len_1_64'" customTabindex="17" placeHolder="请输入提现凭证号"></sui-input>
+            </div>
+          </div>
+          
+          <div class="sui-row-group">
+            <span class="sui-row-group-til notes">备注：</span>
+            <div class="sui-row-group-con">
+              <sui-input [(ngModel)]="beseParam.notes" [suiRules]="'len_0_255'" customTabindex="17" placeHolder="请输入备注"></sui-input>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="alert-foot">
+          <button suiHotKey="ENTER" (click)="confirm(1)" class="sui-btn sui-btn-primary mr-xsmall">确定({{hotkeys.ENTER}})</button>
+          <button suiHotKey="CHECK" (click)="confirm(2)" class="sui-btn sui-btn-primary mr-xsmall">确定并审核({{hotkeys.CHECK}})</button>
+          <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="cancel()">取消({{hotkeys.CANCEL}})</button>
+        </div>
+    </div>
+  </sui-modal>
+

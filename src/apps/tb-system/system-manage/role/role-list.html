@@ -2,7 +2,9 @@
 <!-- 单据列表布局 -->
 <template-list [suikeyboard] [option]="option" (pageBtnClick)="onToolBtnClick($event)">
     <ng-template #suiTopToolbar>
-        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
+        
+        <sui-toolbar [toolBarData]="mygrid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)" style="float: right;margin-left: 10px;"></sui-toolbar>
+        <div style="float: right;margin-top: 6px;" *ngIf="currentTab === 2"><sui-checkbox class="sui-checkboxs" [(ngModel)]="isUpdateLow" [checked]="isUpdateLow">同步本次修改到所有下级机构</sui-checkbox></div>
     </ng-template>
     <ng-template #suiGrid>
         <div class="sui-role">
@@ -41,14 +43,15 @@
                     <div class="sui-grid-topRight">
                     </div>
                     <div class="sui-grid-topLeft">
-                        <span style="font-size: 18px;font-weight: bold;">武汉区域中心</span>
+                        <span style="font-size: 18px;font-weight: bold;">{{userInfo.ename}}</span>
                     </div>
         
                 </div>
         
                 <!-- 列表 表格 -->
                 <div class="sui-grid">
-                    <sui-grid #grid [gridOption]="gridOption" [page]="gridPage" [editmode]="'dblclick'" (onRowselect)="doSelect($event)" (onToolBtnClick)="onToolBtnClick($event)" (onCellendedit)="cellEndEditEvent($event)">
+                    <sui-grid #grid [gridOption]="gridOption" [page]="gridPage" [editmode]="'dblclick'" (onRowselect)="doSelect($event)"
+                    (onToolBtnClick)="onToolBtnClick($event)" (onCellendedit)="cellEndEditEvent($event)" (onRowunselect)="doUnselect($event)">
                         </sui-grid>
                 </div>
             </div>
@@ -56,15 +59,15 @@
             <!-- 左侧区域结束 -->
     
             <!-- 右侧区域 -->
-            <div class="role-right">
-                <div class="sui-tab-panel mb-xsmall mt10">
+            <div class="role-right ">
+                <div class="sui-tab-panel mb-xsmall ml-xsmall">
                     <div class="sui-tab-btn-group">
                         <button type="button" class="sui-tab-btn" (click)="tabClick(tab)" *ngFor="let tab of myTabs, let i = index" [ngClass]="{'active': tab.active}">{{tab.label}}</button> 
                     </div>
                 </div>
 
-                <!-- <sui-role-power [roleId]="currentRoleId"></sui-role-power> -->
-                <sui-role-user [roleId]="currentRoleId" style="height: 100%;"></sui-role-user> 
+                <sui-role-power #rolePower [roleId]="currentRoleId" [hidden]="currentTab === 1" style="flex: 1;"></sui-role-power>
+                <sui-role-user [roleId]="currentRoleId" style="height: 100%;" [hidden]="currentTab === 2"></sui-role-user> 
 
                 
             </div>
@@ -76,7 +79,7 @@
     </ng-template>
 </template-list>    
 
-<sui-modal #addRole [isModal]="false" [autoOpen]="false" [width]="380" [height]="225"
+<sui-modal #addRole [isModal]="true" [autoOpen]="false" [width]="380" [height]="225"
         [maxHeight]="900" [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
 
         <div #windowHeader>

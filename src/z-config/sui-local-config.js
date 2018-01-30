@@ -60,6 +60,10 @@ SUI_LOCAL_CONFIG.ENTERPRISE_INFO = {
  * 基础应用配置信息 
  */
 SUI_LOCAL_CONFIG.BASE_FRAMEWORK_CONFIG = {
+    /**
+     * 是否显示头信息
+     */
+    showHeader: true,
     "headerBgClass": "theme-dark",
     "defaultAppUrl": "tb-storage"
 }

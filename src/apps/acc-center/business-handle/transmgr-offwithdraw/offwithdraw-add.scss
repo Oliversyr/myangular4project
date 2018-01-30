@@ -1,0 +1,36 @@
+.offwithdraw-add-modal {
+    overflow: hidden;
+    .alert-content {
+        flex-direction: column;
+
+        .offwithdraw-title {
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            padding: 0 10px;
+            background: #e5e5e5;
+        }
+    }
+
+
+    sui-acc-customer {
+        width: 100% !important;
+    }
+    sui-select {
+         width: 100% !important;
+         div[id*='dropdownlistArrowjqxWidget'] {
+            width: 20px;
+         }
+    }
+
+}
+
+.sui-ac-listbox {
+    z-index: 99999!important;
+}
+
+
+.jqx-window .alert-box.offwithdraw-add-modal {
+    height: 100% !important;
+}
+

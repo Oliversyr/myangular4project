@@ -1,0 +1,70 @@
+.recharge-add-modal {
+    overflow: hidden;
+    .alert-content {
+        flex-direction: column;
+        .recharge-title {
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            padding: 0 10px;
+            background: #e5e5e5;
+        }
+        sui-acc-customer {
+            width: 100% !important;
+        }
+        sui-select {
+            width: 100% !important;
+            div[id*='dropdownlistArrowjqxWidget'] {
+                width: 20px;
+            }
+        }
+        // label {
+        //     display: inline-block;
+        //     vertical-align: middle;
+        //     height: 27px;
+        //     margin-top: -10px;
+        // }
+        // .transfer-title{
+        //     background: #e7e7e7;
+        //     height: 30px;
+        //     line-height: 30px;
+        // }
+        // .transfer-content{
+        //     height: 25px;
+        //     line-height: 25px;
+        //     margin-top: 10px;
+        //     .notes{
+        //         margin-right: 30px
+        //     }
+        //     .input-width{
+        //         width: 67%;
+        //     }
+        // }
+        // .inline-block{
+        //     display: inline-block;
+        // }
+        // .sui-organ {
+        //     display: inline-block;
+        // }
+        // .sui-search-content {
+        //     display: flex;
+        //     .sui-search-item {
+        //         &:last-child {
+        //             margin-right: 0;
+        //         }
+        //         margin-right: 10px;
+        //     }
+        // }
+        // .sui-grid-content {
+        //     flex: 1;
+        //     margin-top: 10px;
+        //     sui-grid {
+        //         height: 100%!important;
+        //     }
+        // }
+    }
+}
+
+.sui-ac-listbox {
+    z-index: 99999!important;
+}

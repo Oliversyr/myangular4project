@@ -77,14 +77,16 @@ export class RolePowerTreeComponent implements OnInit, OnChanges {
                     item.allThisPower = val;
                 })
             }
-            console.log(row);
             
             let data = {
                 value: val,
                 moduleid: this.parentModuleId
             }
-            console.log(data);
-            this.childSelectStatus.emit(data);
+
+            // this.childSelectStatus.emit(data);
+            setTimeout(() => {
+                this.childSelectStatus.emit(data);
+            })
         // })
         
     }
@@ -120,7 +122,6 @@ export class RolePowerTreeComponent implements OnInit, OnChanges {
      */
     thirdSelect(event, row) {
         setTimeout(() => {
-            console.log(row);
             let power = row.myPowerList;
             let allSel = true;
             let noSel = true;
@@ -145,7 +146,6 @@ export class RolePowerTreeComponent implements OnInit, OnChanges {
      */
     childrenSelectStatus(obj) {
         // setTimeout(() => {
-            console.log(obj, this.treePowerList);
             let power = this.treePowerList;
             let allSel = true;
             let noSel = true;

@@ -65,6 +65,16 @@ export class LoginModeComponent extends TopCommon implements OnInit, OnDestroy {
     ngOnInit() {
         let suiLocalConfig: SuiLocalConfig = this.globalService.getSuiLocalConfig();
         this.baseFrameworkConfig= suiLocalConfig.BASE_FRAMEWORK_CONFIG;
+        if(suiLocalConfig["OTHER_APP_INVOKE_USER"]) {
+            //其它应用调用用户
+            let _userInfo: any = {
+                loginName: suiLocalConfig["OTHER_APP_INVOKE_USER"].loginname,
+                pswd: "xxxxx"
+            }
+            this.userInfo = _userInfo ;
+            this.onAfterLoginSuccess(suiLocalConfig["OTHER_APP_INVOKE_USER"])
+            return ;
+        }
         if(this.clientSessionData.checkLogin()) {
             //如果已经登录,直接进入首页
             this.goToMain();

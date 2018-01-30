@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 /*
- * 线下提现模块入口路由
- * @Author: lizw
- * @Date: 2018-01-24
+@Description: 线下充值模块入口路由
+ * @Author: cheng
+ * @Date: 2018-01-29 17:54:23
+* @Last Modified by:   cheng
+* @Last Modified time: 2018-01-29 17:54:23
  */
 @NgModule({
     declarations: [
@@ -13,8 +15,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         RouterModule.forChild([
-            { path: '', loadChildren: './recharge-list.module#RechargeListModule' },
-            // {path: "detail", loadChildren: "./subacct-detail/subacct-detail.module#SubAcctDetailModule"}
+            { path: '', loadChildren: './recharge-list.module#RechargeListModule' }
         ])
 
     ],

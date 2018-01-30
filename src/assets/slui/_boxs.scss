@@ -463,3 +463,33 @@
     margin-right: 15px;
     margin-bottom: 10px;
 }
+
+/*行布局,左侧标题，右侧内容的类型*/
+.sui-row-group {
+    display: flex;
+    flex-direction: row;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    @include clearfix;
+
+    .sui-row-group-til {
+        width: 90px;
+        height: 30px;
+        text-align: right;
+    }
+    .sui-row-group-con {
+        position: relative;
+        display: flex;
+        flex: 1;
+        height: 30px;
+        word-break: break-all;
+    }
+    .sui-row-group-con.txt {
+        word-break: break-all;
+        @include text-overflow;
+    }
+}

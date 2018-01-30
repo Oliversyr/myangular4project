@@ -109,7 +109,7 @@ export class SuiAccCustomerComponent extends BaseListComponent implements OnInit
             },
             loadDataInterface: (searchKey: string, filterFields: string): Observable<any> => {
                 console.log("auto-complete request server", filterFields, searchKey);
-                return this.myService.getCustomData({key: searchKey, filterFields: filterFields});
+                return this.myService.getCustomData(searchKey);
             },
             goToAdvanceSearch: (searchKey: string): void => {
                 console.log("auto-complete goToAdvanceSearchr", searchKey);
@@ -196,14 +196,9 @@ export class SuiAccCustomerComponent extends BaseListComponent implements OnInit
      * 弹出框----确定
      */
     doConfirm() {
-        let selIndex = this.mygrid.getselectedrowindex();
-        let selData = this.mygrid.getrowdata(selIndex);
-        
-        console.log(selData)
-        this.defSelectedItem = selData;
-        this.selectCustom.emit([selData]);
+        let selIndex = this.mygrid.selection.getSelectRows();
+        this.myCustomer.setDefSelectedData(selIndex[0])
         this.moreCustom.close();
-        // this.myCustom.selectIndex(0);
     }
 
     /**

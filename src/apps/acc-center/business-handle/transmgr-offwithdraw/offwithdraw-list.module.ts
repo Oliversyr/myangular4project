@@ -7,8 +7,8 @@ import { SuiAccCustomerModule } from '../../../../common/business-zdb-components
 
 import { OffwithdrawListComponent } from './offwithdraw-list.component';
 import { OffwithdrawListService } from './offwithdraw-list.service';
-
-// import { SubAcctTransferModule } from './subacct-transfer.module';
+import { OffwithdrawAddComponent } from './offwithdraw-add.component';
+import { CommonEditModule } from '../../../../common/business-groups/common-edit.module';
 
 
 /**
@@ -18,15 +18,15 @@ import { OffwithdrawListService } from './offwithdraw-list.service';
  */
 
 @NgModule({
-    declarations: [OffwithdrawListComponent],
+    declarations: [OffwithdrawListComponent, OffwithdrawAddComponent],
     imports: [
         CommonModule,
         CommonListModule,
+        CommonEditModule,
         SuiAccCustomerModule,
         RouterModule.forChild([
             { path: '', component: OffwithdrawListComponent },
         ]),
-        // SubAcctTransferModule
     ],
     exports: [],
     providers: [OffwithdrawListService],

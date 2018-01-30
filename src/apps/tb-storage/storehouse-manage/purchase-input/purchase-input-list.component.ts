@@ -16,6 +16,7 @@ import { Grid } from '../../../../common/components/grid/grid';
 import { GridOption, GridPage } from '../../../../common/components/grid/grid-option';
 import { GridSortOption } from './../../../../common/components/grid/grid-sort';
 import { PurchaseInputListService } from './purchase-input-list.service';
+import generatedata from '../storehouse/generatedata';
 
 /**
  * 搜索参数
@@ -190,7 +191,7 @@ export class PurchaseInputListComponent extends BaseListComponent implements OnI
                     }
                 }]
             },
-            { "text": "入库金额(元)", "datafield": "purvalue", "align": "right", "width": 80,aggregates:['sum'] },
+            { "text": "入库金额(元)", "datafield": "purvalue", "align": "right", "width": 80, aggregates: ['sum'] },
             { "text": "仓管员", "datafield": "manager", "align": "center", "width": 80 },
             { "text": "制单", "datafield": "editor", "align": "center", "width": 200, columntype: 'template' },
             { "text": "状态", "datafield": "status", "align": "center", "width": 80, columntype: 'template' },
@@ -354,4 +355,30 @@ export class PurchaseInputListComponent extends BaseListComponent implements OnI
             this.mygrid.load();
         });
     }
+
+    source: any =
+        {
+            localdata: generatedata.generateData(15, false),
+            datafields:
+                [
+                    { name: 'name', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ],
+            datatype: 'array'
+        }
+
+    dataAdapter: any = new jqx.dataAdapter(this.source);
+
+    columns: any[] =
+        [
+            { text: 'Name', columntype: 'textbox', filtertype: 'textbox', datafield: 'name', width: 180, pinned: true },
+            { text: 'Qt.', datafield: 'quantity', columntype: 'numberinput', filtertype: 'textbox', cellsalign: 'right', width: 120, aggregates: ['sum'] },
+            { text: 'Produkt', filtertype: 'textbox', datafield: 'productname', width: 220 },
+            { text: 'Datum', datafield: 'date', columntype: 'datetimeinput', filtertype: 'date', width: 210, cellsalign: 'right', cellsformat: 'd' },
+            { text: 'Preis', datafield: 'price', columntype: 'numberinput', filtertype: 'textbox', width: 120, cellsformat: 'c2', cellsalign: 'right', aggregates: ['sum'] }
+        ];
 }

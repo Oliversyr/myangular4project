@@ -4,5 +4,5 @@
 devImportJsFile([
     
          'dev/acc-center/business-handle/transmgr-offwithdraw-urls.js',
-    
+         'dev/acc-center/recharge/recharge.js',
     ]);

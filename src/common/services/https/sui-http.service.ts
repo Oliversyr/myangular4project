@@ -30,12 +30,12 @@ export class SuiHttpService extends SuiBaseHttp {
     private businessHeaders: { [key: string]: string };
 
 
-        constructor(
+    constructor(
         http: Http
         , rap: SuiRapSuiHttpService
         , suiSpin: SuiSpinService
         , globalService: GlobalService
-        ,private suiHttpUpfile: SuiHttpUpfileService
+        , private suiHttpUpfile: SuiHttpUpfileService
         , @Inject(SUI_HTTP_CONFIG) suiHttpConfig: SuiHttpConfig
     ) {
         super(http, rap, suiSpin, suiHttpConfig, globalService);
@@ -51,7 +51,7 @@ export class SuiHttpService extends SuiBaseHttp {
      * @returns {Observable<SuiResponse>} 
      * @memberof SuiHttpService
      */
-    requestBase(option: SuiRequestBase<any,any>): Observable<SuiResponse<any>> {
+    requestBase(option: SuiRequestBase<any, any>): Observable<SuiResponse<any>> {
         return super.requestOrigin(option);
     }
 
@@ -62,10 +62,16 @@ export class SuiHttpService extends SuiBaseHttp {
      * @returns {Observable<SuiResponse>} 
      * @memberof SuiHttpService
      */
-    request(option: SuiRequest<any,any>): Observable<SuiResponse<any>> {
+    request(option: SuiRequest<any, any>): Observable<SuiResponse<any>> {
         //默认需要增加 content-type
         // if (!option.headers['content-type']) {
-        option.headers = Object.assign({}, option.headers);
+            //liurong modify 2018-01-29 增加FormData支持
+        if (option.isFormData == true) {
+            option.bodyParam = super.paramToURLSearchParams(option.bodyParam).toString();
+            option.headers = Object.assign({"content-type":"application/x-www-form-urlencoded; charset=UTF-8"},option.headers);
+        } else {
+            option.headers = Object.assign({}, option.headers);
+        }
         // }
         if (option.isBusinessHeader !== false && this.businessHeaders) {
             //添加业务头
@@ -83,17 +89,17 @@ export class SuiHttpService extends SuiBaseHttp {
      * @memberof SuiHttpService
      */
     requestUpFile(option: SuiRequestUpFile): Observable<SuiResponse<any>> {
-         /* this.suiHttpUpfile.getUpFileRequest(option).map( (suiRequest: SuiRequest) => {
-            return this.request2(suiRequest).subscribe(data =>{ return data});
-        }); */
+        /* this.suiHttpUpfile.getUpFileRequest(option).map( (suiRequest: SuiRequest) => {
+           return this.request2(suiRequest).subscribe(data =>{ return data});
+       }); */
         return new Observable<any>(observable => {
-            this.suiHttpUpfile.getUpFileRequest(option).subscribe( (suiRequest: SuiRequest<any,any>) => {
-                super.requestOrigin(suiRequest).subscribe(res =>{ 
+            this.suiHttpUpfile.getUpFileRequest(option).subscribe((suiRequest: SuiRequest<any, any>) => {
+                super.requestOrigin(suiRequest).subscribe(res => {
                     observable.next(res);
                     observable.complete();
                 });
             });
-            
+
         });
     }
 

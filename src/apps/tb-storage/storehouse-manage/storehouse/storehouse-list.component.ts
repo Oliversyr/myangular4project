@@ -236,10 +236,10 @@ export class StorehouseComponent extends BaseListComponent implements OnInit, Af
 
         let columndef = [
             { "text": "仓库编码", "datafield": "stockid", "align": "center", "width": 80, columntype: 'link|browse', pinned: true },
-            { "text": "仓库名称", "datafield": "ename", "align": "center", "width": 200, pinned: true },
-            { "text": "上级机构", "datafield": "parentfullname", "align": "center", "width": 200 },
+            { "text": "仓库名称", "datafield": "ename", "align": "left", "width": 200, pinned: true },
+            { "text": "上级机构", "datafield": "parentfullname", "left": "center", "width": 200 },
             { "text": "仓库类型", "datafield": "stocktypename", "align": "center", width: 80 },
-            { "text": "地址", "datafield": "address", "align": "center", minWidth: 200 },
+            { "text": "地址", "datafield": "address", "align": "left", minWidth: 200 },
             { "text": "仓管员", "datafield": "manager", "align": "center", "width": 90 },
             { "text": "配送店铺", "datafield": "shopnum", "align": "center", "width": 80, columntype: 'template' },
             { "text": "库存商品", "datafield": "goodsnum", "align": "center", "width": 80, columntype: 'template' },

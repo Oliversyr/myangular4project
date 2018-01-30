@@ -38,11 +38,12 @@ export class SucbacctTransferComponent extends TopCommon implements OnInit {
     transferParam:transferParam;
     /**转出账户的账户信息 */
     payAccountMsg:object;
+    rootValidators:Array<any> = []
     /**弹出框打开状态 */
     modalStatus:boolean = false;
     
     @Input() title: string = "内部转账";
-    @Output() addTransfer: EventEmitter<Object> = new EventEmitter<Object>();
+    @Output() closeTransfer: EventEmitter<Object> = new EventEmitter<Object>();
     @ViewChild('windowReference') modalWindow: Modal;
     @ViewChild("el_transvalidator") el_transvalidator: SuiValidator;
 
@@ -120,6 +121,7 @@ export class SucbacctTransferComponent extends TopCommon implements OnInit {
                     if (res.retCode === 0) {
                         this.modalService.modalToast("转账成功！","success",2000);
                         this.cancel();
+                        this.closeTransfer.emit("SUCCESS");
                     }
                 });
         

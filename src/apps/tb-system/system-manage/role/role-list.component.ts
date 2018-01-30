@@ -17,6 +17,7 @@ import { HOTKEYS } from './../../../../common/directives/keyboard/hotkeys';
 import { ResponseContentType, RequestMethod } from '@angular/http';
 import { SuiRequestBase, ResponseRetCode } from './../../../../common/services/https/sui-http-entity';
 import { Grid } from '../../../../common/components/grid/grid';
+import { GlobalService } from './../../../../common/global/global.service';
 
 /**
  * 仓库管理模块
@@ -71,14 +72,19 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
      * 机构自动补全选择框
      */
     @ViewChild('addRole') addRoleModal;
-    // @ViewChild('storehouseSelect') storehouseSelect;
+
+    @ViewChild('rolePower') rolePower;
     // @ViewChild('shopSelect') shopSelect;
 
     addNewRole: any;
 
     myTabs: any;
 
-    currentTab: number;
+    currentTab: number = 1;
+
+    isUpdateLow: boolean = false;
+
+    userInfo: any;
 
     /**
      * 表格
@@ -92,6 +98,7 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
         private baseService: BaseService,
         private baseListService: BaseListService,
         private myService: RoleListService,
+        private globalService: GlobalService
     ) {
         super();
 
@@ -108,6 +115,8 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
             console.log('getStocktypeData==', data);
             this.roleListData = data[0].data.result;
             this.mygrid.setData(this.roleListData);
+            this.mygrid.selectrow(0);
+            this.initToolbar();
             // let all = {
             //     stocktypename: '全部',
             //     stocktype: -1
@@ -131,21 +140,28 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
             tab: this.tab
         }
 
-        this.initToolbar();
+        this.userInfo = this.globalService.clientSessionData.getUserInfo();
+        
     }
 
     ngAfterViewInit() {
         this.loadPageInitData();
         this.initGridColumns();
+
+        
         
     }
 
     private initToolbar() {
-        let extraBtns = [{ name: "addRole", label: "新增角色", placeholder: "新增角色", state: true, useMode: "TOP_BAR", userPage: "L" }]
+        let extraBtns = [
+            { name: "addRole", label: "新增角色", placeholder: "新增角色", state: true, useMode: "TOP_BAR", userPage: "L" },
+            { name: "save", label: "保存", placeholder: "保存", state: true, useMode: "TOP_BAR", userPage: "L" },
+            { name: "mycancel", label: "取消", placeholder: "取消", state: true, useMode: "TOP_BAR", userPage: "L" }
+        ]
 
         this.tools = this.baseService.getTopToolBar(this.option.tab.attr, this.mRight, extraBtns);
 
-        let toolBarStatus = { 'addRole': true, 'print,copy,add,check,del,import,export,cancel': false };
+        let toolBarStatus = { 'addRole': this.currentTab === 1, 'save,mycancel': this.currentTab === 2, 'print,copy,add,check,del,import,export,cancel': false };
         this.baseService.setToolBarStates(this.tools, toolBarStatus);
     }
 
@@ -237,10 +253,6 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
         }
 
         this.mygrid.setColumns(columndef, [], columnTemplate, getGridValidation);
-
-        setTimeout(() => {
-            this.mygrid.selectrow(0);
-        }, 500)
         
     }
 
@@ -264,12 +276,20 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
     /**
      * 刷新数据
      */
-    refreshGridData() {
+    refreshGridData(last?: boolean) {
         this.myService.getRoleList().subscribe((res) => {
-            this.baseService.modalService.modalToast(res.message);
+            
             if (res.retCode === 0) {
                 this.roleListData = res.data.result;
                 this.mygrid.setData(this.roleListData);
+                if(!!last) {
+                    this.mygrid.selectrow(this.roleListData.length - 1);
+                } else {
+                    this.mygrid.selectrow(0);
+                }
+                
+            } else {
+                this.baseService.modalService.modalToast(res.message);
             }
         })
     }
@@ -316,19 +336,26 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
     doSelect(obj) {
         console.log(obj)
         let data = obj.args.row;
+        this.isUpdateLow = false;
         this.currentRoleId = data.roleId;
+    }
+    doUnselect(obj) {
+        console.log(obj)
     }
 
     /**
      * 删除
      */
-    doDelete(obj) {
+    doDelete(obj, event) {
+        console.log(obj, event)
+        event.stopPropagation();
         this.baseService.modalService.modalConfirm('确认删除该角色？').subscribe((result) => {
             if(result === "OK") {
                 this.myService.doDelete(obj.entitys[0].roleId).subscribe((res) => {
                     this.baseService.modalService.modalToast(res.message);
                     if (res.retCode === 0) {
                         this.refreshGridData();
+
                     }
                 })
             }
@@ -338,7 +365,9 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
     /**
      * 复制
      */
-    doMycopy(obj) {
+    doMycopy(obj, event) {
+        event.stopPropagation();
+        
         console.log(obj)
         let opt = {
             roleId: obj.entitys[0].roleId,
@@ -348,7 +377,7 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
         this.myService.doCopy(opt).subscribe((res) => {
             this.baseService.modalService.modalToast(res.message);
             if (res.retCode === 0) {
-                this.refreshGridData();
+                this.refreshGridData(true);
             }
         })
     }
@@ -397,6 +426,15 @@ export class RoleListComponent extends BaseListComponent implements OnInit, Afte
         });
         obj.active = true;
         this.currentTab = obj.value;
+        this.initToolbar();
+    }
+
+    doSave() {
+        this.rolePower.doSave(this.isUpdateLow);
+    }
+
+    doMycancel() {
+        this.rolePower.doCancel();
     }
 
 

@@ -1,13 +1,26 @@
 
 .sui-table-tbody {
-    .di {
+    position: relative;
+    left: 20px;
+
+    &.isFirstGrade {
+        left: 0px;
+
+        &>li>.role-cell {
+            background-color: #f9f9f9;
+        }
+    }
+    
+    .role-cell {
         display: inline-block;
         height: 36px;
         line-height: 36px;
+        // position: relative;
 
         &.row1 {
             padding-top: 10px;
-            padding-left: 23px;
+            padding-left: 10px;
+            // left: 20px;
         }
 
         &.row2 {
@@ -15,7 +28,7 @@
         }
 
         &.row3 {
-            width: calc(100% - 235px);
+            width: calc(100% - 220px);
             vertical-align: top;
 
             .power-text {
@@ -24,6 +37,8 @@
             }
         }
     }
+
 }
+
 
 

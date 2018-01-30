@@ -35,9 +35,11 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
 
     /** 基础框架配置信息 */
     baseFrameworkConfig: BaseFrameworkConfig;
+    private suiLocalConfig: SuiLocalConfig;
     displayRouterOutletFlag: boolean;
 
     currentApp: Application;
+    showHeader: boolean;
 
     private user: SuiUser;
 
@@ -55,6 +57,7 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
     ) {
         // suiHttpConfig.businessHeaders = suiHttpConfig.businessHeaders || {};
         suiHttpConfig.businessHeaders.Authorization = this.clientSession.getToken();
+
         // suiHttpConfig.businessHeaders["content-type"] = "application/json";
     }
 
@@ -62,8 +65,10 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
 
+        this.suiLocalConfig = this.globalService.getSuiLocalConfig();
         this.baseFrameworkConfig = this.globalService.getSuiLocalConfig().BASE_FRAMEWORK_CONFIG;
-        this.user = this.globalService.clientSessionData.getUserInfo();
+        this.showHeader = this.baseFrameworkConfig.showHeader;
+        this.showHeader = this.showHeader !== false;
         this.loadData();
     }
 
@@ -86,7 +91,6 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private loadData() {
         this.loadApps();
-
     }
 
     private loadApps() {
@@ -104,6 +108,13 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
             });
             return;
         }
+
+        if (this.utils.arrayUtil.isNotEmptyArray(this.suiLocalConfig["LOCAL_STATIC_APPS"])) {
+            //本地静态应用
+            this.onAfterGetApps(this.suiLocalConfig["LOCAL_STATIC_APPS"],appName);
+            return ;
+        } 
+
         let param = {
             appid: -1
         };
@@ -119,24 +130,27 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
                 });
                 return;
             }
-            let data = res.data;
-            let config: SuiSiteConfig = data.config || {};
-
-            data.result.map((app: Application) => {
-                this.initApp(app);
-            });
-            this.apps = data.result;
-            this.currentApp = this.apps.find(app => app.appname == appName);
-            if (!this.currentApp) {
-                this.utils.logs.throwError(" can't find the appName=[%s] in apps ", appName, this.apps);
-            }
-            config.currentApp = this.currentApp;
-            this.clientSession.cacheSuiSiteConfig(config);
-            this.currentApp["active"] = true;
-            // setTimeout(() => {
-            this.loadMenus();
+            this.onAfterGetApps(res.data, appName);
             // },5000 )
         });
+    }
+
+    private onAfterGetApps(data, appName) {
+        let config: SuiSiteConfig = data.config || {};
+
+        data.result.map((app: Application) => {
+            this.initApp(app);
+        });
+        this.apps = data.result;
+        this.currentApp = this.apps.find(app => app.appname == appName);
+        if (!this.currentApp) {
+            this.utils.logs.throwError(" can't find the appName=[%s] in apps ", appName, this.apps);
+        }
+        config.currentApp = this.currentApp;
+        this.clientSession.cacheSuiSiteConfig(config);
+        this.currentApp["active"] = true;
+        // setTimeout(() => {
+        this.loadMenus();
     }
 
     private tranAppTarget(app: Application) {
@@ -173,7 +187,7 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
             if (this.globalService.getSuiLocalConfig().MULT_USER_FLAG == true) {
                 //支持多用户
                 app.appurl += this.getQueryParamPrex(app.appurl) + "localkey=" + this.user.loginName;
-                }
+            }
         } else {
             /** 第三方跳转的时候需要携带用户包括登录信息 */
             if (app.target === "_blank") {
@@ -198,8 +212,8 @@ export class SuiFrameworkComponent implements OnInit, AfterViewInit, OnDestroy {
             appid: this.currentApp.appid,
             //需要传递给接口平台
             appName: appName
-        };
-        let menusObsers = [this.myService.getModuleList(param)];
+        }; 
+        let menusObsers = [this.myService.getMenus(param,this.suiLocalConfig["APP_MENU_TYPE"])];
         if (this.globalService.getSuiLocalConfig().HAS_STATICMENU_APPS.indexOf(appName) != -1) {
             let staticParam = {
                 url: `base-framework/menus-${appName}` + ".static.json",

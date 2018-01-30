@@ -50,5 +50,5 @@
 </template-list>
 
 <div class="add-transfer">
-  <subacct-transfer #el_winTransfer (addTransfer)="doConfirmAdd($event)"></subacct-transfer>
+  <offwithdraw-add #el_winOffwithdrawAdd (doEmitter)="doConfirm($event)"></offwithdraw-add>
 </div>

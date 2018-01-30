@@ -7,7 +7,7 @@ import { SubAcctListService } from './subacct-list.service';
 import { GridOption, GridPage } from '../../../../common/components/grid/grid-option';
 import { ToolBarButton } from '../../../../common/components/toolbar/toolbar';
 import { ModalService } from './../../../../common/components/modal/modal.service';
-import { ACCT_MENUS } from '../common/acct-center-menus'
+import { ACCT_MENUS } from './../../common/acct-menus-module'
 
 /**
  * 搜索参数
@@ -361,6 +361,12 @@ export class SubAcctListComponent extends BaseListComponent implements OnInit {
         //先获取转入列表再打开弹出框
         this.getReceiveAccList(thisData);
         
+    }
+    doConfirm(event){
+        //转账成功刷新列表
+        if(event == 'SUCCESS'){
+            this.doSearch();
+        }
     }
      /**
       * 请求转入账户列表 

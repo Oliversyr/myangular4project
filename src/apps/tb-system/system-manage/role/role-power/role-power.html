@@ -1,42 +1,48 @@
-<div class="mb-xsmall">
+<div class="flex-col" style="height: 100%;padding: 10px;">
 
-    <div class="sui-tab-bar mb-xsmall">
-            <div class="sui-tab-nav">
-                <ng-container *ngFor="let tab of firstMenus, let t = index ">
-                    <div class="sui-tab-nav-item" *ngIf="t < 5"  [ngClass]="{'active': tab.active}" (click)="moduleChange(tab)"> {{tab.modulename}}</div> 
-                </ng-container>
-                
-                
-                <div class="sui-tab-nav-item" *ngIf="firstMenus.length > 5">
-                    更多<svg class="svgicon icon-angle-double-down"><use xlink:href="#icon-angle-double-down"></use></svg>
-                    <ul class="sui-tab-nav-dropdown animated fadeIn">
-                        <ng-container *ngFor="let tab of firstMenus, let t = index ">
-                            <li class="sui-tab-nav-dropdown-item"  *ngIf="t > 4" [ngClass]="{'active': tab.active}" (click)="moduleChange(tab)">{{tab.modulename}} </li>
-                        </ng-container>
-                        
-                    </ul>
-                </div>
+    <div class="sui-tab-bar">
+        <div class="sui-tab-nav">
+            <ng-container *ngFor="let tab of firstMenus, let t = index ">
+                <div class="sui-tab-nav-item" *ngIf="t < 5" [ngClass]="{'active': tab.active}" (click)="moduleChange(tab)"> {{tab.modulename}}</div>
+            </ng-container>
+
+
+            <div class="sui-tab-nav-item" *ngIf="firstMenus.length > 5">
+                更多
+                <svg class="svgicon icon-angle-double-down">
+                    <use xlink:href="#icon-angle-double-down"></use>
+                </svg>
+                <ul class="sui-tab-nav-dropdown animated fadeIn">
+                    <ng-container *ngFor="let tab of firstMenus, let t = index ">
+                        <li class="sui-tab-nav-dropdown-item" *ngIf="t > 4" [ngClass]="{'active': tab.active}" (click)="moduleChange(tab)">{{tab.modulename}} </li>
+                    </ng-container>
+
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="mt-xsmall">
-            <table class="sui-table role-management mt-xsmall">
-                    <thead class="sui-table-thead ">
-                        <tr>
-                            <th class=" role-management-row1 tl"><sui-checkbox class="sui-checkboxs  ml-xsmall" name="author-tr" [(ngModel)]="allSelected" [checked]="allSelected" 
-                                        [hasThreeStates]='false' (onChange)="allSelect($event)"></sui-checkbox></th>
-                            <th class=" role-management-row2" (click)="doSave()">应用名称</th>
-                            <th class=" role-management-row3">权限管理</th>
-                        </tr>
-                    </thead>
-                </table>
+    <div  style="flex: 1;">
+        <table class="sui-table role-management mt-xsmall">
+            <thead class="sui-table-thead ">
+                <tr>
+                    <th class=" role-management-row1 tl">
+                        <sui-checkbox class="sui-checkboxs  ml-xsmall" name="author-tr" [(ngModel)]="allSelected" [checked]="allSelected"
+                            [hasThreeStates]='false' (onChange)="allSelect($event)"></sui-checkbox>
+                    </th>
+                    <th class=" role-management-row2">应用名称</th>
+                    <th class=" role-management-row3">权限管理</th>
+                </tr>
+            </thead>
+        </table>
 
-                <div class="sui-table-wrap role-management" style="height: 550px;">
-                        <div class="page-scroll">
-                                <!-- *ngFor="let row of powerList, i as index " -->
-                            <div class="sui-table">
-                                    <role-power-tree [treePowerList]="treePowerList" (childSelectStatus)="childrenSelectStatus($event)" [parentModuleId]="firstModuleId"></role-power-tree>
-                                <!-- <ul class="sui-table-tbody" *ngFor="let row of treePowerList, i as index ">
+        <div class="sui-table-wrap role-management" style="height: calc(100% - 54px);">
+            <div class="page-scroll">
+                <!-- *ngFor="let row of powerList, i as index " -->
+                <div class="sui-table">
+                    <role-power-tree class="tree-container" [treePowerList]="treePowerList" (childSelectStatus)="childrenSelectStatus($event)"
+                        [parentModuleId]="firstModuleId"></role-power-tree>
+                    <!-- <ul class="sui-table-tbody" *ngFor="let row of treePowerList, i as index ">
                                     <li class="gray-bg" *ngIf="row.children.length > 0">
                                         <div class="role-management-row1 tl di">
                                             <sui-checkbox class="sui-checkboxs ml-xsmall mt-xsmall fl" name="author-td11" [(ngModel)]="row.allThisPower" [hasThreeStates]='true'></sui-checkbox>
@@ -52,9 +58,9 @@
                                 
                                         
                                     </li> -->
-                                    <!--一级-->
-                                
-                                    <!-- <li *ngIf="row.myPowerList">
+                    <!--一级-->
+
+                    <!-- <li *ngIf="row.myPowerList">
                                         <div class="role-management-row1 tr di">
                                             <sui-checkbox class="sui-checkboxs mr-xsmall" [(ngModel)]="row.allThisPower" [hasThreeStates]='true'></sui-checkbox>
                                         </div>
@@ -67,13 +73,13 @@
                                             </span>
                                         </div>
                                     </li> -->
-                                    <!--二级-->
-                                <!-- </ul> -->
-                            </div>
-                        </div>
-                    </div> 
+                    <!--二级-->
+                    <!-- </ul> -->
+                </div>
+            </div>
         </div>
-        
+    </div>
 
-      
+
+
 </div>

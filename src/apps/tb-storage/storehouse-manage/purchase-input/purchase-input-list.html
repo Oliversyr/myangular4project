@@ -49,7 +49,11 @@
         <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
     </ng-template>
     <ng-template #suiGrid>
-        <sui-grid #grid [gridOption]="gridOption"  [showstatusbar]="true" (onToolBtnClick)="onToolBtnClick($event)">
+        <!-- <sui-grid #myGrid [height]="'100%'" [width]="'100%'" [autoheight]="false" [source]="dataAdapter" [showstatusbar]="true" [statusbarheight]="30"
+            [pageable]="true" [columnsreorder]="true" [editable]="true" [showaggregates]="true" [columnsresize]="true" [filterable]="true"
+            [sortable]="true" [altrows]="true" [columns]="columns" [selectionmode]="'checkbox'">
+        </sui-grid> -->
+        <sui-grid #grid [gridOption]="gridOption" [showstatusbar]="true" [showaggregates]="true" (onToolBtnClick)="onToolBtnClick($event)">
         </sui-grid>
     </ng-template>
 </template-list>

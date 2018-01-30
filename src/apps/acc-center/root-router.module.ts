@@ -11,6 +11,7 @@ let routers = [
     { path: appName + '/bushandle', loadChildren: root + 'business-handle/index.module#IndexModule' },
 
     {path: appName + "/basicdata", loadChildren: root+"basic-info/index.module#IndexModule"},
+    
 ];
 
 @NgModule({

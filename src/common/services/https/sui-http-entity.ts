@@ -78,6 +78,11 @@ export interface SuiRequest<B, U> extends SuiRequestBase<B, U> {
  */
 export interface SuiRequestBase<B, U> {
     /**
+     * 是否为FormData 表单数据
+     * 1. 默认false
+     */
+    isFormData?: boolean,
+    /**
      * 请求路径
      */
     url: string;

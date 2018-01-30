@@ -27,14 +27,11 @@ export class AcctInfoListService {
      * 获取账户资料列表
      */
     getGridData(): Observable<any> {
-        var param = {
-            params : {}
-        }
-        let myParam = {
+
+        let myParam : SuiRequest<any,any> = {
             url: 'acctmgr/subacct/predefine/list',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
-            bodyParam: param
         }
         return this.suiHttp.request(myParam).map((data) => {
             if (data.retCode !== 0) {

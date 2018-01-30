@@ -32,8 +32,10 @@ export class SubAcctListService {
             url: 'acctmgr/subacct/list/query',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
-            urlParam : searchParam
+            isFormData:true,
+            bodyParam:searchParam 
         }
+        
         return this.suiHttp.request(myParam).map((data) => {
             if (data.retCode !== 0) {
                 this.globalService.modalService.modalToast(data.message);
@@ -49,8 +51,6 @@ export class SubAcctListService {
             };
         })
     }
-
-
     /**
      * 禁用
      */
@@ -96,7 +96,8 @@ export class SubAcctListService {
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
             globalLoad: true,
-            urlParam: param
+            isFormData:true,
+            bodyParam:param
         }
         return this.suiHttp.request(myParam).map((data) => {
             if (data.retCode !== 0) {

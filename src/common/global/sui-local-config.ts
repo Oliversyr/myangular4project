@@ -90,6 +90,10 @@ export interface EnterpriseInfo {
  * 基础应用配置
  */
 export interface BaseFrameworkConfig {
+    /**
+     * 是否显示头信息
+     */
+    showHeader: boolean ;
     headerBgClass: string ;
     defaultAppUrl: string ;
 }

@@ -118,7 +118,7 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
     ngAfterViewInit() {
         this.initGridColumns();
         this.initModalGridColumns();
-        this.mygrid.load();
+        // this.mygrid.load();
         // this.mymodalgrid.load();
     }
 
@@ -152,7 +152,7 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
             // columngroups: [{"text":"商品信息","name":"goodsInfo","align":"center"}]
         };
 
-        this.gridOption.loadDataInterface = (param) => {console.log(4)
+        this.gridOption.loadDataInterface = (param) => {
             this.mygrid.clearselection();
             let obj = {
                 keyValue: this.keyValue,
@@ -180,7 +180,7 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
 
         let columndef = [
             { "text": "用户姓名", "datafield": "realname", "align": "center", "width": 80 },
-            { "text": "用户手机", "datafield": "mobilephone", "align": "center", "width": 90 },
+            { "text": "用户手机", "datafield": "mobilephone", "align": "center", "width": 110 },
             { "text": "登录账号", "datafield": "loginname", "align": "center", "width": 100 },
             { "text": "上次登录", "datafield": "lastloginStr", "align": "center", "minWidth": 200 },
             { "text": "操作", "datafield": "tools", "width": 80, columntype: 'tools' }
@@ -209,7 +209,7 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
             // columngroups: [{"text":"商品信息","name":"goodsInfo","align":"center"}]
         };
 
-        this.gridModalOption.loadDataInterface = (param) => {console.log(this.searchKey)
+        this.gridModalOption.loadDataInterface = (param) => {
             let obj = {
                 keyValue: this.searchKey,
                 roleId: this.roleId
@@ -240,7 +240,6 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
     }
     
     doSearch() {
-        console.log(2)
         this.mygrid.load();
     }
     doReset() {
@@ -296,7 +295,6 @@ export class RoleUserComponent extends BaseListComponent implements OnInit, Afte
     }
 
     doModalSearch() {
-        console.log(1)
         this.mymodalgrid.load();
     }
 

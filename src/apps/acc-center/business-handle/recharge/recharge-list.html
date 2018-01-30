@@ -21,6 +21,7 @@
             <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
                 <sui-cell leftClass="sui-label-width-md" leftLabel="客户">
                     <ng-template #cellContent>
+                        <sui-acc-customer (selectCustom)="selectedCustomer($event)" [customTabindex]="1" #customerSelect></sui-acc-customer>
                         <!-- <sui-organ [customTabindex]="2" (selectOrgan)="selectStock($event)" [orgType]="'stock'" #OrganSelect></sui-organ> -->
                     </ng-template>
                 </sui-cell>
@@ -28,25 +29,27 @@
             <div sui-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
                 <sui-cell leftClass="sui-label-width-md" leftLabel="缴费凭证号">
                     <ng-template #cellContent>
-                            <sui-input [(ngModel)]="searchParam.querykey" customTabindex="3" placeHolder="请输入商品名称、内码、条码、助记码">
-                            </sui-input>
+                        <sui-input [(ngModel)]="searchParam.querykey" customTabindex="3" placeHolder="请输入商品名称、内码、条码、助记码"> </sui-input>
                     </ng-template>
                 </sui-cell>
             </div>
-                
         </div>
     </ng-template>
+    
     <ng-template #suiGridSort>
         <sui-grid-sort [grid]="mygrid" [sorts]="sorts"></sui-grid-sort>
     </ng-template>
+    
     <ng-template #suiTopToolbar>
         <sui-toolbar [toolBarData]="grid" [tools]="tools" (onToolBtnClick)="onToolBtnClick($event)"></sui-toolbar>
     </ng-template>
+    
     <ng-template #suiGrid>
-        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)">
-        </sui-grid>
+        <sui-grid #grid [gridOption]="gridOption" (onToolBtnClick)="onToolBtnClick($event)"> </sui-grid>
     </ng-template>
+    
 </template-list>
+
 <div>
-    <sui-stock-add #suiStockpdykAdd (callback)='modalCallBack($event)'></sui-stock-add>
+    <sui-recharge-add #suiRechargeAdd (callback)='modalCallBack($event)'></sui-recharge-add>
 </div>

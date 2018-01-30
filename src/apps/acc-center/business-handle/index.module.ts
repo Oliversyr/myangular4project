@@ -10,9 +10,9 @@ const currentCatalogPath = '../business-handle/';
     imports: [
         CommonModule
         , RouterModule.forChild([
-            { path: 'withdraw', loadChildren: currentCatalogPath + 'transmgr-offwithdraw/index-router.module#IndexRouterModule' },            
+            { path: 'withdraw', loadChildren: currentCatalogPath + 'transmgr-offwithdraw/index-router.module#IndexRouterModule' },
             { path: 'recharge', loadChildren: currentCatalogPath + 'recharge/index-router.module#IndexRouterModule' },
-            
+
         ])
     ],
     exports: [],

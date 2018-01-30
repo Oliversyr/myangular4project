@@ -94,13 +94,29 @@
         </sui-grid>
     </ng-template>
     <ng-template #suiFooter>
-        <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
+        <!-- <sui-panel title="单据信息" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
             <div sui-panel-headerRight>
                 <span class="mr">制单人: {{deliveryInfo?.editor}}</span>
                 <span class="mr">制单时间: {{deliveryInfo?.editdate}}</span>
                 <span class="mr">审核人: {{deliveryInfo?.checker}}</span>
                 <span class="mr">审核时间: {{deliveryInfo?.checkdate}} </span>
             </div>
-        </sui-panel>
+        </sui-panel> -->
+        <div class="sui-footer-panel">
+            <div sui-row >
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                   制单人: {{deliveryInfo?.editor}}
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                  制单时间: {{deliveryInfo?.editdate}}
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                  审核人: {{deliveryInfo?.checker}}
+                </div>
+                <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                  审核时间: {{deliveryInfo?.checkdate}}
+                </div>
+            </div>
+        </div>
     </ng-template>
 </template-detail>

@@ -46,7 +46,7 @@ export class GridUtilService extends TopCommon {
         let i:number=0;
         tools = tools.filter( tool => toolsState[tool.name] === true);
         if(tools.length >2 ){
-            toolsMoreHtml = ' | <span title="显示更多操作" class="sui-grid-btn ">...<ul class="sui-grid-more">' ;
+            toolsMoreHtml = ' | <span title="显示更多操作" class="sui-grid-btn "><svg class="svgicon icon-ellipsis"><use xlink:href="#icon-ellipsis"></use></svg><ul class="sui-grid-more">' ;
         }
         for(let tool of tools) {
             //默认显示label

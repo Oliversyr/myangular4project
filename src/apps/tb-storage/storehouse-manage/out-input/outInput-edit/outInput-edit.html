@@ -20,7 +20,7 @@
                 <div sui-row>
 
                     <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">出入库对象: </div>
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">出入库对象： </div>
                         <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
                                 <sui-input [(ngModel)]="outInputInfo.coename" customTabindex="1" placeHolder="请输入对象编码">
     
@@ -29,13 +29,13 @@
                                 
                     </div>
                     <div sui-col [nzXs]="10" [nzSm]="6" [nzMd]="6">
-                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">发生日期: </div>
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">发生日期： </div>
                         <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
                                 <sui-date [(ngModel)]="outInputInfo.operdate" customTabindex="5"></sui-date>
                         </div>
                     </div>
                     <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">相关单号: </div>
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 65px;">相关单号： </div>
                         <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
                                 <sui-input [(ngModel)]="outInputInfo.refsheetid" customTabindex="11" placeHolder="请输入相关单号">
         
@@ -44,7 +44,7 @@
                     </div>
                     <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
 
-                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 55px;">仓管员: </div>
+                        <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 55px;">仓管员： </div>
                         <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
                                 <sui-input [(ngModel)]="outInputInfo.manager" customTabindex="13" placeHolder="请输入仓管员">
         
@@ -56,7 +56,7 @@
                 <div sui-row>
                     <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
 
-                            <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">备注: </div>
+                            <div sui-col [nzXs]="4" [nzSm]="4" [nzMd]="4" style="width: 75px;">备注： </div>
                         <div sui-col [nzXs]="14" [nzSm]="14" [nzMd]="14">
                                 <sui-input [(ngModel)]="outInputInfo.notes" customTabindex="15" placeHolder="请输入备注">
             
@@ -127,23 +127,22 @@
 
     
     <ng-template #suiFooter>
-            <sui-panel title="" [expanded]="expanded" isShowToggleIcon="false" beforeTitleIcon="empty">
-                    <div sui-panel-headerRight>
-                            <div sui-row >
-                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                                        制单人：{{outInputInfo?.editor}}
-                                    </div>
-                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                                        制单日期：{{outInputInfo?.editdate}}
-                                    </div>
-                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                                        审核人：{{outInputInfo?.checker}}
-                                    </div>
-                                    <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
-                                        审核日期：{{outInputInfo?.checkdate}}
-                                    </div>
-                                </div>
-                    </div>
-                </sui-panel>
-        </ng-template>
+            <div class="sui-footer-panel">
+                <div sui-row >
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            制单人：{{outInputInfo?.editor}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            制单日期：{{outInputInfo?.editdate}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            审核人：{{outInputInfo?.checker}}
+                        </div>
+                        <div sui-col [nzXs]="12" [nzSm]="6" [nzMd]="6">
+                            审核日期：{{outInputInfo?.checkdate}}
+                        </div>
+                </div>
+            </div>
+             
+    </ng-template>
 </template-edit>

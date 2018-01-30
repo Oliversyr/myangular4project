@@ -40,7 +40,8 @@ export class SubAcctDetailService {
             url: 'acctmgr/subacct/running/list',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
-            urlParam: searchParam
+            isFormData:true,
+            bodyParam: searchParam
         }
         return this.suiHttp.request(myParam).map((data) => {
             if (data.retCode !== 0) {
@@ -64,12 +65,15 @@ export class SubAcctDetailService {
      * 获取账户列表
      */
     getSubAcctList(param, searchParam): Observable<GridData<any>> {
-        param.params = searchParam;
+        searchParam.pageSize=param.pageSize;
+        searchParam.pageNum=param.pageNum;
+        searchParam.totalCount=param.totalCount;
         let myParam = {
             url: 'acctmgr/subacct/list/query',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
-            bodyParam: param
+            isFormData:true,
+            bodyParam: searchParam
         }
         return this.suiHttp.request(myParam).map((data) => {
             if (data.retCode !== 0) {
@@ -94,7 +98,8 @@ export class SubAcctDetailService {
             url: 'acctmgr/subacct/info/get',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
-            urlParam: {subacctid: param.subacctid,acctno:param.acctno}
+            isFormData:true,
+            bodyParam: {subacctid: param.subacctid,acctno:param.acctno}
         }
         return this.suiHttp.request(myParam).map((data) => {
             return data;
@@ -151,6 +156,7 @@ export class SubAcctDetailService {
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
             globalLoad: true,
+            isFormData:true,
             bodyParam: param
         }
         return this.suiHttp.request(myParam).map((data) => {

@@ -191,14 +191,14 @@ export class SuiBaseHttp extends TopCommon {
      * js对象转换为body 
      * @param param 
      */
-    protected paramToBody(param: object): any {
+    protected   paramToBody(param: object): any {
         if (!param) {
             return null;
         }
         // console.debug(">>>>>>>>>>>>>>> param instanceof ", ( param instanceof FormData));
         if (typeof param === "string" || typeof param === "number"
             || param instanceof Blob || param instanceof ArrayBuffer
-            || param instanceof FormData) {
+            || param instanceof FormData || param instanceof URLSearchParams) { 
             return param;
         }
         return JSON.stringify(param);

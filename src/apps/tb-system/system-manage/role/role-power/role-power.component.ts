@@ -100,7 +100,9 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
     ngOnChanges(obj) {
         console.log('ngOnChanges==', obj)
         if(obj.hasOwnProperty('roleId') && !obj.roleId.firstChange) {
+            this.allSelected = false;
             this.initPowerList();
+            
         }
     }
 
@@ -157,7 +159,6 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
 
             this.firstMenus.unshift(all);
 
-            console.log('this.firstMenus==', this.firstMenus)
         })
         
 
@@ -180,6 +181,7 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
         obj.active = true;
         this.refresh(obj.moduleid);
         this.firstModuleId = obj.moduleid;
+        
     }
 
     /**
@@ -192,7 +194,6 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
 
         
         Observable.forkJoin(moduleList, powerlist).subscribe((res) => {
-            console.log(res);
             // for(let i = 0; i < res.length; i++) {
             //     if(res[i].retCode !== 0) {
             //         this.initPowerList();
@@ -264,18 +265,19 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
                         // let data = JSON.parse(JSON.stringify(this.allModuleList));
                         let data = this.allModuleList;
                         item.children = this.findChildNode(data, item.moduleid);
+                        item.isFirstGrade = true;
                         treePowerList.push(item);
                     }
                 } else if(item.parentmoduleid === moduleId) {
                     let data = this.allModuleList;
                     item.children = this.findChildNode(data, item.moduleid);
+                    item.isFirstGrade = true;
                     treePowerList.push(item);
                 } 
             })
 
             this.treePowerList = treePowerList;
 
-            console.log(treePowerList);
 
             setTimeout(() => {
                 this.allModuleList.forEach((item) => {
@@ -311,13 +313,16 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
                                 isModifyPrice : ((rightValue & WEIGHT_VALUE.MODIFYPRICE) != 0)  //改价 
                             }
     
-                            item.myPowerList.forEach((power) => {
-                                for(let myRight in mydpower) {
-                                    if(power.value === mydpower[myRight].value) {
-                                        power.sel = rightObj[myRight]
-                                    }
-                                } 
-                            })
+                            if(item.myPowerList) {
+                                item.myPowerList.forEach((power) => {
+                                    for(let myRight in mydpower) {
+                                        if(power.value === mydpower[myRight].value) {
+                                            power.sel = rightObj[myRight]
+                                        }
+                                    } 
+                                })
+                            }
+                            
                         }
                     })
                 })
@@ -328,7 +333,7 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
         })
     }
 
-    doSave() {
+    doSave(isUpdateLow) {
         let allPowerModuleList = JSON.parse(JSON.stringify(this.allModuleList));
 
         allPowerModuleList.forEach((item) => {
@@ -342,12 +347,10 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
             }
         })
 
-        console.log(allPowerModuleList);
-
         let data = {
             roleId: this.roleId,
             list: allPowerModuleList,
-            flag: 0
+            flag: isUpdateLow ? 1 : 0
         }
 
         this.myService.savePowerModule(data).subscribe((res) => {
@@ -355,12 +358,16 @@ export class RolePowerComponent extends BaseListComponent implements OnInit, OnC
         })
     }
 
+    doCancel() {
+        this.refresh(this.firstModuleId);
+    }
+
 
     /**
      * 子树选择
      */
     childrenSelectStatus(obj) {
-        console.log('childrenSelectStatus==', obj, this.firstModuleId, this.treePowerList);
+        console.log('childrenSelectStatus==', obj);
         let allSel = true;
         let noSel = true;
         if(obj.value === null) {

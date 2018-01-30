@@ -128,10 +128,6 @@ export class SubAcctDetailComponent extends BaseDetailComponent implements OnIni
         this.option = {
             tab: this.tab
         }
-        this.dateValue = {
-            beginDate:this.datePipe.transform(new Date(), 'yyyy-MM-dd'),
-            endDate:this.datePipe.transform(new Date(), 'yyyy-MM-dd')
-        }
     }
     /**
      * 表格初始化完成后执行
@@ -182,6 +178,10 @@ export class SubAcctDetailComponent extends BaseDetailComponent implements OnIni
 
         this.gridOption.loadDataInterface = (param) => {
             this.mygrid.clearselection();
+            if(!this.dateValue.beginDate){//默认为当前日期
+                this.searchParam.bdate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+                this.searchParam.edate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+            }
             return this.myService.getGridData(param, this.searchParam)
         };
         this.sorts = [
@@ -203,12 +203,12 @@ export class SubAcctDetailComponent extends BaseDetailComponent implements OnIni
             { "text": "交易前余额", "datafield": "frontval", "align": "center", "width": 120 },
             { "text": "交易金额", "datafield": "amount", "align": "center", width: 120 },
             { "text": "交易时间", "datafield": "createtime", "align": "center", width: 180 },
-            { "text": "往来账户", "datafield": "refname", "align": "center", "width": 180 },
+            { "text": "往来账户", "datafield": "refacctname", "align": "center", "width": 180 },
             { "text": "结余金额", "datafield": "restval", "align": "center", "width": 120},
             { "text": "摘要", "datafield": "remark", "align": "center", "width": 274},
             { "text": "备注", "datafield": "notes", "align": "center","width": 274,}
         ];
-        this.mygrid.setColumns(columndef, []);
+        this.mygrid.setColumns(columndef, [],columnTemplate);
         this.mygrid.load();
         this.getTotal();
     }

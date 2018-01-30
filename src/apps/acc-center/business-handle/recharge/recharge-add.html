@@ -1,0 +1,76 @@
+<div class="recharge-add">
+    <sui-modal class="" #addRechargeModal [isModal]="true" [title]="'线下充值'" [autoOpen]="false" [width]="560" [height]="420" [maxHeight]="900"
+        [minHeight]="200" [maxWidth]="1920" [minWidth]="320" [showCollapseButton]="false">
+        <div class="alert-box recharge-add-modal" [suikeyboard]="'sui-modal'" #windowContent>
+           
+            <div [sui-validator] #el_mainValidator class="alert-content">
+                <div class="recharge-title mb-xsmall">充值信息</div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til sui-star">客户：</span>
+                    <span class="sui-row-group-con" *ngIf="attr == 'B'">{{headInfo.name}}</span>
+                    <div *ngIf="attr != 'B'" class="sui-row-group-con">
+                        <sui-acc-customer (selectCustom)="selectCustomer($event)" [customTabindex]="1" #customerSelect [defSelectedItem]="defSelectedItem"></sui-acc-customer>
+                    </div>
+                </div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til">资金账号：</span>
+                    <span class="sui-row-group-con">{{routeParam.acctid}}</span>
+                </div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til sui-star">充值账户：</span>
+                    <span class="sui-row-group-con" *ngIf="attr == 'B'">{{ headInfo.subacctid }}</span>
+                    <div class="sui-row-group-con" *ngIf="attr != 'B'" >
+                        <sui-select placeHolder="选择充值账户" [customTabindex]="2" class="suid-per100" style="display:inline-block;vertical-align: middle;"
+                            [(ngModel)]="headInfo.subacctid" (onSelect)="subSelect($event)" [source]="subaccList" [displayMember]="'subacctname'"
+                            [valueMember]="'subacctid'"> </sui-select>
+                    </div>
+                    <span>{{routeParam.usablevalue | currency:'￥'}}</span>
+                </div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til sui-star">充值金额：</span>
+                    <span *ngIf="attr == 'B'">{{ headInfo.amount }}</span>
+                    <div class="sui-row-group-con" *ngIf="attr != 'B'" >
+                        <sui-input [(ngModel)]="headInfo.amount" [suiRules]="'required,money'" [customTabindex]="3" placeHolder="请输入提现金额(不超过可用余额)"></sui-input>
+                    </div>
+                </div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til sui-star">缴费方式：</span>
+                    <span class="sui-row-group-con" *ngIf="attr == 'B'">{{ headInfo.rechargemodeName }}</span>
+                    <div class="sui-row-group-con" *ngIf="attr != 'B'" >
+                        <sui-select placeHolder="选择缴费方式" [customTabindex]="4" class="suid-per100" style="display:inline-block;vertical-align: middle;"
+                            [(ngModel)]="headInfo.rechargemode" [source]="chargeMode" [displayMember]="'label'" [valueMember]="'value'">
+                        </sui-select>
+                    </div>
+                    <span>{{routeParam.usablevalue | currency:'￥'}}</span>
+                </div>
+
+                <div class="sui-row-group">
+                    <span class="sui-row-group-til sui-star">缴费凭证号：</span>
+                    <span class="sui-row-group-con" *ngIf="attr == 'B'">{{ headInfo.payorderno }}</span>
+                    <div class="sui-row-group-con" *ngIf="attr != 'B'">
+                        <sui-input [(ngModel)]="headInfo.payorderno" [suiRules]="'len_1_128'" [customTabindex]="5" placeHolder="请输入提现凭证号"></sui-input>
+                    </div>
+                </div>
+
+                <div class="sui-row-group mt10">
+                    <span class="sui-row-group-til">备注：</span>
+                    <div class="sui-row-group-con">
+                        <sui-input [(ngModel)]="headInfo.notes" [suiRules]="'len_0_255'" [customTabindex]="6" placeHolder="请输入备注"></sui-input>
+                    </div>
+                </div>
+
+            </div><!--alert-content end-->
+
+            <div class="alert-foot">
+                <button suiHotKey="ENTER" (click)="doSave()" class="sui-btn sui-btn-primary mr-xsmall">确定({{hotkeys.ENTER}})</button>
+                <button suiHotKey="CHECK" (click)="doSaveWithCheck()" class="sui-btn sui-btn-primary mr-xsmall">确定并审核({{hotkeys.CHECK}})</button>
+                <button class="sui-btn sui-btn-gray mr-xsmall" suiHotKey="CANCEL" (click)="doCancel()">取消({{hotkeys.CANCEL}})</button>
+            </div>
+        </div>
+    </sui-modal>
+</div>

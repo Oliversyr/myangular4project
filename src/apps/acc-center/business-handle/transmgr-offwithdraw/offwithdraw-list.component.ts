@@ -55,8 +55,12 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
     private gridOption: GridOption<any>;
     /**
      * 表格的表头自定义排序配置信息
-     * */
+     */
     sorts: GridSortOption[] = [];
+    /**
+     * 提现配置
+     */
+    offwithdrawCfginfo: any = {};
     /**
      * 工具栏按钮
      */
@@ -79,7 +83,7 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
      */
     @ViewChild('grid') mygrid: Grid;
     /** 转账弹出框 */
-    @ViewChild('el_winTransfer') el_winTransfer;
+    @ViewChild('el_winOffwithdrawAdd') el_winOffwithdrawAdd;
     // onStart(param) { };
     constructor(private baseService: BaseService, private myService: OffwithdrawListService, private modalService: ModalService) {
         super();
@@ -90,6 +94,7 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
         this.initSearchParam();
         this.initGrid();
         this.initToolbar();
+        this.getOffwithdrawCfginfo();
         this.option = {
             isMoreSearch: false,
             tab: this.tab
@@ -100,6 +105,15 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
     ngAfterViewInit() {
         this.initGridColumns();
         this.mygrid.load();
+    }
+
+    /**
+     * 查询并设置提现配置
+     */
+    private getOffwithdrawCfginfo() {
+        this.myService.getOffwithdrawCfginfo().subscribe((res) => {
+            this.offwithdrawCfginfo = res;
+        });
     }
 
     /**
@@ -154,7 +168,7 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
             isShowRowNo: true,
             rowBeforeAdd: this.rowBeforeAdd,
             tools: this.baseService.getGridToolBar(this.mRight, []),
-            primaryKeyFields: ['sheetid', 'acctno', 'acctid', 'custid', 'name', 'subacctid', 'checkstatus']
+            primaryKeyFields: ['sheetid', 'acctno', 'acctid', 'name', 'subacctid', 'amount', 'paymentno', 'notes']
         };
         this.gridOption.loadDataInterface = (param) => {
             this.mygrid.clearselection();
@@ -216,6 +230,7 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
      * 搜索栏按钮点击
      */
     doSearch() {
+        console.info(' ======== sssssss=========');
         this.mygrid.load();
     }
 
@@ -272,10 +287,8 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
         this.modalService.modalConfirm(message, title, msgType).subscribe((retCode: string): void => {
             if (retCode === 'OK') {
                 this.myService[param.method](sheetid).subscribe((res) => {
-                    if (res.retCode === 0) {
-                        this.baseService.modalService.modalToast(res.message);
-                        this.mygrid.load();
-                    }
+                    this.baseService.modalService.modalToast(res.message);
+                    this.mygrid.load();
                 });
             }
         });
@@ -285,17 +298,44 @@ export class OffwithdrawListComponent extends BaseListComponent implements OnIni
     /**
      * 新增
      */
-    doAdd(obj) {
-        console.info(obj, '========= doAdd')
+    doAdd() {
+        const obj = {
+            subacctid: 1212455,
+            subacctname: '帐号名称',
+            acctid: 110112,
+            acctno: '11220001',
+            name: '客户名是你吧'
+        };
+        this.el_winOffwithdrawAdd.open('ADD', this.offwithdrawCfginfo, obj);
+    }
+
+    /**
+     * 确认新建
+     * @param  $event
+     */
+    doConfirm($event) {
+        const param = $event;
+        if (param.type === 'ADD') {
+            this.myService.doAdd(param).subscribe((res) => {
+                console.info(res, ' ======== res 333444=========');
+                this.baseService.modalService.modalToast(res.message);
+                this.mygrid.load();
+                this.el_winOffwithdrawAdd.cancel();
+            });
+        } else if (param.type === 'EDIT') {
+            this.myService.doUpdate(param).subscribe((res) => {
+                this.baseService.modalService.modalToast(res.message);
+                this.mygrid.load();
+                this.el_winOffwithdrawAdd.cancel();
+            });
+        }
     }
 
     /**
      * 编辑
      */
     doEdit(obj) {
-        console.info(obj, '========= doEdit')
+        this.el_winOffwithdrawAdd.open('EDIT', this.offwithdrawCfginfo, obj.entitys[0]);
     }
-
-
 
 }

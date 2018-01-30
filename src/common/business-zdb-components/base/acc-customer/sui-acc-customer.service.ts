@@ -27,54 +27,46 @@ export class SuiAccCustomerService extends TopCommon {
     /**
      * 获取客户列表树数据
      */
-    public getCustomData(obj) {
+    public getCustomData(key:string) {
         let myParam: SuiRequest<any,any> = {
             url: 'acctmgr/acct/cust/list/query',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
             globalLoad: false,
-            urlParam :{
-                pageSize:10,
-                pageNum:1,
-                querykey:obj.key
+            isFormData:true,
+            bodyParam :{
+                querykey:key
             }
         }
-
         return this.suiHttp.request(myParam).map(data => {
             if (data.retCode !== 0) {
                 this.globalService.modalService.modalToast(data.message);
                 return ;
             }
-
             return data.data.result;
-
         });
     }
 
     /**
      * 获取客户列表树数据
      */
-    public getCustomList(key): Observable<any> {
+    public getCustomList(key:string): Observable<any> {
         let myParam: SuiRequest<any,any> = {
             url: 'acctmgr/acct/cust/list/query',
             rootPath: this.globalService.getSuiLocalConfig().BUSINESS_ROOTPATH,
             method: RequestMethod.Post,
             globalLoad: false,
-            urlParam: {
-                pageSize:10,
-                pageNum:1,
+            isFormData:true,
+            bodyParam: {
                 querykey:key
             }
         }
-
         return this.suiHttp.request(myParam).map(data => {
             if (data.retCode !== 0) {
                 this.globalService.modalService.modalToast(data.message);
                 return ;
             }
-
             let res = data.data;
-
             return {
                 rows: res.result || [],
                 footer: {
